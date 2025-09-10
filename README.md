@@ -2,7 +2,7 @@
 
 KUIT 6기 **WEB Part** 스터디 실습 & 미션 저장소입니다.  
 
-> **th WEB Part Lead** : @qkrxogmla @ @
+> **th WEB Part Lead** : @qkrxogmla
 > “한 학기 동안 많은 것을 얻어갈 수 있으면 좋겠습니다.” ✨  
 
 ---
@@ -19,22 +19,6 @@ KUIT 6기 **WEB Part** 스터디 실습 & 미션 저장소입니다.
 3. **폴더 구조**  
    - 각 주차별 폴더 안에 본인의 **닉네임/이름 폴더**를 생성합니다.  
    - 해당 폴더에서 `index.html` 등을 작성하며 미션을 수행합니다.
-
----
-
-## 📂 예시 구조
-
-📦 KUIT6_WEB-Frontend
-┣ 📂 week1
-┃ ┣ 📂 honggildong
-┃ ┃ ┗ 📜 index.html
-┃ ┣ 📂 janedoe
-┃ ┃ ┗ 📜 index.html
-┣ 📂 week2
-┃ ┣ 📂 honggildong
-┃ ┃ ┗ 📜 index.html
-┃ ┗ 📂 janedoe
-┃ ┃ ┗ 📜 index.html
 
 ## ✅ 규칙
 
