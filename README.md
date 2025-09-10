@@ -1,9 +1,9 @@
-# 🚀 KUIT6_WEB-Frontend
+# KUIT6_WEB-Frontend
 
 KUIT 6기 **WEB Part** 스터디 실습 & 미션 저장소입니다.  
 
-> **th WEB Part Lead** : @qkrxogmla
-> “한 학기 동안 많은 것을 얻어갈 수 있으면 좋겠습니다.” ✨  
+> **6th WEB Part Lead** : @qkrxogmla @evan7484
+“한 학기 동안 많은 것을 얻어갈 수 있으면 좋겠습니다.” ✨  
 
 ---
 
