@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>당근마켓-화면3</title>
+</head>
+<body>
+    <header class="mypage-header">
+        <h1 class="mypage-header__title">나의 당근</h1>
+        <button><img src="./assets/setting.svg" alt="settings" class="mypage-header__settings"></button>
+    </header>
+    <!-- 사용자 -->
+    <section class="user">
+        <!-- 사용자 정보 -->
+        <div class="user__profile">
+            <img src="./assets/profile-img.svg" alt="profile image" class="user__profile-img">
+            <div class="user__profile-info">
+                <span class="user__profile-nickname">가나다</span>
+                <span class="user__profile-place">군자동 #1234566789</span>
+            </div>
+            <button class="user__profile-forward"><img src="./assets/forward.svg" alt="더보기"></button>
+        </div>
+        <!-- 당근 페이 -->
+        <div class="user__pay">
+            <button class="user__pay-title">당근페이</button>
+            <span class="user__pay-description">중고거래는 이제 당근페이로 해보세요!</span>
+        </div>
+        <!-- 거래 내역 -->
+        <ul class="user__trade">
+            <li class="user__trade-list">
+                <div class="user__trade-icon">
+                    <button><img src="./assets/list.svg" alt="판매 내역"></button>
+                </div>
+                <span class="user__trade-item">
+                    판매내역
+                </span>
+            </li>
+            <li class="user__trade-list">
+                <div class="user__trade-icon">
+                    <button><img src="./assets/shopping_bag.svg" alt="판매 내역"></button>
+                </div>
+                <span class="user__trade-item">
+                    구매내역
+                </span>
+            </li>
+            <li class="user__trade-list">
+                <div class="user__trade-icon">
+                    <button><img src="./assets/heart.svg" alt="판매 내역"></button>
+                </div>
+                <span class="user__trade-item">
+                    관심목록
+                </span>
+            </li>
+        </ul>
+    </section>
+    <!-- 구분선 -->
+    <div class="contour"></div>
+    <!-- 내 활동 -->
+    <section class="activity">
+        <h2 class="activity__title">나의 활동</h2>
+        <ul>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">내 동네 설정</button>
+            </li>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">동네 인증하기</button>
+            </li>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">키워드 알림</button>
+            </li>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">모아보기</button>
+            </li>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">당근가계부</button>
+            </li>
+        </ul>
+    </section>
+    <!-- 구분선 -->
+    <div class="contour"></div>
+    <!-- 우리 동네 -->
+     <section class="activity">
+        <h2 class="activity__title">우리동네</h2>
+        <ul>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">동네생활 글/댓글</button>
+            </li>
+            <li class="activity__list">
+                <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
+                <button class="activity__list-item">동네홍보 글</button>
+            </li>
+        </ul>
+    </section>
+    <!-- 하단 바 -->
+     <nav>
+        <ul class="bottom-bar">
+            <li class="bottom-bar__option">
+                <button class="bottom-bar__item-icon"><img src="./assets/home.svg" alt="홈"></button>
+                <div class="bottom-bar__option-item">홈</div>
+            </li>
+            <li class="bottom-bar__option">
+                <button class="bottom-bar__item-icon"><img src="./assets/news.svg" alt="동네생활"></button>
+                <div class="bottom-bar__option-item">동네생활</div>
+            </li>
+            <li class="bottom-bar__option">
+                <button class="bottom-bar__item-icon"><img src="./assets/map.svg" alt="내 근처"></button>
+                <div class="bottom-bar__option-item">내 근처</div>
+            </li>
+            <li class="bottom-bar__option">
+                <button class="bottom-bar__item-icon"><img src="./assets/chat.svg" alt="채팅"></button>
+                <div class="bottom-bar__option-item">채팅</div>
+            </li>
+            <li class="bottom-bar__option">
+                <button class="bottom-bar__item-icon"><img src="./assets/me.svg" alt="나의 당근"></button>
+                <div class="bottom-bar__option-item">나의 당근</div>
+            </li>
+        </ul>
+     </nav>
+</body>
+</html>
