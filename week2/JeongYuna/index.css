@@ -3,8 +3,12 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.activity__list-item:hover {
     color: #777;
+}
+
+.user__pay-title:hover {
+    color: #f99c6a;
 }
 
 .mypage-header {
