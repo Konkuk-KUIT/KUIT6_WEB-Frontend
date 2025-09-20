@@ -3,6 +3,10 @@ button {
     cursor: pointer;
 }
 
+body {
+    padding-bottom: 58px;
+}
+
 .activity__list-item:hover {
     color: #777;
 }
