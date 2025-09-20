@@ -10,10 +10,10 @@
 <body>
     <header class="mypage-header">
         <div class="mypage-header__title">나의 당근</div>
-        <button><img src="./assets/setting.svg" alt="settings" class="settings"></button>
+        <button><img src="./assets/setting.svg" alt="settings" class="mypage-header__settings"></button>
     </header>
     <!-- 사용자 -->
-    <div class="user">
+    <section class="user">
         <!-- 사용자 정보 -->
         <div class="user__profile">
             <img src="./assets/profile-img.svg" alt="profile image" class="user__profile-img">
@@ -21,11 +21,11 @@
                 <div class="user__profile-nickname">가나다</div>
                 <div class="user__profile-place">군자동 #1234566789</div>
             </div>
-            <button><img src="./assets/forward.svg" alt="더보기"></button>
+            <button class="user__profile-forward"><img src="./assets/forward.svg" alt="더보기"></button>
         </div>
         <!-- 당근 페이 -->
         <div class="user__pay">
-            <button><div class="user__pay-title">당근페이</div></button>
+            <button class="user__pay-title"><div>당근페이</div></button>
             <div class="user__pay-description">중고거래는 이제 당근페이로 해보세요!</div>
         </div>
         <!-- 거래 내역 -->
@@ -55,11 +55,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- 구분선 -->
     <div class="contour"></div>
     <!-- 내 활동 -->
-    <div class="activity">
+    <section class="activity">
         <div class="activity__title">나의 활동</div>
         <div class="activity__list">
             <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
@@ -81,11 +81,11 @@
             <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
             <div class="activity__list-item"><button>당근가계부</button></div>
         </div>
-    </div>
+    </section>
     <!-- 구분선 -->
     <div class="contour"></div>
     <!-- 우리 동네 -->
-     <div class="activity">
+     <section class="activity">
         <div class="activity__title">우리동네</div>
         <div class="activity__list">
             <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
@@ -95,7 +95,7 @@
             <img src="./assets/news.svg" alt="활동 목록" class="activity__list-img">
             <div class="activity__list-item"><button>동네홍보 글</button></div>
         </div>
-    </div>
+    </section>
     <!-- 하단 바 -->
      <nav class="bottom-bar">
         <div class="bottom-bar__option">
