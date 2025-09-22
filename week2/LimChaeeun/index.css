@@ -116,9 +116,6 @@ body {
 .menu {
   padding: 0 16px;
   width: 100%;
-}
-
-.menu__list {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,7 +130,7 @@ body {
   flex: 1;
 }
 
-.menu__list-title {
+.menu-title {
   color: #000;
 
   /* 12 */
@@ -144,7 +141,7 @@ body {
   line-height: 16px; /* 133.333% */
 }
 
-.menu__list-img {
+.menu-img {
   display: flex;
   padding: 12px;
   align-items: center;
