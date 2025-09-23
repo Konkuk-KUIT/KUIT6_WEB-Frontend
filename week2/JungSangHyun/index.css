@@ -1,0 +1,106 @@
+/* ----------- <header> ----------- */
+.my-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ccc;
+    align-self: stretch;
+}
+
+.my-page-header__title {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+/* ----------- <section> : my-page ----------- */
+.my-page__info {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    /* align-items: flex-start; */
+    gap: 16px;
+    /* align-self: stretch; todo */
+}
+
+/* ----------- my-page__profile ----------- */
+.my-page__profile {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 16px;
+    /* width: 100%; */
+}
+
+.my-page__user-info {
+    display: flex;
+    height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+}
+
+.user-img {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    /* todo */
+    border-radius: 50%;
+}
+
+.user-name {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.user-location {
+    color: #8C8C8C;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+/* ----------- my-page__pay ----------- */
+.my-page__pay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px dashed #FF7E36;
+}
+
+.my-page__deal {
+    display: flex;
+    padding: 0 16px;
+}
+
+.deal-category{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    flex:1 /*3등분, 강제로 공간 차지*/
+}
+
+.deal-category p {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
