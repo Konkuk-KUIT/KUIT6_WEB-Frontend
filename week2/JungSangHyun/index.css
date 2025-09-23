@@ -104,3 +104,54 @@
     font-weight: 400;
     line-height: 16px;
 }
+
+/* ----------- my-page-activity ----------- */
+.my-page-activity {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-page-activity__title {
+    padding: 10px 16px;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.my-page__list{
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 16px;
+}
+
+.my-page__list p{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    width: 232px;
+}
+
+/* ----------- my-page-neighborhood ----------- */
+
+.my-page-neightborhood {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-page-neightborhood__title{
+    padding: 10px 16px;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
