@@ -16,7 +16,7 @@
     line-height: 28px;
 }
 
-/* ----------- <section> : my-page ----------- */
+/* ----------- <section> : my-page__info ----------- */
 .my-page__info {
     display: flex;
     flex-direction: column;
@@ -155,3 +155,4 @@
     line-height: 20px;
 }
 
+/* ----------- <nav> : navigation ----------- */
