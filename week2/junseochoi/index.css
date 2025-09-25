@@ -1,0 +1,31 @@
+.container {
+  box-sizing: border-box;
+  background-color: navy;
+  border-radius: 8px;
+  padding: 10px;
+  padding-top: 100px;
+  display: flex;
+  height: 200dvh;
+  position: relative;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.items:nth-child(2) {
+  position: sticky;
+  top: 10px;
+}
+
+.items:nth-child(5) {
+  position: fixed;
+  top: 200px;
+}
