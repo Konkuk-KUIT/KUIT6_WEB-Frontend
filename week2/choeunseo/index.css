@@ -7,7 +7,14 @@ button {
   }
 body {
     margin-bottom: 54px;
+    background-color: #EEEEEE;
+    gap: 2px;
   }
+.body{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 
 .header {
     padding: 12px 16px;
@@ -35,11 +42,11 @@ body {
     flex-direction: column;;
     padding: 16px;
     gap: 16px;
+    background-color: #fff;
 }
 .profile__group{
     display: flex;
     justify-content: space-between;
-    width: 358;
     height: 64;
     gap: 16px;
     opacity: 1;
@@ -70,7 +77,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 246px;
+    width: 100%;
 }
 .profile__add{
     padding: 0 16px;
@@ -86,6 +93,7 @@ body {
     border-width: 1px;
     border-style: dashed;
     border-color: #FF7E36;
+    background-color: #fff;
 
 }
 .dangpay_head{
@@ -128,8 +136,10 @@ body {
 
 }
 .me__area{
+    background-color: #fff;
     display: flex;
     flex-direction: column;
+    padding: 4px 0;
 }
 .me__content{
     display: flex;
@@ -157,6 +167,13 @@ body {
     letter-spacing: 0%;
 
 }
+.fill{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 92px;
+    background-color: #fff;
+}
 .nav{
     position: fixed;
     width: 100%;
@@ -164,7 +181,6 @@ body {
     display: flex;
     justify-content: space-around;
     bottom: 0;
-
     background-color: #fff;
 }
 .nav__button{
@@ -181,5 +197,4 @@ body {
     font-size: 10px;
     line-height: 14px;
     letter-spacing: 0%;
-
 }
