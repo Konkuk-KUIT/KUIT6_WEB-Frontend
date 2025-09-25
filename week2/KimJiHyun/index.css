@@ -124,3 +124,26 @@ header {
     font-weight: 400;
     line-height: 16px; /* 133.333% */
 }
+
+.activity__title {
+    padding: 10px 16px;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+}
+
+.activity__list {
+    padding: 10px 16px;
+    gap: 16px;
+    border-bottom: 3px solid #d9d9d9;
+}
+
+.activity__list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px;
+}
