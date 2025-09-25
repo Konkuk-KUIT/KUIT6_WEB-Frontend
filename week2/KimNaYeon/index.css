@@ -149,6 +149,9 @@ body {
     padding: 8px 0;
     display: flex;
     flex-direction: column;
+}
+
+.user-activity {
     border-bottom: 4px solid #eeeeee;
 }
 
@@ -186,7 +189,8 @@ body {
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
-    width: 100%
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
 }
 
 .bar-content {
