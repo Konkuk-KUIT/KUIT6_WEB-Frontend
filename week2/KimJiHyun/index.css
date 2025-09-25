@@ -25,7 +25,17 @@ a {
     color: inherit;
 }
 
+body {
+    padding-bottom: 58px;
+    padding-top: 52px;
+}
+
 header {
+    top: 0;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box; /* padding까지 포함해서 width 계산, global로 지정해놓으면 좋음 */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -192,8 +202,12 @@ header {
 }
 .bottom-bar__list {
     display: flex;
+    justify-content: space-evenly;
 }
 
-.bottom-bar__list li {
+.bottom-bar__list li > a {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }
