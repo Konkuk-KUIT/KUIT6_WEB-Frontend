@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danggn_3</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <!-- 상단 헤더 -->
+    <header class="my-header">
+      <div class="my-header__title">나의 당근</div>
+      <div class="my-header__icon">
+        <button>
+          <img src="./assets/setting.svg" alt="설정 버튼"/>
+        </button>
+      </div>
+    </header>
+
+    <main>
+        <!-- 유저 프로필 -->
+        <article class="user">
+            <section class="user-profile">
+                <div class="user-info">
+                    <img src="./assets/profile.svg" alt="프로필 사진" class="user-info__img"/>
+                    <div class="user-info__content">
+                        <div class="user-info__name">가나다</div>
+                        <div class="user-info__detail">군자동 #123456789</div>
+                    </div>
+                </div>
+                <button>
+                    <img src="./assets/arrow.svg" alt="이동 화살표">
+                </button>
+            </section>
+
+            <section class="payment">
+                <p class="payment__type">당근페이</p>
+                <p class="payment__info">중고거래는 이제 당근페이로 해보세요!</p>
+            </section>
+
+            <nav class="list">
+                <div class="list-items">
+                    <div class="list-items__icons">
+                        <img src="./assets/list.svg" alt="판매내역 아이콘" class="list__icons">
+                    </div>
+                    <div class="list-items__info">판매내역</div>
+                </div>
+                <div class="list-items">
+                    <div class="list-items__icons">
+                        <img src="./assets/shopping.svg" alt="구매내역 아이콘" class="list__icons">
+                    </div>
+                    <div class="list-items__info">구매내역</div>
+                </div>
+                <div class="list-items">
+                    <div class="list-items__icons">
+                        <img src="./assets/heart.svg" alt="관심목록 아이콘" class="list__icons">
+                    </div>
+                    <div class="list-items__info">관심목록</div>
+                </div>
+            </nav>
+        </article>
+
+        <!-- 나의 활동 -->
+         <article class="user-activity">
+            <div class="user-activity__title">나의 활동</div>
+            <section class="activity-list">
+                <div class="activity-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="activity-list__icon-img">
+                </div>
+                <div class="activity-list__info">내 동네 설정</div>
+            </section>
+            <section class="activity-list">
+                <div class="activity-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="activity-list__icon-img">
+                </div>
+                <div class="activity-list__info">동네 인증하기</div>
+            </section>
+            <section class="activity-list">
+                <div class="activity-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="activity-list__icon-img">
+                </div>
+                <div class="activity-list__info">키워드 알림</div>
+            </section>
+            <section class="activity-list">
+                <div class="activity-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="activity-list__icon-img">
+                </div>
+                <div class="activity-list__info">모아보기</div>
+            </section>
+            <section class="activity-list">
+                <div class="activity-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="activity-list__icon-img">
+                </div>
+                <div class="activity-list__info">당근가계부</div>
+            </section>
+         </article>
+
+         <!-- 우리 동네 -->
+         <article class="user-town">
+            <div class="user-town__title">우리 동네</div>
+            <section class="town-list">
+                <div class="town-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="town-list__icon-img">
+                </div>
+                <div class="town-list__info">동네생활 글/댓글</div>
+            </section>
+            <section class="town-list">
+                <div class="town-list__icon">
+                    <img src="./assets/news.svg" alt="뉴스 아이콘" class="town-list__icon-img">
+                </div>
+                <div class="town-list__info">동네홍보 글</div>
+            </section>
+         </article>
+    </main>
+    
+    <!-- 하단 바 -->
+    <nav class="bottom-bar">
+        <div class="bar-content">
+            <button class="bar-content__button">
+                <img src="./assets/home.svg" alt="홈 버튼" class="bar-content__icon">
+            </button>
+            <p class="bar-content__info">홈</p>
+        </div>
+        <div class="bar-content">
+            <button class="bar-content__button">
+                <img src="./assets/news.svg" alt="동네생활 버튼" class="bar-content__icon">
+            </button>
+            <p class="bar-content__info">동네생활</p>
+        </div>
+        <div class="bar-content">
+            <button class="bar-content__button">
+                <img src="./assets/location.svg" alt="내 근처 버튼" class="bar-content__icon">
+            </button>
+            <p class="bar-content__info">내 근처</p>
+        </div>
+        <div class="bar-content">
+            <button class="bar-content__button">
+                <img src="./assets/chatting.svg" alt="채팅 버튼" class="bar-content__icon">
+            </button>
+            <p class="bar-content__info">채팅</p>
+        </div>
+        <div class="bar-content">
+            <button class="bar-content__button">
+                <img src="./assets/my.svg" alt="나의 당근 버튼" class="bar-content__icon">
+            </button>
+            <p class="bar-content__info">나의 당근</p>
+        </div>
+    </nav>
+  </body>
