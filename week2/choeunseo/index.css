@@ -1,0 +1,185 @@
+/* Global styles */
+button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+body {
+    margin-bottom: 54px;
+  }
+
+.header {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+.header__title{
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0%;
+
+}
+
+.main{
+    display:flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.me_profile{
+    display: flex;
+    flex-direction: column;;
+    padding: 16px;
+    gap: 16px;
+}
+.profile__group{
+    display: flex;
+    justify-content: space-between;
+    width: 358;
+    height: 64;
+    gap: 16px;
+    opacity: 1;
+
+    
+}
+
+.profile__name{
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+}
+.profile__info{
+    color:#8C8C8C;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+
+}
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 246px;
+}
+.profile__add{
+    padding: 0 16px;
+}
+
+.dangpay{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 16px;
+    height: 42;
+    opacity: 1;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #FF7E36;
+
+}
+.dangpay_head{
+    color: #FF7E36;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0%;
+
+}
+.dangpay_info{
+    color: #5E5E5E;
+    ;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+
+}
+.info-frame{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.img__info{
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+
+}
+.me__area{
+    display: flex;
+    flex-direction: column;
+}
+.me__content{
+    display: flex;
+    padding: 10px 16px;
+    align-items: center;
+    gap: 16px
+}
+.me__title{
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+}
+
+.me__info{
+    display: flex;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+}
+.nav{
+    position: fixed;
+    width: 100%;
+    height: 92px;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0;
+
+    background-color: #fff;
+}
+.nav__button{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px;
+    align-items: center;
+    gap: 4px;
+}
+.nav__info{
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0%;
+
+}
