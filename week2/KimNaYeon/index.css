@@ -1,11 +1,8 @@
-button {
-    background: none; 
+a {
+    text-decoration: none; 
     padding: 0;
     border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: inherit;
 }
 
 body {
@@ -32,6 +29,11 @@ body {
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0;
+}
+
+.setting-link, .info-link {
+    display: flex;
+    justify-content: center;
 }
 
 .user {
@@ -124,7 +126,6 @@ body {
     gap: 8px;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .list-items__icons {
