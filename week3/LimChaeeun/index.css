@@ -59,7 +59,7 @@ li.done span {
   color: gray;
 }
 
-li.btn-group {
+.btn-group {
   display: flex;
   gap: 5px;
 }
