@@ -1,0 +1,234 @@
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.my-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+  align-items: center;
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+}
+.my-header__title{
+font-family: Inter;
+font-weight: 700;
+font-style: Bold;
+font-size: 18px;
+line-height: 28px;
+letter-spacing: 0%;
+
+}
+.my-header__icon{
+ display: flex;
+ gap: 16px;
+}
+
+.my-profile{
+    margin-top: 54px;
+    padding: 16px;
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+}
+.profile-post__user{
+    display: flex;
+    align-items: center; 
+    gap: 16px;
+    
+}
+.profile-post__user img{
+  width: 64px;
+  height: 64px;
+
+}
+.profile-info{
+    display: flex;
+    flex-direction:column;
+    gap: 4px;
+}
+.user-name {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+.user-info {
+  color: #8c8c8c;
+
+  /* 12 */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+.profile-forward{
+    display: flex;
+    align-items:center
+}
+
+.danggnpay-info{
+    margin: 16px;
+   
+}
+.danggnpay{
+    padding: 12px;
+    border: 1px dashed #ff7e36;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.danggnpay-badge{
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 14px;
+    color: #ff7e36;
+    line-height: 18px;
+    letter-spacing: 0%;
+}
+.danggnpay-comment{
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    color: #5e5e5e;
+}
+.user-menus{
+    padding: 16px;
+    border-bottom: 4px solid #eeeeee;
+}
+.menu-list{
+    display: flex;
+    flex-direction:column;
+    align-items: center;    
+    gap: 8px; 
+}
+.menu-icons{
+    width: 23px;
+    height: 24px;
+}
+.menu-text{
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+
+}
+.menu-items{
+    display: flex;
+    justify-content: space-evenly
+    
+}
+.menu-icon-wrap{
+  width: 48px;               
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ffebe0;
+  display: grid;
+  place-items: center;      
+}
+.my-activities{
+    display: flex;
+    flex-direction:column;
+    border-bottom: 4px solid #eeeeee;
+}
+.activities-menus {
+  display: flex;
+  flex-direction: column;   
+  gap: 12px;   
+  
+  
+}
+.activities__title{
+    padding: 18px 16px ;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+}
+.activities-items{
+    display: flex;
+    align-items: center;     
+    gap: 16px;               
+    padding: 10px 16px;
+}
+.activities-items:last-child {
+   margin-bottom: 8px; 
+}
+.my-nearby{
+    display: flex;
+    flex-direction:column;   
+}
+.nearby_title{
+    padding: 18px 16px ;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;   
+}
+.nearby-menus{
+  display: flex;
+  flex-direction: column;   
+  gap: 12px;      
+}
+.nearby-items{
+    display: flex;
+    align-items: center;     
+    gap: 16px;               
+    padding: 10px 16px; 
+}
+.bottom-bar {
+  border-top: 1px solid #d9d9d9;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bar-content {
+  display: flex;
+  justify-content: space-around; 
+  padding: 6px 0;
+}
+
+.bottom-btn {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 4px;
+}
+
+.bottom-items {
+  width: 24px;
+  height: 24px;
+}
+
+.bottom-name {
+font-family: Inter;
+font-weight: 400;
+font-style: Regular;
+font-size: 10px;
+line-height: 14px;
+letter-spacing: 0%;
+
+}
