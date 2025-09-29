@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRIO's profile</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefaf6;
+      color: #333;
+    }
+
+    header {
+      background: #ef6a75;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      flex-wrap: wrap;
+    }
+
+    .profilephoto {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fefaf6;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .about {
+     flex-grow: 0;
+     flex-shrink: 1;
+     flex-basis: auto;
+    }
+
+    .about h2 {
+      margin-top: 0;
+      color: #ef6a75;
+    }
+
+    .about h3 {
+      color: #ef6a75;
+    }
+
+    .intro p {
+      line-height: 1.2;
+    }
+
+    footer {
+      text-align: center;
+      background: #f7d9db;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section>
+      <img src="MIRO.png" alt="profile" class="profilephoto">
+    </section>
+    <h1>Stay in the MIRO!</h1>
+    <p>안녕하세요! MIRO,최승연입니다 😈</p>
+    <p>나아가기 위해 끊임없이 고민해야 하는 미로처럼,</p> 
+    <p>끊임없이 고민하고 부딪치며 성장하는 삶을 추구합니다.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="about">
+      <h2>About Me</h2>
+      <p><strong>이름:</strong> 최승연</p>
+      <p><strong>학과:</strong> 스마트ICT융합공학과</p>
+      <p><strong>MBTI:</strong> ENFJ</p>
+      <p><strong>취미:</strong> 필사/게임/스포츠 경기/봉사</p>
+
+      <h3>최근 관심사</h3>
+      <p>영화 속 <em>스페인어 발음</em>에 반해버려서 듀오링고로 <mark>스페인어를</mark>를 시작했습니다.</p>
+      <p>생각보다 재밌어서 조금 더 본격적으로 공부할까 고민 중입니다.</p>
+
+      <h2>다짐</h2>
+      <p>
+        KUIT 5기 Server 활동을 통해 서버와 DB 관리 경험을 쌓았습니다.<br>
+        이번 기수에서는 Web을 공부해 Frontend의 개발 흐름을 이해하면서 프로젝트 전체를 조망할 수 있는 역량을 기르고자 합니다.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    @ 2025.09.18 Made by MIRO
+  </footer>
+</body>
+</html>
+

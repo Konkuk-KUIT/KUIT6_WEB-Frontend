@@ -1,0 +1,231 @@
+/* Global styles */
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  margin-bottom: 54px;
+}
+
+/* components styles */
+
+.header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+  align-items: center;
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+}
+
+.header__title {
+  color: #000;
+
+  /* 18 */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 155.556% */
+}
+
+.header__icons {
+  display: flex;
+  gap: 16px;
+}
+
+.mypage-box {
+  margin-top: 54px;
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  border-bottom: 4px solid #eeeeee;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.user-name {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+.user-info {
+  color: #8c8c8c;
+
+  /* 12 */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+.danggnpay-box {
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px dashed #FF7E36;
+}
+
+.danggnpay {
+  color: #FF7E36;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+.danggnpay-text {
+  color: #5E5E5E;
+
+  /* 12 */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+.history-box{
+  display: flex;
+  padding: 0 16px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.history-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.history-button-icon {
+  display: flex;
+  padding: 12px;
+  align-items: flex-start;
+  gap: 10px;      
+  border-radius: 100px;
+  background: #FFEBE0;
+}
+
+.history-button-text{
+  color: #000;
+
+  /* 12 */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+.bottom-box {
+  display: flex;
+  padding: 8px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+  border-bottom: 4px solid #eeeeee;
+}
+
+.box-title{
+  display: flex;
+  padding: 10px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+}
+
+.box-list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.box-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+}
+
+.box-list-itemname{
+  color: #000;
+
+  /* 16 */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.bar-content {
+  display: flex;
+  justify-content: space-around; /* 버튼들을 가로로 배치 */
+  align-items: center;
+  padding: 8px 0;
+}
+
+.bar-button {
+  display: flex;
+  flex-direction: column; /* 아이콘 + 텍스트 수직 배치 */
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  color: #333;
+}
+
+.bar-button img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px; /* 아이콘과 텍스트 간격 */
+}

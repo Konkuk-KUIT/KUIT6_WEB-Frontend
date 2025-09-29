@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>당근 클론코딩</title>
+        <link rel="stylesheet" href="./reset.css" />
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+        <!-- 상단헤더 -->
+        <header class="header">
+            <h1 class="header__title">나의 당근</h1>
+            <button class="header__settings">
+                <img src="./assets/setting.svg" alt="설정 버튼" />
+            </button>
+        </header>
+
+        <main class="content">
+            <!-- 내 프로필 -->
+            <section class="user-profile">
+                <div class="user-profile__img-details">
+                    <div class="user-profile__info">
+                        <img src="./assets/user-profile.svg" alt="사용자 프로필 사진" class="user-profile__image" />
+                    </div>
+                    <div class="user-profile__details">
+                        <span class="user-profile__name">가나다</span>
+                        <span class="user-profile__address">군자동 #123456789</span>
+                    </div>
+                </div>
+                <div class="user-profile__more">
+                    <img src="./assets/user-profile_more.svg" alt="더보기 아이콘" />
+                </div>
+            </section>
+
+            <!-- 당근페이 -->
+            <section class="carrot-pay">
+                <span class="carrot-pay__title">당근페이</span>
+                <span class="carrot-pay__desc">중고거래는 이제 당근페이로 해보세요!</span>
+            </section>
+
+            <!-- 판매/구매/관심목록 -->
+            <section class="trade-history">
+                <ul class="trade-history__list">
+                    <li>
+                        <div class="trade-history__icon">
+                            <img src="./assets/list.svg" alt="판매내역 아이콘" />
+                        </div>
+                        <span class="trade-history__name">판매내역</span>
+                    </li>
+                    <li>
+                        <div class="trade-history__icon">
+                            <img src="./assets/shopping_bag.svg" alt="구매내역 아이콘" />
+                        </div>
+                        <span class="trade-history__name">구매내역</span>
+                    </li>
+                    <li>
+                        <div class="trade-history__icon">
+                            <img src="./assets/heart.svg" alt="구매내역 아이콘" />
+                        </div>
+                        <span class="trade-history__name">관심목록</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 나의 활동 -->
+            <section class="activity">
+                <h2 class="activity__title">나의 활동</h2>
+                <ul class="activity__list">
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>내 동네 설정</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네 인증하기</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>키워드 알림</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>모아보기</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>당근가계부</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 우리 동네 -->
+            <section class="activity">
+                <h2 class="activity__title">우리 동네</h2>
+                <ul class="activity__list">
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네생활 글/댓글</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글2</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글3</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글4</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글5</span>
+                    </li>
+                    <li>
+                        <img src="./assets/news.svg" alt="나의 활동 아이콘" />
+                        <span>동네홍보 글6</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <!-- 하단 바 -->
+        <nav class="bottom-bar">
+            <ul class="bottom-bar__list">
+                <li>
+                    <a href="#">
+                        <img src="./assets/home.svg" alt="홈 아이콘" />
+                        <span>홈</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./assets/news.svg" alt="동네생활 아이콘" />
+                        <span>동네생활</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./assets/map.svg" alt="내 근처 아이콘" />
+                        <span>내 근처</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./assets/chat.svg" alt="채팅 아이콘" />
+                        <span>채팅</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./assets/me.svg" alt="나의 당근 아이콘" />
+                        <span>나의 당근</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>
