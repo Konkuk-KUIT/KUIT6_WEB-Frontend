@@ -1,0 +1,276 @@
+/* Global styles */
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  margin-bottom: 54px;
+}
+
+/* components styles */
+
+.mypage-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+  align-items: flex-start;
+  align-self: stretch;  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+}
+
+.mypage-list {
+  margin-top: 54px;
+}
+
+.mypage-header__title {
+  color: #000;
+
+  /* 18 */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 155.556% */
+}
+
+.mypage-header__icons {
+  display: flex;
+  gap: 16px;
+}
+
+.mypage-post1 {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.mypage-post1__user {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;  
+}
+
+.mypage-post1__ad {
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px dashed #FF7E36;
+}
+
+.mypage-post1__ad-text {
+  color: #FF7E36;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+.mypage-post1__menu {
+  display: flex;
+  padding: 0 16px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.mypage-post1__menu-obj {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.mypage-menu-obj {
+  display: flex;
+  padding: 12px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 100px;
+  background: #FFEBE0;
+}
+
+.mypage-post2 {
+  display: flex;
+  padding: 8px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+.mypage-post2__bar {
+  display: flex;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.mypage-post2__list {
+  display: flex;
+  padding: 10px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.mypage-post3 {
+  display: flex;
+  padding: 8px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+.mypage-post3__bar {
+  display: flex;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.mypage-post3__list {
+  display: flex;
+  padding: 10px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+
+.user-img {
+  border-radius: 100%;
+}
+
+.line {
+  height: 4px;
+  align-self: stretch;
+  background: #EEE;
+}
+
+.product-img {
+  border-radius: 4px;
+}
+
+.user-name {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+}
+
+.user-info {
+  color: #8c8c8c;
+
+  /* 12 */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+.mypage-text {
+  color: #000;
+
+  /* 14 */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+.mypage-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mypage-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+}
+
+.mypage-bar-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mypage-profile {
+  display: flex;
+  height: 64px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 0 0;
+}
+
+.bottom-bar {
+  padding: 8px 0;
+position: fixed;
+bottom: 0;
+width: 100%;
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+border-top: 1px solid #eeeeee;
+
+background-color: #FFF;
+}
+
+.bar-content {
+  display: flex;
+  padding: 8px 0;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.bar__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  flex: 1 0 0;
+}
+
+.bar_img {
+  width: 24px;
+  height: 24px;
+}
+
+.bar__text {
+  color: #000;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px; /* 140% */
+}

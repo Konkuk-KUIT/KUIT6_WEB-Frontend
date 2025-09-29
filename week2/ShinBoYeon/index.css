@@ -1,0 +1,191 @@
+/* Global styles */
+button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* components styles */
+.mydang-header {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+    align-items: center;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+}
+
+.mydang-header__title {
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.mydang-header__icons {
+    display: flex;
+}
+
+.mydang-profile {
+    margin-top: 54px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 4px solid #EEE;
+    gap: 16px;
+}
+
+.mydang-user {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-info__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-name {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.user-address {
+    color: #8C8C8C;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.mydang-pay {
+    display: flex;
+    padding: 12px;
+    border-radius: 8px;
+    justify-content: space-between;
+    border: dashed 1px #FF7E36;
+}
+
+.mydang-pay__title {
+    color: #FF7E36;
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+}
+
+.mydang-pay__script {
+    color: #5E5E5E;
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+.mydang-menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 16px;
+}
+
+.mydang-menu__part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mydang-menu__text {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.myactivity,
+.local {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 4px solid #EEE;
+}
+
+.activity-title,
+.local-title {
+    padding: 10px 16px;
+    display: flex;
+    color: #000000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.activity-list,
+.local-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-list__item,
+.local-list__item {
+    padding: 10px 16px;
+    display: flex;
+    justify-content: left;
+    gap: 16px;
+}
+
+.activity-list__img,
+.local-list__img {
+    padding: 3px 1.5px;
+}
+
+.activity-list__title,
+.local-list__title {
+    margin: 2px 0;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.bottom-bar {
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #D9D9D9;
+    position: fixed;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    width: 100%;
+    bottom: 0;
+}
+
+.bar-content__item{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bar-content__img{
+    width: 24px;
+}

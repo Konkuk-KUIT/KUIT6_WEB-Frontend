@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>자기소개 페이지 - 장서윤</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 20px auto; line-height: 1.6; background: #fff5f7; color: #333; }
+    header { margin-bottom: 20px; display: flex; align-items: center; gap: 20px; background: #ffe4ec; padding: 15px; border-radius: 8px; }
+    header img { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; border: 3px solid #ffb6c1; }
+    h1 { margin: 0; color: #b03060; }
+    nav { margin: 20px 0; }
+    nav label { margin-right: 10px; cursor: pointer; padding: 6px 10px; border-radius: 6px; background: #ffd6e7; }
+    nav label:hover { background: #ffb6c1; }
+    input[type=radio] { display: none; }
+    .panel { display: none; background: #fff; padding: 15px; border-radius: 6px; border: 1px solid #ffd6e7; }
+    input#tab1:checked ~ #intro,
+    input#tab2:checked ~ #edu,
+    input#tab3:checked ~ #skill,
+    input#tab4:checked ~ #contact { display: block; }
+    label {
+      margin-right: 10px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: #ffd6e7;
+      border: 1px solid #ffb6c1;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      color: #b03060;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    label:hover {
+      background: #ffb6c1;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="profile.jpg" alt="프로필 사진">
+    <div>
+      <h1>쿠잇 6기 Web - 장서윤</h1>
+      <p>웹 프론트엔드 개발을 공부하는 학생입니다.</p>
+    </div>
+  </header>
+
+  <section>
+    <input type="radio" id="tab1" name="tabs" checked>
+    <label for="tab1">소개</label>
+
+    <input type="radio" id="tab2" name="tabs">
+    <label for="tab2">학력</label>
+
+    <input type="radio" id="tab3" name="tabs">
+    <label for="tab3">기술</label>
+
+    <div id="intro" class="panel">
+      <h2>소개</h2>
+      <p>안녕하세요! 저는 HTML, CSS, JavaScript를 활용해 깔끔하고 반응형 웹페이지를 만드는 것을 좋아합니다.</p>
+    </div>
+
+    <div id="edu" class="panel">
+      <h2>전공과 프로젝트</h2>
+      <p>건국대학교 스마트ICT융합공학과 재학 중</p>
+      <p>KUIT 5기 디자이너 - MORU</p>
+      <p>KUIT 6기 Web 부원</p>
+    </div>
+
+    <div id="skill" class="panel">
+      <h2>사용 언어</h2>
+      <ul>
+        <li>HTML5, CSS3</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+  </section>
+</body>
+</html>
