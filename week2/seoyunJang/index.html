@@ -16,112 +16,141 @@
             <button><img src="./assets/settting.svg" alt="설정 버튼"></button>
         </div>
     </header>
+
     <!--프로필 영역-->
     <section class="my-profile-content">
         <div class="user-profile">
-            <img src="http://placehold.co/64" alt="유저 프로필 사진" class="profile-img">
-            <div class="user-content">
-                <div class="user-name"><span class="user-name">가나디</span></div>
-                <div class="user-address"><span class="user-address">군자동 #123456789</span></div>
+            <div class="profile-left">
+                <img src="http://placehold.co/64" alt="유저 프로필 사진" class="profile-img">
+                <div class="user-content">
+                    <div class="user-info">
+                        <div class="user-name">가나디</div>
+                        <div class="user-address">군자동 #123456789</div>
+                    </div>
+                </div>
             </div>
-            <button><img src="./assets/forward.svg" alt="다음 버튼" id="forward-btn"></button>
+            <button type='button'><img src="./assets/forward.svg" alt="다음 버튼" id="forward-btn"></button>
         </div>
+
         <div class="my-pay">
             <span class="pay-title">당근페이</span>
             <span class="pay-info">중고거래는 이제 당근페이로 해보세요!</span>
         </div>
         <div class="my-list">
             <div class="my-sell">
-                <button><img src="./assets/sell.svg" alt=""></button>
+                <div class="circle-container">
+                    <button class="my-circle-btn" type='button'><img src="./assets/sell.svg" alt="판매내역 사진"></button>
+                </div>
                 <span class="sell-text">판매내역</span>
             </div>
             <div class="my-buy">
-                <button><img src="./assets/buy.svg" alt=""></button>
+                <div class="circle-container">
+                    <button class="my-circle-btn" type='button'>
+                        <img src="./assets/buy.svg" alt="구매내역 사진">
+                    </button>
+                </div>
                 <span class="buy-text">구매내역</span>
             </div>
             <div class="my-like">
-                <button><img src="./assets/like.svg" alt=""></button>
+                <div class="circle-container">
+                    <button class="my-circle-btn" type='button'>
+                        <img src="./assets/like.svg" alt="관심목록 사진">
+                    </button>
+                </div>
                 <span class="like-text">관심목록</span>
             </div>
         </div>
     </section>
+
     <!--나의 활동 영역-->
     <section class="activity-content">
         <div class="activity-title"><span>나의 활동</span></div>
-        <ul class="activity-list">
-            <li class="activity-item">
-                <span class="activity-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="activity-text">내 동네 설정</span>
-            </li>
-            <li class="activity-item">
-                <span class="activity-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="activity-text">동네 인증하기</span>
-            </li>
-            <li class="activity-item">
-                <span class="activity-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="activity-text">키워드 알림</span>
-            </li>
-            <li class="activity-item">
-                <span class="activity-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="activity-text">모아보기</span>
-            </li>
-            <li class="activity-item">
-                <span class="activity-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="activity-text">당근가계부</span>
-            </li>
-        </ul>
+        <div class="activity-list">
+            <button class="activity-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="activity-text">내 동네 설정</div>
+            </button>
+            <button class="activity-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="activity-text">동네 인증하기</div>
+            </button>
+            <button class="activity-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="activity-text">키워드 알림</div>
+            </button>
+            <button class="activity-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="activity-text">모아보기</div>
+            </button>
+            <button class="activity-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="activity-text">당근가계부</div>
+            </button>
+        </div>
     </section>
+    
 
     <!--우리동네 영역-->
     <section class="town-content">
         <div class="town-title"><span>우리 동네</span></div>
-        <ul class="town-list">
-            <li class="town-item">
-                <span class="town-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="town-text">동네생활 글/댓글</span>
-            </li>
-            <li class="town-item">
-                <span class="town-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="town-text">동네홍보 글</span>
-            </li>
-            <li class="town-item">
-                <span class="town-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="town-text">동네 키워드</span>
-            </li>
-            <li class="town-item">
-                <span class="town-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="town-text">동네 모아보기</span>
-            </li>
-            <li class="town-item">
-                <span class="town-icon"><img src="./assets/activity.svg" alt="활동 아이콘"></span>
-                <span class="town-text">동네</span>
-            </li>
-        </ul>
+        <div class="town-list">
+            <button class="town-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="town-text">동네생활 글/댓글</div>
+            </button>
+            <button class="town-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="town-text">동네홍보 글</div>
+            </button>
+            <button class="town-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="town-text">동네 키워드</div>
+            </button>
+            <button class="town-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="town-text">동네 모아보기</div>
+            </button>
+            <button class="town-item">
+                <img src="./assets/activity.svg" alt="활동 아이콘">
+                <div class="town-text">동네</div>
+            </button>
+        </div>
     </section>
     
     <!--하단 바-->
     <footer class="bottom-bar">
         <div class="bottom-home">
-            <button><img src="./assets/home.svg" alt="홈 버튼"></button>
-            <div class="bottom-text"><span>홈</span></div>
+            <button>
+                <img src="./assets/home.svg" alt="홈 버튼">
+                <div class="bottom-text"><span>홈</span></div>
+            </button>
         </div>
         <div class="bottom-town">
-            <button><img src="./assets/activity.svg" alt="동네생활 버튼"></button>
-            <div class="bottom-text"><span>동네생활</span></div>
+            <button>
+                <img src="./assets/activity.svg" alt="동네생활 버튼">
+                <div class="bottom-text"><span>동네생활</span></div>
+            </button>
         </div>
         <div class="bottom-around">
-            <button><img src="./assets/around.svg" alt="내 근처 버튼"></button>
-            <div class="bottom-text"><span>내 근처</span></div>
+            <button>
+                <img src="./assets/around.svg" alt="내 근처 버튼">
+                <div class="bottom-text"><span>내 근처</span></div>
+            </button>
         </div>
         <div class="bottom-chat">
-            <button><img src="./assets/chat.svg" alt="채팅 버튼"></button>
-            <div class="bottom-text"><span>채팅</span></div>
+            <button>
+                <img src="./assets/chat.svg" alt="채팅 버튼">
+                <div class="bottom-text"><span>채팅</span></div>
+            </button>
         </div>
         <div class="bottom-activity">
-            <button><img src="./assets/my.svg" alt="나의 당근 버튼"></button>
-            <div class="bottom-text"><span>나의 당근</span></div>
+            <button>
+                <img src="./assets/my.svg" alt="나의 당근 버튼">
+                <div class="bottom-text"><span>나의 당근</span></div>
+            </button>
         </div>
     </footer>
 
 </body>
 </html>
+
