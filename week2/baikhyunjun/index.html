@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danggn</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  
+  <body>
+
+
+  <!-- 헤더 -->
+  <header class="my-header">
+    <h1 class="app-header__title">나의 당근</h1>
+    <div class="app-header__action" aria-label="설정 이동">
+      <img src="./assets/Vector.png" alt="설정 버튼" />
+    </div>
+  </header>
+
+  
+  <hr class="section-sep"/>
+
+
+  <main class="my">
+
+    
+    <!-- 프로필 -->
+    <section class="profile" aria-label="프로필">
+      <div class="profile__row">
+          <figure class="profile__media">
+            <img src="./assets/Vector-2.png" alt="프로필 사진" class="profile__photo" />
+          </figure>
+          
+          <div class="profile__meta">
+            <div class="profile__name">가나다</div>
+            <div class="profile__sub">군자동 #123456789</div>
+          </div>
+            <img src="./assets/Forward.png" alt="프로필 상세" class="profile__chevron" />
+      </div>
+    </section>
+
+    <!-- 당근페이 -->
+    <section class="my__section">
+      <div class="pay-card">
+        <span class="pay-card__title">당근페이</span>
+        <span class="pay-card__desc">중고거래는 이제 당근페이로 해보세요!</span>
+      </div>
+    </section>
+
+
+
+    <!-- 판매/구매/관심목록 -->
+    <section class="trade" aria-label="거래 내역 바로가기">
+      <ul class="trade__list">
+        <li class="trade__item">
+          <div class="trade__link">
+            <img src="./assets/Mask group.png" alt="판매내역 아이콘" class="trade__icon" />
+            <span class="trade__text">판매내역</span>
+          </div>
+        </li>
+        <li class="trade__item">
+          <div class="trade__link">
+            <img src="./assets/Mask group-1.png" alt="구매내역 아이콘" class="trade__icon" />
+            <span class="trade__text">구매내역</span>
+          </div>
+        </li>
+        <li class="trade__item">
+          <div class="trade__link">
+            <img src="./assets/Mask group 2.png" alt="관심목록 아이콘" class="trade__icon" />
+            <span class="trade__text">관심목록</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="section-sep" />
+
+    <!-- 나의 활동 -->
+    <section class="activity" aria-labelledby="activityTitle">
+      <h2 id="activityTitle" class="activity__title">나의 활동</h2>
+      <ul class="activity__list">
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="내 동네 설정 아이콘" class="activity__icon" />
+            <span class="activity__text">내 동네 설정</span>
+          </div>
+        </li>
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="동네 인증하기 아이콘" class="activity__icon" />
+            <span class="activity__text">동네 인증하기</span>
+          </div>
+        </li>
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="키워드 알림 아이콘" class="activity__icon" />
+            <span class="activity__text">키워드 알림</span>
+          </div>
+        </li>
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="모아보기 아이콘" class="activity__icon" />
+            <span class="activity__text">모아보기</span>
+          </div>
+        </li>
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="가계부 아이콘" class="activity__icon" />
+            <span class="activity__text">당근가계부</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+
+    <hr class="section-sep" />
+
+    <!-- 우리 동네 -->
+    <section class="activity activity--town" aria-labelledby="townTitle">
+      <h2 id="townTitle" class="activity__title">우리동네</h2>
+      <ul class="activity__list">
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="동네생활 아이콘" class="activity__icon" />
+            <span class="activity__text">동네생활 글/댓글</span>
+          </div>
+        </li>
+        <li class="activity__item">
+          <div class="activity__link">
+            <img src="./assets/News.png" alt="동네홍보 아이콘" class="activity__icon" />
+            <span class="activity__text">동네홍보 글</span>
+          </div>
+        </li>
+        
+      </ul>
+    </section>
+  </main>
+
+  <!-- 하단 탭바 -->
+  <section class="tabbar" aria-label="하단 메뉴">
+    <ul class="tabbar__list">
+      <li class="tabbar__item">
+        <div class="tabbar__link">
+          <img src="./assets/Home.png" alt="홈 아이콘" class="tabbar__icon" />
+          <span class="tabbar__text">홈</span>
+        </div>
+      </li>
+      <li class="tabbar__item">
+        <div class="tabbar__link">
+          <img src="./assets/News.png" alt="동네생활 아이콘" class="tabbar__icon" />
+          <span class="tabbar__text">동네생활</span>
+        </div>
+      </li>
+      <li class="tabbar__item">
+        <div class="tabbar__link">
+          <img src="./assets/Place Marker.png" alt="내 근처 아이콘" class="tabbar__icon" />
+          <span class="tabbar__text">내 근처</span>
+        </div>
+      </li>
+      <li class="tabbar__item">
+        <div class="tabbar__link">
+          <img src="./assets/Chat.png" alt="채팅 아이콘" class="tabbar__icon" />
+          <span class="tabbar__text">채팅</span>
+        </div>
+      </li>
+      <li class="tabbar__item">
+        <div class="tabbar__link tabbar__link--active" aria-current="page">
+          <img src="./assets/User.png" alt="나의 당근 아이콘" class="tabbar__icon" />
+          <span class="tabbar__text">나의 당근</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  
+</body>
+
+
+</html>
