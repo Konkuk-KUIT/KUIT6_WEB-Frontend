@@ -2,14 +2,14 @@
 //초기 설정 요소
 let todos = [];
 
-const form = document.getElementById("todo.form");
+const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const list = document.getElementById("todo-list");
 
 // local storage 사용
 // local storage 에 todos 불러오기
 const savedTodos = localStorage.getItem("todos");
-if (saveTodos) {
+if (savedTodos) {
     todos = JSON.parse(savedTodos);
 }
 
