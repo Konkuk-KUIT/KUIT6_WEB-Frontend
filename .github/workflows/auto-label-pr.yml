@@ -37,12 +37,6 @@ jobs:
                   Nayeon07: "김나연",
                 },
               },
-              "파트장": {
-                tutor: "nayounsang",
-                members: {
-                  nayounsang: "나윤상",
-                }
-              }
             };
 
             // study 객체를 순회하여 멤버들의 Map을 생성하는 함수
