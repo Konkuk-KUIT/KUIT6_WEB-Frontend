@@ -89,11 +89,6 @@ module.exports = async ({ github, context }) => {
   // TODO: 기본적으로 "튜터 리뷰 필요"라벨을 달고, 튜터 코멘트가 달리면 라벨 삭제
   const tutor = study[groupName].tutor;
 
-  if (labels.length === 0) {
-    console.error("there is no label to add.");
-    return;
-  }
-
   try {
     await github.rest.issues.addLabels({
       owner: context.repo.owner,
