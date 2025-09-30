@@ -1,4 +1,9 @@
 /**
+ * 이 파일을 직접 action 파일에 내용을 복사하세요. 이 레포는 node foo.js를 사용하지 않음
+ */
+
+
+/**
  * @typedef {Object} StudyGroup
  * @property {string} tutor - 튜터 GitHub 사용자명
  * @property {Object.<string, string>} members - 멤버들의 GitHub 사용자명과 실명 매핑

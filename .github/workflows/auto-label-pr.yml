@@ -21,4 +21,84 @@ jobs:
       - name: Auto Label PR
         uses: actions/github-script@v7
         with:
-          script-path: .github/scripts/auto-label-pr.js
+          script: |
+            // 스터디 그룹 정보
+            const study = {
+              "2조": {
+                tutor: "hyungyu-02",
+                members: {
+                  sh1220: "박성현",
+                  eungehby: "신보연",
+                  dododokk: "김도은",
+                  Nayeon07: "김나연",
+                },
+              },
+              "파트장": {
+                tutor: "nayounsang",
+                members: {
+                  nayounsang: "나윤상",
+                }
+              }
+            };
+
+            // study 객체를 순회하여 멤버들의 Map을 생성하는 함수
+            function createMembersMap() {
+              const membersMap = new Map();
+
+              for (const [groupName, group] of Object.entries(study)) {
+                for (const [githubId, realName] of Object.entries(group.members)) {
+                  membersMap.set(githubId, {
+                    name: realName,
+                    group: groupName,
+                  });
+                }
+              }
+
+              return membersMap;
+            }
+
+            // PR 정보 가져오기
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const membersMap = createMembersMap();
+
+            // PR 작성자의 GitHub ID
+            const prAuthor = pr.user.login;
+            const memberInfo = membersMap.get(prAuthor);
+
+            if (!memberInfo) {
+              console.log(`Member:${prAuthor} is not study member. Exit the action.`);
+              return;
+            }
+
+            // 라벨 정의
+            const labels = [];
+
+            const groupName = memberInfo.group;
+            const realName = memberInfo.name;
+            labels.push(groupName);
+            labels.push(realName);
+
+            // TODO: 기본적으로 "튜터 리뷰 필요"라벨을 달고, 튜터 코멘트가 달리면 라벨 삭제
+            const tutor = study[groupName].tutor;
+
+            if (labels.length === 0) {
+              console.error("there is no label to add.");
+              return;
+            }
+
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: labels,
+              });
+              console.log(`Successfully added labels: ${labels.join(', ')}`);
+            } catch (error) {
+              console.error(`Failed to add labels: ${error}`);
+            }
