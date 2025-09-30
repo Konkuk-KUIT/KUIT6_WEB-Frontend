@@ -1,0 +1,24 @@
+name: Auto Label PR
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Auto Label PR
+        uses: actions/github-script@v7
+        with:
+          script-path: .github/scripts/auto-label-pr.js
