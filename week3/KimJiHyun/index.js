@@ -12,11 +12,12 @@ form.addEventListener('submit', (e) => {
             id: Date.now(),
             text,
             done: false,
+            editing: false,
         };
         todos.push(newTodo);
         render();
     }
-    x;
+    input.value = '';
 });
 
 function deleteTodo(id) {
@@ -35,22 +36,71 @@ function render() {
         const li = document.createElement('li');
         li.className = todo.done ? 'done' : '';
 
-        const span = document.createElement('span');
-        span.textContent = todo.text;
-        span.style.cursor = 'pointer';
-        span.onclick = () => toggleDone(todo.id);
+        if (todo.editing) {
+            // 편집 모드일 때 input 박스 표시
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = todo.text;
+            input.style.marginRight = '10px';
+            input.style.padding = '5px';
+            input.style.border = '1px solid #ccc';
+            input.style.borderRadius = '3px';
+            input.focus();
+            input.select();
 
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '삭제';
-        delBtn.onclick = () => deleteTodo(todo.id);
+            const saveBtn = document.createElement('button');
+            saveBtn.textContent = '저장';
+            saveBtn.style.marginRight = '5px';
+            saveBtn.onclick = () => saveTodo(todo.id, input.value);
 
-        const updBtn = document.createElement('button');
-        delBtn.textContent = '수정';
-        delBtn.onclick = () => updateTodo(todo.id);
+            const cancelBtn = document.createElement('button');
+            cancelBtn.textContent = '취소';
+            cancelBtn.onclick = () => cancelEdit(todo.id);
 
-        li.appendChild(span);
-        li.appendChild(delBtn);
+            li.appendChild(input);
+            li.appendChild(saveBtn);
+            li.appendChild(cancelBtn);
+        } else {
+            // 일반 모드일 때 기존 UI 표시
+            const span = document.createElement('span');
+            span.textContent = todo.text;
+            span.style.cursor = 'pointer';
+            span.onclick = () => toggleDone(todo.id);
+
+            const btns = document.createElement('section');
+
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '삭제';
+            delBtn.onclick = () => deleteTodo(todo.id);
+
+            const updBtn = document.createElement('button');
+            updBtn.textContent = '수정';
+            updBtn.onclick = () => updateTodo(todo.id);
+
+            btns.appendChild(delBtn);
+            btns.appendChild(updBtn);
+
+            li.appendChild(span);
+            li.appendChild(btns);
+        }
+
         list.appendChild(li);
     });
 }
-function updateTodo() {}
+function updateTodo(id) {
+    todos = todos.map((todo) => (todo.id === id ? { ...todo, editing: true } : { ...todo, editing: false }));
+    render();
+}
+
+function saveTodo(id, newText) {
+    const text = newText.trim();
+    if (text) {
+        todos = todos.map((todo) => (todo.id === id ? { ...todo, text, editing: false } : todo));
+        render();
+    }
+}
+
+function cancelEdit(id) {
+    todos = todos.map((todo) => (todo.id === id ? { ...todo, editing: false } : todo));
+    render();
+}
