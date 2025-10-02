@@ -24,7 +24,10 @@ function deleteTodo(id) {
     render();
 }
 
-function toggleDone(id) {}
+function toggleDone(id) {
+    todos = todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo));
+    render();
+}
 
 function render() {
     list.innerHTML = '';
@@ -40,6 +43,10 @@ function render() {
         const delBtn = document.createElement('button');
         delBtn.textContent = '삭제';
         delBtn.onclick = () => deleteTodo(todo.id);
+
+        const updBtn = document.createElement('button');
+        delBtn.textContent = '수정';
+        delBtn.onclick = () => updateTodo(todo.id);
 
         li.appendChild(span);
         li.appendChild(delBtn);
