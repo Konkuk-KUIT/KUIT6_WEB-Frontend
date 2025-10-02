@@ -35,6 +35,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -59,15 +60,30 @@ li.done {
   color: gray;
 }
 
-li button {
+li button:nth-child(2) {
   background-color: #f44336;
   border: none;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
   margin-left: 10px;
+  transition: 0.3s;
 }
 
-li button:hover {
+li button:nth-child(2):hover {
   background-color: #d32f2f;
+}
+
+li button:nth-child(1) {
+  background-color: #364cf4;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+li button:nth-child(1):hover {
+  background-color: #192fd2;
 }
