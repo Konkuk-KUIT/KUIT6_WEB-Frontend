@@ -1,5 +1,17 @@
 let todos = [];
 
+function loadTodos() {
+  const saved = localStorage.getItem("todos");
+  if (saved) {
+    todos = JSON.parse(saved);
+    render();
+  }
+}
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
 const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const list = document.getElementById("todo-list");
@@ -15,17 +27,20 @@ form.addEventListener("submit", (e) => {
     };
     todos.push(newTodo);
     input.value = "";
+    saveTodos();
     render();
   }
 });
 
 function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id);
+  saveTodos();
   render();
 }
 
 function toggleDone(id) {
   todos = todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo));
+  saveTodos();
   render();
 }
 
@@ -86,6 +101,7 @@ function updateTodo(id) {
     const newText = inputBox.value.trim();
     if (newText) {
       todos = todos.map((t) => (t.id === id ? { ...t, text: newText } : t));
+      saveTodos();
       render();
     }
   };
@@ -93,3 +109,5 @@ function updateTodo(id) {
   li.appendChild(inputBox);
   li.appendChild(saveBtn);
 }
+
+loadTodos();
