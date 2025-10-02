@@ -63,7 +63,7 @@ li section {
     display: flex;
 }
 
-li button {
+li section :first-child {
     background-color: #f44336;
     border: none;
     padding: 5px 10px;
@@ -72,6 +72,16 @@ li button {
     margin-left: 10px;
 }
 
+li section :nth-child(2) {
+    background-color: rgb(38, 73, 169);
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 li button:hover {
-    background-color: #d32f2f;
+    background-color: #704bb3;
+    color: #000000;
 }

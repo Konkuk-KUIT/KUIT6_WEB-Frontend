@@ -17,7 +17,7 @@ form.addEventListener('submit', (e) => {
         todos.push(newTodo);
         render();
     }
-    input.value = '';
+    input.value = ''; // input-todo 값 초기화
 });
 
 function deleteTodo(id) {
@@ -36,6 +36,8 @@ function render() {
         const li = document.createElement('li');
         li.className = todo.done ? 'done' : '';
 
+        const btns = document.createElement('section');
+
         if (todo.editing) {
             // 편집 모드일 때 input 박스 표시
             const input = document.createElement('input');
@@ -50,7 +52,6 @@ function render() {
 
             const saveBtn = document.createElement('button');
             saveBtn.textContent = '저장';
-            saveBtn.style.marginRight = '5px';
             saveBtn.onclick = () => saveTodo(todo.id, input.value);
 
             const cancelBtn = document.createElement('button');
@@ -58,16 +59,15 @@ function render() {
             cancelBtn.onclick = () => cancelEdit(todo.id);
 
             li.appendChild(input);
-            li.appendChild(saveBtn);
-            li.appendChild(cancelBtn);
+            btns.appendChild(saveBtn);
+            btns.appendChild(cancelBtn);
+            li.appendChild(btns);
         } else {
             // 일반 모드일 때 기존 UI 표시
             const span = document.createElement('span');
             span.textContent = todo.text;
             span.style.cursor = 'pointer';
             span.onclick = () => toggleDone(todo.id);
-
-            const btns = document.createElement('section');
 
             const delBtn = document.createElement('button');
             delBtn.textContent = '삭제';
