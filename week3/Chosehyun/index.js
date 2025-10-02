@@ -30,31 +30,64 @@ function toggleDone(id) {
   );
   render();
 }
-
 function render() {
   list.innerHTML = "";
   todos.forEach((todo) => {
     const li = document.createElement("li");
-    li.className = todo.done ? "done" : "";
 
-    const span = document.createElement("span");
-    span.textContent = todo.text;
-    span.style.cursor = "pointer";
-    span.onclick = () => toggleDone(todo.id);
+    if (todo.isEditing) {
+      const editInput = document.createElement("input");
+      editInput.type = "text";
+      editInput.value = todo.text;
+      
+      const saveBtn = document.createElement("button");
+      saveBtn.textContent = "저장";
+      saveBtn.className = "update";
+      saveBtn.onclick = () => {
+        if (editInput.value.trim()) {
+          updateTodo(todo.id, editInput.value.trim());
+        }
+      };
 
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "삭제";
-    delBtn.onclick = () => deleteTodo(todo.id);
+      li.appendChild(editInput);
+      li.appendChild(saveBtn);
+      
+      setTimeout(() => editInput.focus(), 0);
+      
+    } else {
+      const span = document.createElement("span");
+      span.textContent = todo.text;
+      span.style.cursor = "pointer";
+      span.className =  todo.done ? "done" : "";
+      span.onclick = () => toggleDone(todo.id);
 
-    li.appendChild(span);
-    li.appendChild(delBtn);
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete";
+      delBtn.textContent = "삭제";
+      delBtn.onclick = () => deleteTodo(todo.id);
+
+      const updBtn = document.createElement("button");
+      updBtn.className = "update";
+      updBtn.textContent = "수정";
+      updBtn.onclick = () => updateTodo(todo.id);
+
+      li.appendChild(span);
+      li.appendChild(delBtn);
+      li.appendChild(updBtn);
+    }
     list.appendChild(li);
   });
 }
 
 function updateTodo(id, newText) {
-  todos = todos.map((todo) =>
-    todo.id === id ? { ...todo, text: newText } : todo
-  );
+  if (newText === undefined) {
+    todos = todos.map((todo) =>
+      todo.id === id ? { ...todo, isEditing: true } : { ...todo, isEditing: false }
+    );
+  } else {
+    todos = todos.map((todo) =>
+      todo.id === id ? { ...todo, text: newText, isEditing: false } : todo
+    );
+  }
   render();
 }
