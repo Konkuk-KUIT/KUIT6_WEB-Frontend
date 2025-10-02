@@ -1,0 +1,101 @@
+body {
+    font-family: Inter, "Noto Sans KR", Arial, sans-serif;
+    color: #000;
+    background: #f7f7f9;
+    margin: 0;
+    padding-top: 0px;   
+    padding-bottom: 50px;
+  }
+ 
+  /* 헤더 */
+  .my-header {
+    position: relative;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #d9d9d9;
+    background: #fff;
+  }
+  .app-header__title { font-weight: 700; font-size: 18px; line-height: 28px; }
+  .app-header__action img { width: 24px; height: 24px; }
+  
+  .my { background: #fff; }
+  
+  /* 섹션 구분선 */
+  .section-sep {
+    height: 4px;
+    background: #eee;
+    border: 0;
+    margin: 0;
+  }
+  
+  /* 목록 점 제거 */
+  .trade__list,
+  .activity__list,
+  .tabbar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 프로필 */
+  .profile { background: #fff; } 
+  .profile__row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px; align-items: center;
+    padding: 16px;
+  }
+  .profile__photo { width: 64px; height: 64px; border-radius: 96%; }
+  .profile__meta { display: grid; gap: 4px; }
+  .profile__name { font-size: 16px; font-weight: 700; }
+  .profile__sub  { font-size: 12px; color: #8c8c8c; }
+  .profile__more img { width: 16px; height: 16px; }
+  .profile__chevron, .profile__media, .profile__meta { position: relative; top: 4px; }
+  
+
+  /* 당근페이 */
+  .pay-card {
+    display: flex; justify-content: space-between; align-items: center;
+    border: 1px dashed #ff7e36; border-radius: 8px; background: #fff;
+    padding: 12px; margin: 0 16px 16px;
+  }
+  .pay-card__title { color: #ff7e36; font-weight: 700; font-size: 14px; }
+  .pay-card__desc  { color: #5e5e5e; font-size: 12px; }
+  
+
+ /* 거래 바로가기 */
+ .trade { background: #fff; padding: 16px 0; }
+ .trade__list { display: flex; gap: 8px; }
+ .trade__item { flex: 1; }
+ .trade__link { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .trade__icon {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #ffebe0; padding: 16px; object-fit: contain;
+  }
+  .trade__text { font-size: 12px; }
+  
+  /* 나의 활동 */
+  .activity { background: #fff; }
+  .activity__title { font-size: 16px; font-weight: 700; padding: 10px 16px; }
+  .activity__list  { display: grid; }
+  .activity__link {
+    display: grid; grid-template-columns: 24px 1fr;
+    gap: 16px; align-items: center; padding: 12px 16px;
+  }
+  .activity__icon { width: 24px; height: 24px; }
+  .activity__text { font-size: 16px; }
+  
+  .activity:last-of-type { padding-bottom: 0; }
+  .my > .activity:last-of-type { margin-bottom: 0; }
+  
+  /* 하단 탭바 */
+  .tabbar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fff; border-top: 1px solid #d9d9d9;
+  }
+  .tabbar__list { display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 0; }
+  .tabbar__link { display: grid; justify-items: center; gap: 4px; }
+  .tabbar__icon { width: 24px; height: 24px; }
+  .tabbar__text { font-size: 10px; }
+  .tabbar__link--active .tabbar__text { font-weight: 600; }
+  

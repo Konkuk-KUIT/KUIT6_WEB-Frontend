@@ -1,0 +1,210 @@
+/* 추가할 내용 - 커서 포인터로 바꿔보기 
+ margin 쓰지말고 flex 로 정렬 하기
+ 주황색 박스 만들어서 그 위에다가 사진 올리기 */
+
+ /* 헤더 영역 */
+ .my-header {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #EEEEEE; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+}
+
+ .my-header-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+body {
+    margin-top: 52px;
+    margin-bottom: 58px;
+}
+
+/* 프로필 영역 */
+.my-profile-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    border-bottom: 4px solid #EEEEEE;
+}
+
+.profile-img {
+    border-radius: 100%;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 수정 부분 1*/
+.profile-left {
+    display: flex;    
+    align-items: center;
+    gap: 16px;          
+}
+
+.user-name {
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.user-address {
+    color: #8C8C8C;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.my-pay {
+    padding: 12px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    align-items: center;
+    border: 1px dashed #FF7E36;
+}
+
+.my-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.my-like, .my-sell, .my-buy {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pay-title {
+    color: #FF7E36;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+}
+
+.pay-info {
+    color: #5E5E5E;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.sell-text, .buy-text, .like-text {
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/*원 안에 사진 넣기*/
+.circle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #FFEBE0;
+    border-radius: 100%;
+}
+
+/*나의 활동 영역*/
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    border-bottom: 4px solid #EEEEEE;
+}
+
+.activity-item {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-title {
+    padding: 10px 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+/* 우리 동네 영역*/
+.town-content {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+}
+
+.town-item {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.town-list {
+    display: flex;
+    flex-direction: column; 
+}
+
+.town-title {
+    padding: 10px 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.bottom-bar {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #EEEEEE; 
+    padding: 8px 0;
+    position: fixed;
+    background-color: #fff;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+}
+
+.bottom-home, .bottom-town, .bottom-around, .bottom-chat, .bottom-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.bottom-text {
+    color: #000;
+    font-size: 10px;
+    line-height: 14px;
+}
+
