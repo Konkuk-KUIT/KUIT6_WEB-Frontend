@@ -26,7 +26,10 @@ function deleteTodo(id) {
 }
 
 function toggleDone(id) {
-    todos = todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo));
+    todos = todos.map((todo) => {
+        console.log(todo.id, id);
+        return { ...todo, done: todo.id === id ? !todo.done : todo.done };
+    });
     render();
 }
 
@@ -89,19 +92,19 @@ function render() {
     });
 }
 function updateTodo(id) {
-    todos = todos.map((todo) => (todo.id === id ? { ...todo, editing: true } : { ...todo, editing: false }));
+    todos = todos.map((todo) => ({ ...todo, editing: todo.id === id ? !todo.editing : todo.editing }));
     render();
 }
 
 function saveTodo(id, newText) {
     const text = newText.trim();
     if (text) {
-        todos = todos.map((todo) => (todo.id === id ? { ...todo, text, editing: false } : todo));
+        todos = todos.map((todo) => ({ ...todo, text: todo.id === id ? text : todo.text, editing: false }));
         render();
     }
 }
 
 function cancelEdit(id) {
-    todos = todos.map((todo) => (todo.id === id ? { ...todo, editing: false } : todo));
+    todos = todos.map((todo) => ({ ...todo, editing: todo.id === id ? false : todo.editing }));
     render();
 }
