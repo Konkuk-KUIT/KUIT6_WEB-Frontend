@@ -90,3 +90,16 @@ li .update {
 li .update:hover {
   background-color: #0d01af;
 }
+
+li .save {
+  background-color: #0fdf0f;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li .save:hover {
+  background-color: #0daf01;
+}

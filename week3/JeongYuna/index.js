@@ -63,52 +63,45 @@ function render() {
 }
 
 
-// function updateTodo(id, li) {
-//   const todo = todos.find((t) => t.id === id);
-//   const txt = todo.text;
-
-//   const inp = document.createElement("input");
-//   inp.value = txt;
-
-//   let newTxt = "";
-
-//   const span = li.querySelector("span");
-//   li.replaceChild(inp, span);
-  
-//   inp.addEventListener("keydown", (e) => {
-//     if (e.key === "Enter") todos.find((t) => t.id === id).value = newTxt || txt;
-//   });
-
-//   // render();
-// }
-
-
 function updateTodo(id, li) {
   const todo = todos.find((t) => t.id === id);
-  if (!todo || !li) return;
+  const txt = todo.text;
+
+  const inp = document.createElement("input");
+  inp.style.width
+  inp.value = txt;
+
+  let newTxt = "";
 
   const span = li.querySelector("span");
-  if (!span) return;
-
-  // input 생성 및 교체
-  const inp = document.createElement("input");
-  inp.type = "text";
-  inp.value = todo.text;
   li.replaceChild(inp, span);
 
-  inp.focus();
-  inp.select();
+  const btns = li.querySelector("div");
+  
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "저장";
+  saveBtn.classList.add("save");
 
-  const save = () => {
-    const v = inp.value.trim();
-    if (v) todo.text = v;
-    render(); // 주석 처리하면 안 되나? 했는데 blur에서 렌더 안됨
-  };
+  const quitBtn = document.createElement("button");
+  quitBtn.textContent = "취소";
+  quitBtn.classList.add("delete");
 
+  const div = document.createElement("div");
+  div.appendChild(saveBtn);
+  div.appendChild(quitBtn);
+
+  li.replaceChild(div, btns);
+
+  let save = () => {
+    newTxt = inp.value.trim();
+    todo.text = newTxt || txt;
+    render();
+  }
+  
   inp.addEventListener("keydown", (e) => {
     if (e.key === "Enter") save();
-    if (e.key === "Escape") render();
-    // render(); <- 여기다 놓으면 모든 키보드 입력에서 렌더 해버림
   });
-  inp.addEventListener("blur", save);
+
+  saveBtn.onclick = save;
+  quitBtn.onclick = render;
 }
