@@ -13,6 +13,9 @@ form.addEventListener("submit", (e) => {
       text,
       done: false,
     };
+    todos.push(newTodo);
+    input.value = "";
+    render();
   }
 });
 
@@ -33,10 +36,22 @@ function render() {
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "삭제";
+    delBtn.className = "delete-btn";
     delBtn.onclick = () => deleteTodo(todo.id);
 
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "수정";
+    editBtn.className = "edit-btn";
+    editBtn.onclick = () => updateTodo(todo.id);
+
+    const Btn = document.createElement("div");
+    Btn.className = "btn-div";
+    Btn.appendChild(delBtn);
+    Btn.appendChild(editBtn);
+
+
     li.appendChild(span);
-    li.appendChild(delBtn);
+    li.appendChild(Btn);
     list.appendChild(li);
   });
 }
