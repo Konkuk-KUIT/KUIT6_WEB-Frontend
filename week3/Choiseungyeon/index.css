@@ -103,3 +103,8 @@ li button.save-btn {
 li button.save-btn:hover {
   background-color: #45a049;
 }
+
+li.done input[type="text"] {
+  text-decoration: none;
+  color: inherit;
+}

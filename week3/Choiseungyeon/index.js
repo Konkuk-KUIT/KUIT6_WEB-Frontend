@@ -26,7 +26,12 @@ function deleteTodo(id) {
   render();
 }
 
-function toggleDone(id) {}
+function toggleDone(id) {
+  todos = todos.map((t) => // 수정 중 항목은 input이라 이벤트 발생 X
+    t.id === id ? { ...t, done: !t.done } : t // id유지, done만 반전
+  );
+  render();
+}
 
 function render() {
   list.innerHTML = "";
