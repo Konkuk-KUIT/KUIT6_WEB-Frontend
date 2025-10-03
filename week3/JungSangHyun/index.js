@@ -58,7 +58,7 @@ function render() {
     const updateBtn = document.createElement("button");
     updateBtn.className = "todo-list__button--update"
     updateBtn.textContent = "수정";
-    updateBtn.onclick = () => updateTodo(todo.id);
+    updateBtn.onclick = () => updateTodo(todo, li); // 현재 <li>를 넘겨야 remove가능 
 
     li.appendChild(span);
     li.appendChild(buttonDiv)
@@ -71,9 +71,34 @@ function render() {
 // todo localStorage 사용까지 
 
 // JS로 삭제버튼 만든 것 처럼 만들기 
-function updateTodo() {
-  // 수정 버튼 클릭시
-  // 각 Li요소에 input 태그, 버튼 등장
-  // id와 done은 변경 X (다른 상태들)
-  // 버튼 누르면 Input 태그 사라지고, todo가 수정 완료 
+function updateTodo(todo, li) {
+  li.innerHTML = ""; // 해당 <li>의 자식 요소 제거 
+
+  const updateDiv = document.createElement("div");
+  updateDiv.className = "todo-list__input--update"
+
+  const updateInput = document.createElement("input");
+  updateInput.id = "todo-update-input"
+  updateInput.required = true; // 입력값 필요
+  updateInput.placeholder = todo.text
+
+  const updateInputButton = document.createElement("button");
+  updateInputButton.className = "todo-list__button--update";
+  updateInputButton.textContent = "수정"
+
+  updateDiv.appendChild(updateInput);
+  updateDiv.appendChild(updateInputButton);
+  li.appendChild(updateDiv);
+
+  updateInputButton.onclick = () => {
+    if (updateInput.value.trim() === "") {
+      alert("값을 입력하세요!");
+      render();
+
+      return;
+    }
+    todo.text = updateInput.value;
+    updateDiv.remove(); // 수정 form 삭제
+    render();
+  }
 }

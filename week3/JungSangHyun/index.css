@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box; /* padding/border까지 포함해서 계산 */
+}
 body {
   background-color: #f5f5f5;
   padding: 30px;
@@ -96,4 +99,14 @@ li.done span{
 
 .todo-list__button--update:hover {
   background-color: #263dc4;
+}
+
+.todo-list__input--update {
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#todo-update-input {
+  flex: 1;
 }
