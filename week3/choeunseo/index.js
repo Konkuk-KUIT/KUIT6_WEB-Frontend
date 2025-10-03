@@ -5,6 +5,34 @@ const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const list = document.getElementById("todo-list");
 
+// --- LocalStorage 설정 ---
+const STORAGE_KEY = "todos_v1";
+
+function save() {
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ todos, editingId: null }) // 편집상태는 저장 안함
+    );
+  } catch (e) {
+    console.error("save failed:", e);
+  }
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed?.todos)) {
+      todos = parsed.todos;
+    }
+  } catch (e) {
+    console.warn("load failed, resetting storage:", e);
+    todos = [];
+  }
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const text = input.value.trim();
@@ -17,6 +45,7 @@ form.addEventListener("submit", (e) => {
     todos.push(newTodo);
     input.value = "";
     render();
+    save();
     input.focus();
   }
 });
@@ -25,12 +54,14 @@ function deleteTodo(id) {
     todos = todos.filter(t => t.id !== id);
     //화살표 함수!! filter : 아이디 같지 않은 (삭제하려는 id빼고) 함수남기기
     render();
+    save();
 }
 
 function toggleDone(id) {
     todos = todos.map(t => t.id===id ? {...t, done: !t.done} : t)
     //화살표 함수! 아이디 같으면 완료상태(done)으로 바꾸기, 아니면 그대로 냅둠 
     render();
+    save();
 }
 
 function updateTodo(id) {
@@ -68,6 +99,7 @@ function render() {
       li.appendChild(editInput);
       li.appendChild(aditbtns);
       list.appendChild(li);
+      save();
     }
     else{
     const span = document.createElement("span");
@@ -93,6 +125,7 @@ function render() {
     li.appendChild(span);
     li.appendChild(btns);
     list.appendChild(li);
+    save();
     }
   });
 }
@@ -113,3 +146,6 @@ function cancelEdit() {
   editingId = null;
   render();
 }
+
+load();
+render();
