@@ -14,13 +14,12 @@ form.addEventListener("submit", (e) => {
       text,
       done: false,
     };
-    // todos.push(newTodo);
     todos.splice(idx, 0, newTodo);
+    idx++;
+    saveTodos();
     render();
     input.value = "";
   }
-  idx++;
-  saveTodos();
 });
 
 loadTodos();
@@ -31,7 +30,7 @@ function loadTodos() {
   let lastIdx = window.localStorage.getItem("todo-index");
 
   if (lst) todos = JSON.parse(lst);
-  idx = lastIdx || 0;
+  idx = lastIdx ? parseInt(lastIdx) : 0;
 }
 
 function saveTodos() {
@@ -71,7 +70,6 @@ function toggleDone(id) {
     idx++;
     console.log(idx);
   }
-
   saveTodos();
   render();
 }
@@ -113,7 +111,6 @@ function updateTodo(id, li) {
   const txt = todo.text;
 
   const inp = document.createElement("input");
-  inp.style.width
   inp.value = txt;
 
   let newTxt = "";
@@ -140,6 +137,7 @@ function updateTodo(id, li) {
   let save = () => {
     newTxt = inp.value.trim();
     todo.text = newTxt || txt;
+    saveTodos();
     render();
   }
   
@@ -149,6 +147,4 @@ function updateTodo(id, li) {
 
   saveBtn.onclick = save;
   quitBtn.onclick = render;
-
-  saveTodos();
 }
