@@ -63,7 +63,7 @@ li section {
     display: flex;
 }
 
-li section :first-child {
+li div :first-child {
     background-color: #f44336;
     border: none;
     padding: 5px 10px;
@@ -72,7 +72,7 @@ li section :first-child {
     margin-left: 10px;
 }
 
-li section :nth-child(2) {
+li div :nth-child(2) {
     background-color: rgb(38, 73, 169);
     border: none;
     padding: 5px 10px;

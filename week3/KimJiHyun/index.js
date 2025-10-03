@@ -36,7 +36,8 @@ function render() {
         const li = document.createElement('li');
         li.className = todo.done ? 'done' : '';
 
-        const btns = document.createElement('section');
+        const btns = document.createElement('div');
+        btns.setAttribute('role', 'group');
 
         if (todo.editing) {
             // 편집 모드일 때 input 박스 표시
