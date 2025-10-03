@@ -72,17 +72,20 @@ function updateTodo(id) {
 
   const todo = todos.find((item) => item.id === id);
 
-  // 기존 span, 버튼들 가져오기
   const span = li.querySelector("span");
   const btnDiv = li.querySelector("div");
 
-  // input 생성
   const input = document.createElement("input");
   input.type = "text";
   input.value = todo.text;
   input.onkeydown = (e) => {
-    if (e.key === "Enter") saveUpdate(id, input.value.trim());
-    if (e.key === "Escape") render(); // ESC 누르면 취소
+    if (e.key === "Enter") {
+      span.textContent = input.value;
+      li.innerHTML = "";
+      li.appendChild(span);
+      li.appendChild(btnDiv);
+    }
+    if (e.key === "Escape") render();
   };
 
   li.innerHTML = "";
