@@ -54,20 +54,51 @@ li {
   align-items: center;
 }
 
-li.done {
+li.done span {
   text-decoration: line-through;
   color: gray;
 }
 
+
+li.done button {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+li.done .button-container button {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+
+.button-container {
+  display: flex;
+  gap: 5px;
+}
+
 li button {
-  background-color: #f44336;
   border: none;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
-  margin-left: 10px;
+  border-radius: 3px;
 }
 
-li button:hover {
+
+li button:first-child {
+  background-color: #f44336;
+}
+
+li button:first-child:hover {
   background-color: #d32f2f;
+}
+
+
+
+li button:last-child {
+  background-color: #2196f3;
+}
+
+li button:last-child:hover {
+  background-color: #1976d2;
 }
