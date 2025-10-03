@@ -1,4 +1,5 @@
 let todos = [];
+let idx = 0;
 
 const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
@@ -13,10 +14,12 @@ form.addEventListener("submit", (e) => {
       text,
       done: false,
     };
-    todos.push(newTodo);
+    // todos.push(newTodo);
+    todos.splice(idx, 0, newTodo);
     render();
     input.value = "";
   }
+  idx++;
   saveTodos();
 });
 
@@ -25,23 +28,51 @@ render();
 
 function loadTodos() {
   let lst = window.localStorage.getItem("todo-list");
+  let lastIdx = window.localStorage.getItem("todo-index");
 
   if (lst) todos = JSON.parse(lst);
+  idx = lastIdx || 0;
 }
 
 function saveTodos() {
+  if (idx < 0) idx = 0;
+  window.localStorage.setItem("todo-index", idx);
   window.localStorage.setItem("todo-list", JSON.stringify(todos));
 }
 
 function deleteTodo(id) {
-  todos = todos.filter( (t) => t.id !== id);
+  const index = todos.findIndex((t) => t.id === id);
+  if (index === -1) return; // 못 찾으면 그대로 둠
+  let todo = todos[index];
+  if (!todo.done) idx--;  // 완료되지 않은 요소의 마지막 인덱스 감소
+
+  todos = todos.filter( (t) => t.id !== id );
+
   saveTodos();
   render();
 }
 
 function toggleDone(id) {
-  const isDone = todos.find((t) => t.id === id).done;
-  todos.find((t) => t.id === id).done = !isDone;
+  const index = todos.findIndex((t) => t.id === id);
+  if (index === -1) return; // 못 찾으면 그대로 둠
+
+  let todo = todos[index];
+  const isDone = todo.done;
+  todo.done = !isDone;
+  
+  if (todo.done) {
+    todos.splice(index, 1); // 위치에서 빼기
+    todos.push(todo);
+    idx--;
+    console.log(idx);
+  } else {
+    todos.splice(index, 1);
+    todos.splice(idx, 0, todo);
+    idx++;
+    console.log(idx);
+  }
+
+  saveTodos();
   render();
 }
 
@@ -76,7 +107,6 @@ function render() {
     list.appendChild(li);
   });
 }
-
 
 function updateTodo(id, li) {
   const todo = todos.find((t) => t.id === id);
