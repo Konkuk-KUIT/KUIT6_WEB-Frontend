@@ -47,10 +47,7 @@ function render() {
             const input = document.createElement('input');
             input.type = 'text';
             input.value = todo.text;
-            input.style.marginRight = '10px';
-            input.style.padding = '5px';
-            input.style.border = '1px solid #ccc';
-            input.style.borderRadius = '3px';
+            input.className = 'edit-input';
             input.focus();
             input.select();
 
