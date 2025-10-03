@@ -48,7 +48,7 @@ button {
     justify-content: space-between;
 }
 
-.user-info{
+.user-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,8 +121,15 @@ button {
     line-height: 16px;
 }
 
-.myactivity,
+.myactivity {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 4px solid #EEE;
+}
+
 .local {
+    margin-bottom: 54px;
     padding: 8px 0;
     display: flex;
     flex-direction: column;
@@ -180,12 +187,12 @@ button {
     bottom: 0;
 }
 
-.bar-content__item{
+.bar-content__item {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.bar-content__img{
+.bar-content__img {
     width: 24px;
 }
