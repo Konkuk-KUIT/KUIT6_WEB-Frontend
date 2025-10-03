@@ -94,3 +94,7 @@ li .btn-group {
 .edit-btn:hover {
   background-color: blue;
 }
+
+.todo-text {
+  cursor: pointer; 
+}

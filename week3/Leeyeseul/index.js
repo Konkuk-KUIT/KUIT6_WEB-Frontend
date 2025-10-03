@@ -21,15 +21,13 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// 삭제 = done 토글
+// 삭제
 function deleteTodo(id) {
-  todos = todos.map((todo) =>
-    todo.id === id ? { ...todo, done: !todo.done } : todo
-  );
+  todos = todos.filter((todo) => todo.id !== id);
   render();
 }
 
-// 완료 토글
+// 완료 
 function toggleDone(id) {
   todos = todos.map((todo) =>
     todo.id === id ? { ...todo, done: !todo.done } : todo
@@ -37,7 +35,7 @@ function toggleDone(id) {
   render();
 }
 
-// 수정 모드 토글
+// 수정 
 function updateTodo(id) {
   todos = todos.map((todo) =>
     todo.id === id ? { ...todo, editing: !todo.editing } : todo
