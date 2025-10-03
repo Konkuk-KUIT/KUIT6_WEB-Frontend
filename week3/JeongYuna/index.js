@@ -17,10 +17,25 @@ form.addEventListener("submit", (e) => {
     render();
     input.value = "";
   }
+  saveTodos();
 });
+
+loadTodos();
+render();
+
+function loadTodos() {
+  let lst = window.localStorage.getItem("todo-list");
+
+  if (lst) todos = JSON.parse(lst);
+}
+
+function saveTodos() {
+  window.localStorage.setItem("todo-list", JSON.stringify(todos));
+}
 
 function deleteTodo(id) {
   todos = todos.filter( (t) => t.id !== id);
+  saveTodos();
   render();
 }
 
@@ -104,4 +119,6 @@ function updateTodo(id, li) {
 
   saveBtn.onclick = save;
   quitBtn.onclick = render;
+
+  saveTodos();
 }
