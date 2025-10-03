@@ -47,17 +47,23 @@ function render() {
     span.style.cursor = "pointer";
     span.onclick = () => toggleDone(todo);
 
+    const buttonDiv = document.createElement("div");
+    buttonDiv.className = "todo-list__button";
+
     const delBtn = document.createElement("button");
+    delBtn.className = "todo-list__button--delete"
     delBtn.textContent = "삭제";
     delBtn.onclick = () => deleteTodo(todo.id);
 
     const updateBtn = document.createElement("button");
+    updateBtn.className = "todo-list__button--update"
     updateBtn.textContent = "수정";
     updateBtn.onclick = () => updateTodo(todo.id);
 
     li.appendChild(span);
-    li.appendChild(delBtn);
-    li.appendChild(updateBtn);
+    li.appendChild(buttonDiv)
+    buttonDiv.appendChild(delBtn);
+    buttonDiv.appendChild(updateBtn);
     list.appendChild(li);
   });
 }
