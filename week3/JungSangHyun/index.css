@@ -54,7 +54,7 @@ li {
   align-items: center;
 }
 
-li.done {
+li.done span{
   text-decoration: line-through;
   color: gray;
 }
