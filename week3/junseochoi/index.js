@@ -14,6 +14,7 @@ form.addEventListener("submit", (e) => {
       done: false,
     };
     todos.push(newTodo);
+    input.value = "";
     render();
   }
 });
@@ -86,7 +87,7 @@ function updateTodo(id) {
       li.appendChild(btnDiv);
     }
     if (e.key === "Escape") render();
-  };
+  
 
   li.innerHTML = "";
   li.appendChild(input);
