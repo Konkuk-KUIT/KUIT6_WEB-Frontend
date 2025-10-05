@@ -4,7 +4,7 @@ const BottomNav = ({taps}) => {
       {
         taps.map( ({name, img}) => (
           <a key={name} className='tap'>
-            <img src={`/src/assets/${img}`} alt={name}/>
+            <img src={`/icons/${img}`} alt={name}/>
             {name}
           </a>
           )

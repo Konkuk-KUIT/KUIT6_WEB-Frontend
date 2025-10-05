@@ -4,7 +4,7 @@ const Content = ({items}) => {
       {items.map( ({id, title, location, date, price, img, chats, likes, isSold}) => (
         !isSold && (
           <article key={id} className='trade-listing'>
-          <img src={`/src/assets/${img}`} alt="상품 이미지" className='trade-listing__image'></img>
+          <img src={`/imgs/${img}`} alt="상품 이미지" className='trade-listing__image'></img>
           <div className='item'>
             <button className='item-info'>
               <h1 className='item-info__name'>{title}</h1>
@@ -14,8 +14,8 @@ const Content = ({items}) => {
               <div className='item-info__price'>{price}</div>
             </button>
             <div className='trade-listing__demand'>
-              {chats == 0? null : <button className='trade-listing__icon'><img src="/src/assets/chat.svg"/> {chats}</button>}
-              {likes == 0? null : <button className='trade-listing__icon'><img src="/src/assets/heart.svg"/>{likes}</button>}
+              {chats == 0? null : <button className='trade-listing__icon'><img src="/icons/chat.svg"/> {chats}</button>}
+              {likes == 0? null : <button className='trade-listing__icon'><img src="/icons/heart.svg"/>{likes}</button>}
             </div>
           </div>
         </article>
