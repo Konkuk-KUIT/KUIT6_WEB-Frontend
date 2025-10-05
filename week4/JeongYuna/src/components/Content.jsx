@@ -1,23 +1,25 @@
 const Content = ({items}) => {
   return (
     <section className='content'>
-      {items.map( (item) => (
-        <article key={item.id} className='trade-listing'>
-          <img src={`/src/assets/${item.img}`} alt="상품 이미지" className='trade-listing__image'></img>
+      {items.map( ({id, title, location, date, price, img, chats, likes, isSold}) => (
+        !isSold && (
+          <article key={id} className='trade-listing'>
+          <img src={`/src/assets/${img}`} alt="상품 이미지" className='trade-listing__image'></img>
           <div className='item'>
             <button className='item-info'>
-              <h1 className='item-info__name'>{item.title}</h1>
+              <h1 className='item-info__name'>{title}</h1>
               <div className='item-info__upload'>
-                {item.location} · {(formatRelativeTime(item.date))}
+                {location} · {(formatRelativeTime(date))}
               </div>
-              <div className='item-info__price'>{item.price}</div>
+              <div className='item-info__price'>{price}</div>
             </button>
             <div className='trade-listing__demand'>
-              {item.chats == 0? null : <button className='trade-listing__icon'><img src="/src/assets/chat.svg"/> {item.chats}</button>}
-              {item.likes == 0? null : <button className='trade-listing__icon'><img src="/src/assets/heart.svg"/>{item.likes}</button>}
+              {chats == 0? null : <button className='trade-listing__icon'><img src="/src/assets/chat.svg"/> {chats}</button>}
+              {likes == 0? null : <button className='trade-listing__icon'><img src="/src/assets/heart.svg"/>{likes}</button>}
             </div>
           </div>
         </article>
+        )
       )
       )}
     </section>

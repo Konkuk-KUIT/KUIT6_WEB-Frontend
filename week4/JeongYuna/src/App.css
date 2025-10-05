@@ -10,6 +10,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
     background-color: #FFF;
     padding-top: 52px;
     padding-bottom: 58px;
@@ -126,6 +129,7 @@ nav {
 .content {
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
     padding: 16px;
     gap: 16px;
 }

@@ -2,10 +2,10 @@ const BottomNav = ({taps}) => {
   return (
     <nav>
       {
-        taps.map( (tap) => (
-          <a key={tap.name} className='tap'>
-            <img src={`/src/assets/${tap.img}`}/>
-            {tap.name}
+        taps.map( ({name, img}) => (
+          <a key={name} className='tap'>
+            <img src={`/src/assets/${img}`}/>
+            {name}
           </a>
           )
         )
