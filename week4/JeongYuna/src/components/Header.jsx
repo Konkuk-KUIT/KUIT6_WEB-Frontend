@@ -7,9 +7,8 @@ const Header = ({location, icons}) => {
         </button>
         <div className="icons">
             {icons.map( icon => (
-                <button>
+                <button key={icon}>
                   <img
-                    key={icon}
                     src={`/src/assets/${icon}.svg`}
                     alt={icon}
                   />
