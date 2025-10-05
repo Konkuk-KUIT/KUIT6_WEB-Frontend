@@ -47,7 +47,7 @@ const formatRelativeTime = (date) => {
   const months = Math.floor(days / 30);
   if (months < 12) return `${months}개월 전`;
 
-  const years = Math.floor(day / 365);
+  const years = Math.floor(days / 365);
   return `${years}년 전`;
 }
 
