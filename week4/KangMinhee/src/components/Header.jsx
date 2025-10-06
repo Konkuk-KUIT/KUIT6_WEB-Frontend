@@ -1,17 +1,22 @@
-
 import "../App.css";
 
-const Header = () => {
+const Header = ({ location = "군자동" }) => {
+  const icons = [
+    { src: "/search.svg", alt: "search" },
+    { src: "/list.svg", alt: "list" },
+    { src: "/bell.svg", alt: "bell" },
+  ];
+
   return (
     <header className="header">
       <div className="header-left">
-        <span className="location">군자동</span>
+        <span className="location">{location}</span>
         <img src="/arrow.svg" alt="arrow" className="icon arrow" />
       </div>
       <div className="header-right">
-        <img src="/search.svg" alt="search" className="icon" />
-        <img src="/list.svg" alt="list" className="icon" />
-        <img src="/bell.svg" alt="bell" className="icon" />
+        {icons.map(({ src, alt }) => (
+          <img key={alt} src={src} alt={alt} className="icon" />
+        ))}
       </div>
     </header>
   );

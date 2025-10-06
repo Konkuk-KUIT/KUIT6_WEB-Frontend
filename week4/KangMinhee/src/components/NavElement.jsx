@@ -1,12 +1,11 @@
-
 import "../App.css";
 
-const NavElement = ({ item }) => {
+const NavElement = ({ name, iconSrc }) => {
   return (
-    <li key={item.name}>
+    <li>
       <a href="/" className="nav-element">
-        <img src={item.iconSrc} alt={item.name} />
-        {item.name}
+        <img src={iconSrc} alt={name} />
+        {name}
       </a>
     </li>
   );

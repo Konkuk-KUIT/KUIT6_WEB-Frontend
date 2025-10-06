@@ -1,13 +1,12 @@
 import "../App.css";
-import { navModel } from "../model/navModel";
 import NavElement from "./NavElement";
 
-const BottomNav = () => {
+const BottomNav = ({ items }) => {
   return (
     <nav>
       <ul className="bottom-nav">
-        {navModel.map((item) => (
-          <NavElement item={item} />
+        {items.map(({ name, iconSrc }) => (
+          <NavElement key={name} name={name} iconSrc={iconSrc} />
         ))}
       </ul>
     </nav>
