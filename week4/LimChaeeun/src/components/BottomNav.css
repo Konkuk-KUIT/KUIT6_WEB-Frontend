@@ -1,0 +1,31 @@
+.bottom-nav {
+  height: 58px;
+  width: 100%;
+  display: flex;
+  padding: 8px 0;
+
+  border-top: 1px solid #d9d9d9;
+  background-color: #fff;
+
+  position: fixed;
+  bottom: 0;
+}
+
+.bottom-nav li {
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  color: #000;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+}
