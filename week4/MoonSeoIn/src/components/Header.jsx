@@ -1,10 +1,8 @@
-import marketModel from "../model/marketModel";
-
-const Header = () => {
+const Header = ({ location }) => {
   return (
     <div className="header">
       <div className="header-title">
-        <span>{marketModel.location}</span>
+        <span>{location}</span>
         <img src="./dropdown.svg" alt="드롭다운 버튼" />
       </div>
       <div className="header-icons">

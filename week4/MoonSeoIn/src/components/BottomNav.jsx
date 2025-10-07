@@ -1,17 +1,19 @@
-import navModel from "../model/navModel";
-
-const BottomNav = () => {
+const BottomNav = ({ navItems }) => {
   return (
     <nav>
       <ul className="bottom-nav">
-        {navModel.map((item) => (
-          <li key={item.name}>
-            <a href="/" className="nav-element">
-              <img src={item.img} alt={item.name} />
-              {item.name}
-            </a>
-          </li>
-        ))}
+        {navItems.map((item) => {
+          const { name, img } = item;
+
+          return (
+            <li key={name}>
+              <a href="/" className="nav-element">
+                <img src={img} alt={name} />
+                {name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
