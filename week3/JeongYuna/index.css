@@ -54,12 +54,18 @@ li {
   align-items: center;
 }
 
-li.done {
+.done .todo {
   text-decoration: line-through;
   color: gray;
 }
 
-li button {
+li .buttons {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+li .delete {
   background-color: #f44336;
   border: none;
   padding: 5px 10px;
@@ -68,6 +74,32 @@ li button {
   margin-left: 10px;
 }
 
-li button:hover {
+li .delete:hover {
   background-color: #d32f2f;
+}
+
+li .update {
+  background-color: #0f0fdf;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li .update:hover {
+  background-color: #0d01af;
+}
+
+li .save {
+  background-color: #0fdf0f;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li .save:hover {
+  background-color: #0daf01;
 }

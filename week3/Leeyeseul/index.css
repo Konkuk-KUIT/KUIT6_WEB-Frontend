@@ -71,3 +71,30 @@ li button {
 li button:hover {
   background-color: #d32f2f;
 }
+
+/* 버튼들을 오른쪽 끝에 나란히 */
+li .btn-group {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+
+/* 삭제 버튼 */
+.delete-btn {
+  background-color: #f44336;
+}
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* 수정 버튼*/
+.edit-btn {
+  background-color: blue;
+}
+.edit-btn:hover {
+  background-color: blue;
+}
+
+.todo-text {
+  cursor: pointer; 
+}

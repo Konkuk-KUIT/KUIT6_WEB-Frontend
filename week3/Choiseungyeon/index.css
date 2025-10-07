@@ -54,12 +54,12 @@ li {
   align-items: center;
 }
 
-li.done {
+li.done > span {
   text-decoration: line-through;
   color: gray;
 }
 
-li button {
+li button.delete-btn {
   background-color: #f44336;
   border: none;
   padding: 5px 10px;
@@ -68,6 +68,43 @@ li button {
   margin-left: 10px;
 }
 
-li button:hover {
+li button.delete-btn:hover {
   background-color: #d32f2f;
+}
+
+li button.edit-btn {
+  background-color: #2196f3;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li button.edit-btn:hover {
+  background-color: #1976d2;
+}
+
+li .btn-div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+li button.save-btn {
+  background-color: #4caf50;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+} 
+
+li button.save-btn:hover {
+  background-color: #45a049;
+}
+
+li.done input[type="text"] {
+  text-decoration: none;
+  color: inherit;
 }

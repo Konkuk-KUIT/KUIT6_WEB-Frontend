@@ -1,0 +1,118 @@
+body {
+  background: #153677;
+  padding: 30px;
+  font-family: Inter;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: #edeef0;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #35b639;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  background-color: #f44336;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+li button:hover {
+  background-color: #d32f2f;
+}
+
+/* 수정 버튼 스타일 지정 */
+ul li button.edit {
+    border: none;
+    outline: none;
+    padding: 8px 15px;
+    background: #007bff; 
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+ul li button.edit:hover {
+    background: #004da0;
+}
+
+/* 삭제 버튼 스타일 지정 */
+ul li button.delete {
+    border: none;
+    outline: none;
+    padding: 8px 15px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+ul li button.delete:hover {
+    background: #ff321c;
+}
+
+/* 수정 중에는 line through 안 생기도록 지정*/
+ul li input {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 70%;
+}

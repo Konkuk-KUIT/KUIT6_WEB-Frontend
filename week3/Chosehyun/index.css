@@ -54,20 +54,32 @@ li {
   align-items: center;
 }
 
-li.done {
+.done {
   text-decoration: line-through;
   color: gray;
 }
 
-li button {
+.delete {
   background-color: #f44336;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.delete:hover {
+  background-color: #d32f2f;
+}
+
+.update {
+  background-color: #213af3;
   border: none;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
   margin-left: 10px;
 }
-
-li button:hover {
-  background-color: #d32f2f;
+.update:hover {
+  background-color: #12487e;
 }

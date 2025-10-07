@@ -37,6 +37,10 @@ button {
   cursor: pointer;
 }
 
+form button {
+  background-color: #4caf50;
+  color: white;
+}
 button:hover {
   background-color: #45a049;
 }
@@ -54,10 +58,10 @@ li {
   align-items: center;
 }
 
-li.done {
+li.done span {
   text-decoration: line-through;
   color: gray;
-}
+} /* 버튼에는 선 안보이게 수정 */
 
 li button {
   background-color: #f44336;
@@ -70,4 +74,13 @@ li button {
 
 li button:hover {
   background-color: #d32f2f;
+}
+
+/* 수정 버튼 (파랑) */
+li .btn-edit {
+  background-color: #1976d2;
+  color: white;
+}
+li .btn-edit:hover {
+  background-color: #0d47a1;
 }

@@ -54,20 +54,36 @@ li {
   align-items: center;
 }
 
+.btn-box {
+  display: flex;
+  gap: 5px;
+}
+
 li.done {
   text-decoration: line-through;
   color: gray;
 }
 
 li button {
-  background-color: #f44336;
   border: none;
   padding: 5px 10px;
   color: white;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
-li button:hover {
+li button.delete {
+  background-color: #f44336;
+}
+li button.delete:hover {
   background-color: #d32f2f;
+}
+
+li button.edit,
+li button.save {
+  background-color: #2196f3;
+}
+li button.edit:hover,
+li button.save:hover {
+  background-color: #1976d2;
 }

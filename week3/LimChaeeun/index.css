@@ -54,12 +54,17 @@ li {
   align-items: center;
 }
 
-li.done {
+li.done span {
   text-decoration: line-through;
   color: gray;
 }
 
-li button {
+.btn-group {
+  display: flex;
+  gap: 5px;
+}
+
+li button.del {
   background-color: #f44336;
   border: none;
   padding: 5px 10px;
@@ -68,6 +73,32 @@ li button {
   margin-left: 10px;
 }
 
-li button:hover {
+li button.del:hover {
   background-color: #d32f2f;
+}
+
+li button.update {
+  background-color: #3243ff;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li button.update:hover {
+  background-color: #1d2792;
+}
+
+li button.save {
+  background-color: #3243ff;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+li button.save:hover {
+  background-color: #1d2792;
 }
