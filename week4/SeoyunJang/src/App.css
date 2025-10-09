@@ -1,0 +1,173 @@
+.bottom-nav {
+  height: 58px;
+  width: 100%;
+  display: flex;
+  padding: 8px 0;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #EEEEEE;
+}
+
+.bottom-nav li {
+  flex: 1;
+}
+
+.nav-element {
+  flex: 1;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 4px;
+}
+
+.nav-element span {
+  font-size: 10px;
+  color: black;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.main_container_wrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 58px;
+    margin-top: 52px;
+}
+
+button{
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.main_container {
+    display: flex;
+    padding: 16px 0;
+    margin: 0 16px;
+    gap: 16px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.image_container img {
+    width: 110px;
+    height: 110px;
+    border-radius: 4px;
+}
+
+.textandicon_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+
+.text_container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    gap: 4px;
+}
+
+.text_container .name {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.text_container .place {
+    font-size: 12px;
+    color: #8C8C8C;
+    line-height: 16px;
+}
+
+.text_container .price {
+    font-size: 15px;
+    font-weight: 900;
+    color: #FF7E36;
+    line-height: 22px;
+}
+
+.icon_container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}
+.comment_button img, .heart_button img {
+    width: 16px;
+    height: 16px;
+}
+
+.comment_section span, .heart_section span {
+    font-size: 12px;
+    line-height: 16px;
+    color: #8C8C8C;
+}
+
+.comment_section, .heart_section {
+    display: flex;
+    gap: 2px;
+}
+
+/* 헤어 영역 */
+.main_header {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #EEEEEE;
+    box-sizing: border-box;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52px;
+}
+
+.location_container {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.location_container h1 {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 28px;
+}
+
+.header_icon_container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 90px;  
+  right: 16px;   
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FF7E36;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+  z-index: 1100; 
+}
+
+.floating-button img {
+    width: 24px;
+    height: 24px;
+}
