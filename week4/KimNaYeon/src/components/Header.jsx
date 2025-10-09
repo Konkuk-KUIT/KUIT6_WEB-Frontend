@@ -1,20 +1,19 @@
-import marketModel from "../model/marketModel";
 import "../App.css";
 
-const Header = () => {
+const Header = ({location, icon}) => {
     return (
         <header className="header">
             <div className="header__left">
-                <span>{marketModel.location}</span>
+                <span>{location}</span>
                 <a href="/">
                     <img src="/expand.svg" alt="expandArrow-img"/>
                 </a>
             </div>
             <ul className="header__right">
-                {marketModel.headerImg.map((img) => (
-                    <li key={img.name}>
+                {icon.map(({name, src}) => (
+                    <li key={name}>
                         <a href="/">
-                            <img src={img.src} alt={img.name}/>
+                            <img src={src} alt={name}/>
                         </a>
                     </li>
                 ))}

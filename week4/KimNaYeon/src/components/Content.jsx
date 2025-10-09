@@ -1,35 +1,35 @@
-import marketModel from "../model/marketModel";
 import "../App.css";
 
-const Content = () => {
+const Content = ({items}) => {
     return (
         <main className="itemlist">
-            {marketModel.items.map((item) => (
-                <section key={item.title} className="item-section">
+            {items.filter(({isSold}) => isSold)
+            .map(({title, location, timeAgo, price, image, comments, likes}) => (
+                <section key={title} className="item-section">
                     <a href="/">
                         <div className="item">
-                            <img src={item.image} alt={item.title} />
+                            <img src={image} alt={title} />
                             <aside className="item-right">
                                 <div className="item-exp">
-                                    <span className="item-exp__title">{item.title}</span>
+                                    <span className="item-exp__title">{title}</span>
                                     <div className="item-exp__desc">
-                                        <span>{item.location}</span>
+                                        <span>{location}</span>
                                         <span>·</span>
-                                        <span>{item.timeAgo}</span>
+                                        <span>{timeAgo}</span>
                                     </div>
-                                    <span className="item-exp__price">{item.price}</span>
+                                    <span className="item-exp__price">{price}</span>
                                 </div>
                                 <div className="item-reaction">
-                                    {item.comments > 0 && (
+                                    {comments > 0 && (
                                         <div className="item-reaction__type">
                                             <img src="/comment.svg" alt="comment-img" />
-                                            <span>{item.comments}</span>
+                                            <span>{comments}</span>
                                         </div>
                                     )}
-                                    {item.likes > 0 && (
+                                    {likes > 0 && (
                                         <div className="item-reaction__type">
                                             <img src="/heart.svg" alt="heart-img" />
-                                            <span>{item.likes}</span>
+                                            <span>{likes}</span>
                                         </div>
                                     )}
                                 </div>
