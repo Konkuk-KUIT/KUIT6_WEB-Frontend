@@ -1,6 +1,4 @@
-import navModel from "../model/navModel";
-
-export const BottomNav = () => (
+export const BottomNav = ({navModel}) => (
   <nav>
     <ul className="bottom-nav">
       {navModel.map((item) => (

@@ -2,7 +2,9 @@ export const Content = ({ items }) => {
   return (
     <div className="main_container_wrapper">
       {items.map((item) => 
-        item.isSold && ( // isSold가 true일 때만 렌더링
+        {const {isSold,comments,likes} = item;
+        return (
+        isSold && ( // isSold가 true일 때만 렌더링
           <article key={item.id} className="main_container">
             <div className="image_container">
               <img src={`./${item.image}`} alt={`${item.title} 이미지`} />
@@ -14,7 +16,7 @@ export const Content = ({ items }) => {
                 <span className="price">{item.price}</span>
               </div>
               <section className="icon_container">
-                {item.comments > 0 && ( //댓글 0보다 클때만 렌더링
+                {comments > 0 && ( //댓글 0보다 클때만 렌더링
                   <div className="comment_section">
                     <button className="comment_button">
                       <img src="icons/comment.svg" alt="댓글 아이콘" />
@@ -22,7 +24,7 @@ export const Content = ({ items }) => {
                     <span>{item.comments}</span>
                   </div>
                 )}
-                {item.likes > 0 && ( //좋아요 0보다 클 때만 렌더링
+                {likes > 0 && ( //좋아요 0보다 클 때만 렌더링
                   <div className="heart_section">
                     <button className="heart_button">
                       <img src="icons/heart.svg" alt="좋아요 아이콘" />
@@ -33,7 +35,7 @@ export const Content = ({ items }) => {
               </section>
             </section>
           </article>
-        )
+        ))}
       )}
     </div>
   );
