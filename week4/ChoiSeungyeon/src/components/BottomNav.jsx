@@ -5,7 +5,7 @@ const NavElement = ({item}) => {
     <li>
       <a href='/' className='nav-element'>
         <img src={item.iconSrc} alt={item.name} />
-        <span className='nav-lavel'>{item.name}</span>
+        <span className='nav-label'>{item.name}</span>
       </a>
     </li>
   )

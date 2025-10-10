@@ -1,6 +1,6 @@
 const Header = ({location}) => {
   const actions = [
-    { id: "search", src: "assets/Search.svg", alt: "검색" },
+    { id: "search", src: "/assets/Search.svg", alt: "검색" },
     { id: "menu", src: "assets/Menu.svg", alt: "메뉴" },
     { id: "notification", src: "assets/Notification.svg", alt: "알림" },
   ];
