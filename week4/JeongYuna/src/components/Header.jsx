@@ -1,3 +1,5 @@
+import Border from "./Border";
+
 const Header = ({location, icons}) => {
   return (
     <header>

@@ -28,7 +28,7 @@ header {
     position: fixed;
     top: 0;
     background-color: #FFF;
-    border-bottom: 2px solid #D9D9D9;
+    /* border-bottom: 2px solid #D9D9D9; */
 }
 
 button {
@@ -139,8 +139,8 @@ nav {
     gap: 16px;
     height: 100%;
 
-    padding-bottom: 16px;
-    border-bottom: 2px solid #EEEEEE;
+    /* padding-bottom: 16px; */
+    /* border-bottom: 2px solid #EEEEEE; */
 }
 
 .trade-listing__image {
