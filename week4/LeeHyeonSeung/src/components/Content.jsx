@@ -2,9 +2,11 @@ import "../App.css";
 import marketModel from "../model/marketModel";
 
 const Content = () => {
+  const soldItems = marketModel.items.filter(item => item.isSold);
+  
   return (
     <div className="content">
-      {marketModel.items.map((item, index) => (
+      {soldItems.map((item, index) => (
         <div key={index}>
           <div className="product-item">
             <img 
@@ -34,7 +36,7 @@ const Content = () => {
               </div>
             </div>
           </div>
-          {index < marketModel.items.length - 1 && (
+          {index < soldItems.length - 1 && (
             <div className="divider"></div>
           )}
         </div>
