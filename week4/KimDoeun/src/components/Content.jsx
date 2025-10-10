@@ -3,7 +3,8 @@ import "./Content.css";
 export const Content = ({items}) => {
   return (
     <section className="content">
-      {items.map(item => (
+      {items.map(item => 
+        item.isSold ? (
         <div className="content-wrapper" key={item.title}>
           <img src={item.image} alt={item.title} />
           <div className="content-item">
@@ -22,7 +23,7 @@ export const Content = ({items}) => {
             </div>
           </div>
         </div>
-      ))}
+      ) : null)}
     </section>
   );
 };
