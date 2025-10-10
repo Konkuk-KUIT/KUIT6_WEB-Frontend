@@ -1,7 +1,6 @@
 import "../App.css";
-import marketModel from "../model/marketModel";
 
-const Header = () => {
+const Header = ({ marketModel }) => { 
   return (
     <header className="header">
       <div className="header__left">
@@ -17,3 +16,4 @@ const Header = () => {
 };
 
 export default Header;
+
