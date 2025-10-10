@@ -1,7 +1,9 @@
 export const Content = ({ items }) => {
   return (
     <main className="product-list">
-      {items.map((item) => (
+      {items
+      .filter((item) => item.isSold === true)
+      .map((item) => (
         <div key={item.title} className="product-item">
           <img src={item.image} alt={item.title} className="product-image" />
           <div className="product-info">
