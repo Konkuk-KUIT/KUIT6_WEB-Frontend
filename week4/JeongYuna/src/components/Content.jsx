@@ -1,8 +1,10 @@
 const Content = ({items}) => {
   return (
     <section className='content'>
-      {items.map( ({id, title, location, date, price, img, chats, likes, isSold}) => (
-        !isSold && (
+      {items
+      .filter(({isSold}) => !isSold)
+      .map( ({id, title, location, date, price, img, chats, likes}) => (
+        (
           <article key={id} className='trade-listing'>
           <img src={`/imgs/${img}`} alt="상품 이미지" className='trade-listing__image'></img>
           <div className='item'>
