@@ -15,9 +15,31 @@ const Content = ({ item }) => {
               <p className="item__price">{item.price}</p>
             </div>
 
+            {(item.comments > 0 || item.likes > 0) && (
             <div className="item__info__interest">
-              {/* TODO: 댓글/좋아요 표시 */}
+                {item.comments > 0 && (
+                <span className="interest-item">
+                    <img
+                    src="/icon/chat.svg"
+                    alt="comments"
+                    className="interest-icon"
+                    />
+                    {item.comments}
+                </span>
+                )}
+                {item.likes > 0 && (
+                <span className="interest-item">
+                    <img
+                    src="/icon/like.svg"
+                    alt="likes"
+                    className="interest-icon"
+                    />
+                    {item.likes}
+                </span>
+                )}
             </div>
+            )}
+
           </div>
         </article>
       </li>

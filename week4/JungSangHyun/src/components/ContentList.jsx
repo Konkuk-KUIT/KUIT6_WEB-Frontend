@@ -5,9 +5,11 @@ const ContentList = () => {
   return (
     <section>
       <ul className="item-list">
-        {marketModel.items.map((item) => (
-          <Content key={item.title} item={item} />
-        ))}
+        {marketModel.items
+          .filter((item) => item.isSold) 
+          .map((item) => (
+            <Content key={item.title} item={item} />
+          ))}
       </ul>
 
       <button className="plus-btn">

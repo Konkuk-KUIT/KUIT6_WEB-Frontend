@@ -41,6 +41,7 @@ button {
     padding: 16px;
     gap: 16px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .item__line{
@@ -59,9 +60,12 @@ button {
     height: 110px;
 }
 
-.item__info{
+.item__info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    flex:1;
+    position: relative;
 }
 
 .item__info__header {
@@ -94,6 +98,31 @@ button {
     line-height: 16px;
 }
 
+.item__info__interest {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.interest-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #8C8C8C;
+    font-size: 13px;
+}
+
+.interest-item img {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    opacity: 0.8;
+}
 .item__price {
     color: #FF7E36;
     font-family: Inter;
@@ -101,6 +130,7 @@ button {
     font-style: normal;
     font-weight: 700;
     line-height: 22px;
+    margin-bottom: 24px;
 }
 
 .item__info__interest{
