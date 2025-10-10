@@ -10,7 +10,7 @@ const marketModel = {
             img: '/imgs/airpods-pro.png',
             chats: 3,
             likes: 11,
-            isSold: false,
+            isSold: true,
         },
         {
             id: 2,
@@ -32,7 +32,7 @@ const marketModel = {
             img: '/imgs/sandwich.png',
             chats: 0,
             likes: 0,
-            isSold: false,
+            isSold: true,
         },
         {
             id: 4,
