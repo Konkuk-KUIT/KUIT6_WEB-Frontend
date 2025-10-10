@@ -8,11 +8,11 @@ import taps from './models/tapModel'
 
 function App() {
   return (
-      <div>
+      <>
         <Header location="군자동" icons={["search", "menu", "notification"]} />
         <Content items={items}/>
         <BottomNav taps={taps}/>
-      </div>
+      </>
   )
 }
 
