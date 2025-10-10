@@ -1,10 +1,7 @@
 import React from 'react';
 
 const ProductList = ({ products }) => {
-  // 비구조화 할당 사용
-  const { title, location, time, price, image, comments, likes } = products[0] || {};
-  
-  // isSold가 false인 상품만 필터링 (화면은 똑같이 유지하기 위해 true인 것도 포함)
+
   const availableProducts = products.filter(product => !product.isSold || product.isSold);
 
   return (
