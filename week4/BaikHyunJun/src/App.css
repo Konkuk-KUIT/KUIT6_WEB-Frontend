@@ -1,0 +1,220 @@
+/* App 전체 레이아웃 */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa;
+}
+
+/* Header 스타일 */
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  padding: 12px 16px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.location-text {
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 58px;
+}
+
+/* 상품 목록 */
+.product-list {
+  padding: 0;
+}
+
+.product-item {
+  display: flex;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 0;
+  margin-bottom: 1px;
+  box-shadow: none;
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 120px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 6px 0;
+  color: #333;
+}
+
+.product-location {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.product-price {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.price-number {
+  color: #FF7E36;
+}
+
+.product-interactions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.comment-count,
+.like-count {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.interaction-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* 플로팅 버튼 */
+.floating-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: #ff6b35;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.plus-icon {
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+/* 하단 네비게이션 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 58px;
+  background-color: #fff;
+  border-top: 1px solid #e9ecef;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.bottom-nav ul {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bottom-nav li {
+  flex: 1;
+}
+
+.nav-element {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+  line-height: 14px;
+  color: #000;
+  text-decoration: none;
+  height: 100%;
+}
+
+.nav-element img {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-element.active {
+  color: #ff6b35;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 400px) {
+  .app {
+    max-width: 100%;
+  }
+  
+  .floating-button {
+    right: 16px;
+    bottom: 80px;
+  }
+}
