@@ -1,0 +1,16 @@
+.fab {
+  padding: 16px;
+  position: fixed;
+  bottom: 58px;
+  right: 0px;
+}
+
+.fab img {
+  padding: 12px;
+  align-items: flex-start;
+  gap: 10px;
+
+  border-radius: 100px;
+  background: #ff7e36;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+}
