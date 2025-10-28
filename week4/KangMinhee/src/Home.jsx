@@ -9,12 +9,12 @@ import { navModel } from "./model/navModel";
 
 function Home() {
   return (
-    <div>
+    <>
       <Header />
       <Content items={marketModel.items} /> 
       <BottomNav items={navModel} />
       <FloatingButton />
-    </div>
+    </>
   );
 }
 
