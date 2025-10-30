@@ -10,17 +10,13 @@ export function ProductTable({ products, filterText, inStockOnly }) {
     const productsByCategory = Object.entries(productTableByCategory)
 
     const lowerFilterText = filterText.toLowerCase()
-    const lowerProductTexts = productsByCategory.map( 
-      ([category, items]) => [category, items.map( (item) => item.name.toLowerCase())]
-    )
-
-    const result = lowerProductTexts.map( ([category, items]) => 
-      [category,
-        items.filter( (item) => 
-          item.includes(lowerFilterText) && item.stocked 
-        )
-      ]  
-    
+    const result = productsByCategory.map( 
+      ([category, items]) => [category, items.filter( (item) => { 
+          const lowerProductText = item.name.toLowerCase()
+          const matchesName = lowerProductText.includes(lowerFilterText)
+          const matchesStock = item.stocked || !inStockOnly
+          return matchesName && matchesStock
+       })]
     )
 
     return (

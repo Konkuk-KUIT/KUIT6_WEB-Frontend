@@ -10,7 +10,9 @@ export function FilterableProductTable({products}) {
        <div className='content'>
         <SearchBar 
             filterText={filterText}
-            inStockOnly={inStockOnly} />
+            inStockOnly={inStockOnly}
+            onFilterTextChange={setFilterText}
+            onInStockOnlyChange={setInStockOnly} />
         <ProductTable 
             products={products}
             filterText={filterText}
