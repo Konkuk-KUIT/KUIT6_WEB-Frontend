@@ -2,7 +2,7 @@ import React from "react";
 import ProductCategoryRow from "./ProductCategoryRow";
 import ProductRow from "./ProductRow";
 
-export default function ProductTable({ products, onEditProduct, onDeleteProduct }) {
+export default function ProductTable({ products, onDeleteProduct, onSaveProduct }) {
   const productTableByCategory = Object.groupBy(
     products,
     ({ category }) => category
@@ -22,7 +22,7 @@ export default function ProductTable({ products, onEditProduct, onDeleteProduct 
           <React.Fragment key={category}>
             <ProductCategoryRow category={category} />
             {products.map((product) => (
-              <ProductRow key={product.name} name={product.name} price={product.price} onEditProduct={onEditProduct} onDeleteProduct={onDeleteProduct} />
+              <ProductRow key={product.name} name={product.name} price={product.price} onDeleteProduct={onDeleteProduct} onSaveProduct={onSaveProduct} />
             ))}
           </React.Fragment>
         ))}

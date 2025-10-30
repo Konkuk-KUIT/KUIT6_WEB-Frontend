@@ -21,8 +21,11 @@ export function FilterableProductTable() {
     const newProducts = products.filter(product => product.name !== name);
     setProducts(newProducts); 
   };
-  const handleEditProduct = (name) => {
-      //수정 구현하기
+  const handleSaveProduct = (oldName, newProductData) => {
+    const newProducts = products.map((product) =>
+      product.name === oldName ? { ...product, ...newProductData } : product
+    );
+    setProducts(newProducts);
   };
 
   const filteredProducts = products.filter((product) => {
@@ -44,11 +47,10 @@ export function FilterableProductTable() {
         inStockOnly={inStockOnly}
         onInStockOnlyChange={setInStockOnly}
       />
-      <ProductTable 
-        products={filteredProducts} 
-
+      <ProductTable
+        products={filteredProducts}
         onDeleteProduct={handleDeleteProduct}
-        onEditProduct={handleEditProduct}
+        onSaveProduct={handleSaveProduct}
       />
     </div>
   );

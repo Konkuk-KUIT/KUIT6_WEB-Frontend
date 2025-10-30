@@ -19,7 +19,7 @@ export default function SearchBar({ onFilterTextChange, onInStockOnlyChange }) {
         onChange={handleFilterTextChange}
       />
       <br />
-      <label for={stockCheckboxId}>
+      <label htmlFor={stockCheckboxId}>
         <input
           type="checkbox"
           id={stockCheckboxId}

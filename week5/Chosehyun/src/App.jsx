@@ -1,7 +1,11 @@
 import { FilterableProductTable } from "./product/FilterableProductTable";
 
 function App() {
-  return <FilterableProductTable />;
+  return (
+    <>
+      <FilterableProductTable />
+    </>
+  )
 }
 
-export default App;
+export default App
