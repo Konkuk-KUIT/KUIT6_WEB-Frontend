@@ -1,0 +1,5 @@
+nav.bottom-nav {
+    height: 58px;
+    width: 100%;
+    display: flex;
+}
