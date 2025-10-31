@@ -1,24 +1,49 @@
-import React from "react";
+import { useState } from "react";
 
-export default function ProductRow({ name, price, onEditProduct, onDeleteProduct }) {
-  // 실습:
-  //   필수: onEditProduct를 통해 상품 정보 수정
-  //   선택: onDeleteProduct를 통해 상품 삭제
-  //   리팩토링까지 할 수 있으면 좋을 듯
+export default function ProductRow({
+  name,
+  price,
+  onEditProduct,
+  onSaveProduct,
+  onDeleteProduct,
+  editingProduct,
+}) {
+  const [editedName, setEditedName] = useState(name);
+  const [editedPrice, setEditedPrice] = useState(price);
+
+  const isEditing = editingProduct === name; // 현재 수정 중인 상품인지 판별
+
   return (
     <tr>
-      <td>{name}</td>
-      <td>{price}</td>
+      
       <td>
-        {/* 수정 버튼 */}
-        <button onClick={() => onEditProduct && onEditProduct(name)}>
-          <img src="/edit.svg" alt="edit" width="15" height="15" />
-        </button>
+        { isEditing ? ( <input value={editedName} onChange={(e) => setEditedName(e.target.value)}/>) : (name)}
+      </td>
+      <td>
+        { isEditing ? ( <input value={editedPrice} onChange={(e) => setEditedPrice(e.target.value)}/>) : (price)}
+      </td>
 
-        {/* 삭제 버튼 */}
-        <button onClick={() => onDeleteProduct && onDeleteProduct(name)}>
-          <img src="/delete.svg" alt="delete" width="15" height="15" />
-        </button>
+      <td>
+        {isEditing ? (
+          <>
+            {/* 저장 버튼 */}
+            <button onClick={() => onSaveProduct(name, editedName, editedPrice)}>
+              <img src="/save.svg" alt="save" width="15" height="15" />
+            </button>
+          </>
+        ) : (
+          <>
+            {/* 수정 버튼 */}
+            <button onClick={() => onEditProduct(name)}>
+              <img src="/edit.svg" alt="edit" width="15" height="15" />
+            </button>
+
+            {/* 삭제 버튼 */}
+            <button onClick={() => onDeleteProduct(name)}>
+              <img src="/delete.svg" alt="delete" width="15" height="15" />
+            </button>
+          </>
+        )}
       </td>
     </tr>
   );

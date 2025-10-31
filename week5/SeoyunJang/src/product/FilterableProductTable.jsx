@@ -12,7 +12,8 @@ const INITIAL_PRODUCT_LIST = [
 ];
 
 export function FilterableProductTable() {
-  const [products, setProducts] = useState(INITIAL_PRODUCT_LIST); //추가
+  const [products, setProducts] = useState(INITIAL_PRODUCT_LIST);
+  const [editingProduct, setEditingProduct] = useState(null);
 
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
@@ -20,31 +21,30 @@ export function FilterableProductTable() {
   const filteredProducts = products.filter((product) => {
     const lowerCaseProductName = product.name.toLowerCase();
     const lowerCaseFilterText = filterText.toLowerCase();
+
     const hasPassedTextFilter =
       filterText === "" || lowerCaseProductName.includes(lowerCaseFilterText);
-
     const hasPassedStockFilter = !inStockOnly || product.stocked;
+
     return hasPassedTextFilter && hasPassedStockFilter;
   });
 
-  //수정 함수
-  const handleEditProduct = (oldName) => {
-    const product = products.find((p) => p.name === oldName);
-    if (!product) return;
-
-    const newName = prompt("상품 이름을 변경하세요", product.name);
-    const newPrice = prompt("상품 가격을 변경하세요", product.price);
-
-    if (newName && newPrice) {
-      setProducts((prev) =>
-        prev.map((p) =>
-          p.name === oldName ? { ...p, name: newName, price: newPrice } : p
-        )
-      );
-    }
+  // 수정 시작 함수
+  const handleEditProduct = (name) => {
+    setEditingProduct(name);
   };
 
-  //삭제 함수
+  // 수정 저장 함수
+  const handleSaveProduct = (oldName, newName, newPrice) => {
+    setProducts((prev) =>
+      prev.map((p) =>
+        p.name === oldName ? { ...p, name: newName, price: newPrice } : p
+      )
+    );
+    setEditingProduct(null); // 수정 종료
+  };
+
+  // 삭제 함수
   const handleDeleteProduct = (name) => {
     if (window.confirm(`${name} 상품을 삭제할까요?`)) {
       setProducts((prev) => prev.filter((p) => p.name !== name));
@@ -59,10 +59,13 @@ export function FilterableProductTable() {
         inStockOnly={inStockOnly}
         onInStockOnlyChange={setInStockOnly}
       />
+
       <ProductTable
         products={filteredProducts}
         onEditProduct={handleEditProduct}
+        onSaveProduct={handleSaveProduct}
         onDeleteProduct={handleDeleteProduct}
+        editingProduct={editingProduct} 
       />
     </>
   );
