@@ -6,7 +6,7 @@ export function ProductRow({ product, onChangeProduct }) {
         <tr>
         {isEditing?
             <>
-            <td><input type="text" size={15} value={product.name}></input></td>
+            <td><input type="text" size={13} value={product.name}></input></td>
             <td><input type="text" size={5} value={product.price}></input></td>
             <td className="edit-product">
                 <button onClick={() => setIsEditing(false)}><img src="/src/assets/save.png"></img></button>
