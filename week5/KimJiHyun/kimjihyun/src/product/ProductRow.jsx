@@ -1,14 +1,49 @@
-import React from "react";
+import { useState } from 'react';
 
-export default function ProductRow({ name, price }) {
-  // 실습:
-  //   필수: onEditProduct를 통해 상품 정보 수정
-  //   선택: onDeleteProduct를 통해 상품 삭제
-  //   리팩토링까지 할 수 있으면 좋을 듯
-  return (
-    <tr>
-      <td>{name}</td>
-      <td>{price}</td>
-    </tr>
-  );
+export default function ProductRow({ name, price, onEditProduct, onDeleteProduct }) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [editName, setEditName] = useState(name);
+    const [editPrice, setEditPrice] = useState(price);
+
+    const handleSave = () => {
+        onEditProduct(name, {
+            name: editName,
+            price: editPrice,
+        });
+        setIsEditing(false);
+    };
+
+    const handleCancel = () => {
+        setEditName(name);
+        setEditPrice(price);
+        setIsEditing(false);
+    };
+
+    if (isEditing) {
+        return (
+            <tr>
+                <td>
+                    <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} />
+                </td>
+                <td>
+                    <input type="text" value={editPrice} onChange={(e) => setEditPrice(e.target.value)} />
+                </td>
+                <td>
+                    <button onClick={handleSave}>✅</button>
+                    <button onClick={handleCancel}>❌</button>
+                </td>
+            </tr>
+        );
+    }
+
+    return (
+        <tr>
+            <td>{name}</td>
+            <td>{price}</td>
+            <td>
+                <button onClick={() => setIsEditing(true)}>✏️</button>
+                <button onClick={() => onDeleteProduct(name)}>🗑️</button>
+            </td>
+        </tr>
+    );
 }
