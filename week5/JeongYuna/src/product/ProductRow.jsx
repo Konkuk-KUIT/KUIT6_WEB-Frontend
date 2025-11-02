@@ -1,16 +1,26 @@
 import { useState } from "react"
 
-export function ProductRow({ product, onChangeProduct }) {
+export function ProductRow({ product, onEditProduct }) {
     const [isEditing, setIsEditing] = useState(false);
+    const [inputNameField, setInputNameField] = useState(product.name)
+    const [inputPriceField, setInputPriceField] = useState(product.price)
+
     return (
         <tr>
         {isEditing?
             <>
-            <td><input type="text" size={13} value={product.name}></input></td>
-            <td><input type="text" size={5} value={product.price}></input></td>
+            <td><input type="text" size={13} value={inputNameField} onChange={(e) => {setInputNameField(e.target.value)}}></input></td>
+            <td><input type="text" size={5} value={inputPriceField} onChange={(e) => {setInputPriceField(e.target.value)}}></input></td>
             <td className="edit-product">
-                <button onClick={() => setIsEditing(false)}><img src="/src/assets/save.png"></img></button>
-                <button onClick={() => setIsEditing(false)}><img src="/src/assets/quit.png"></img></button>
+                <button onClick={() => {
+                    setIsEditing(false)
+                    onEditProduct(product.id, inputNameField, inputPriceField)
+                    }}><img src="/src/assets/save.png"></img></button>
+                <button onClick={() => {
+                    setIsEditing(false)
+                    setInputNameField(product.name)
+                    setInputPriceField(product.price)
+                    }}><img src="/src/assets/quit.png"></img></button>
             </td>
             </>
             :
@@ -28,6 +38,5 @@ export function ProductRow({ product, onChangeProduct }) {
         </tr>
     )
 }
-
 
 

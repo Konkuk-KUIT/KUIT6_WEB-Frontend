@@ -1,12 +1,10 @@
 import './App.css'
-import { useState } from 'react'
 import { FilterableProductTable } from './product/FilterableProductTable'
-import products from './product/PRODUCTS'
 
 function App() {
   return (
     <>
-      <FilterableProductTable products={products}/>
+      <FilterableProductTable />
     </>
   )
 }
