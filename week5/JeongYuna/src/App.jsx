@@ -4,8 +4,6 @@ import { FilterableProductTable } from './product/FilterableProductTable'
 import products from './product/PRODUCTS'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <FilterableProductTable products={products}/>

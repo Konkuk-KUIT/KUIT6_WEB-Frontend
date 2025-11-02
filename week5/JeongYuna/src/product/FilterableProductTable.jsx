@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SearchBar } from './SearchBar'
 import { ProductTable } from './ProductTable'
 
-export function FilterableProductTable({ products }) {
+export function FilterableProductTable({ products, onProductChange }) {
     const [filterText, setFilterText] = useState('');
     const [inStockOnly, setInStockOnly] = useState(false);
 

@@ -33,7 +33,7 @@ export function ProductTable({ products, filterText, inStockOnly }) {
                 <Fragment key={category}>
                   <ProductCategoryRow category={category} />
                     {items.map((item) =>
-                      <ProductRow key={item.name} product={item} />
+                      <ProductRow key={item.name} product={item}/>
                       )
                     }
                 </Fragment>
