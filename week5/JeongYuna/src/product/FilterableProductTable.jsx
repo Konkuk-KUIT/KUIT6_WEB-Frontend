@@ -40,6 +40,14 @@ export function FilterableProductTable() {
         )
     }
 
+    function onDeleteProduct(id) {
+        setProducts((prevProducts) =>
+            prevProducts.filter((item) =>
+                item.id != id
+            )
+        )
+    }
+
     return (
         <div className='content'>
             <SearchBar
@@ -51,6 +59,7 @@ export function FilterableProductTable() {
             <ProductTable
                 filteredProducts={result}
                 onEditProduct={onEditProduct}
+                onDeleteProduct={onDeleteProduct}
             />
         </ div>
     )

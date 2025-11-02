@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function ProductRow({ product, onEditProduct }) {
+export function ProductRow({ product, onEditProduct, onDeleteProduct }) {
     const [isEditing, setIsEditing] = useState(false);
     const [inputNameField, setInputNameField] = useState(product.name)
     const [inputPriceField, setInputPriceField] = useState(product.price)
@@ -31,7 +31,7 @@ export function ProductRow({ product, onEditProduct }) {
             <td>{product.price}</td>
             <td className="edit-product">
                 <button onClick={() => setIsEditing(true)}><img src="/src/assets/pencil.png"></img></button>
-                <button><img src="/src/assets/trashcan.png"></img></button>
+                <button onClick={() => onDeleteProduct(product.id)}><img src="/src/assets/trashcan.png"></img></button>
             </td>
             </>
         }

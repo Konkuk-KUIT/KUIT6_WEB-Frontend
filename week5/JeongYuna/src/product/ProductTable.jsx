@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { ProductCategoryRow } from './ProductCategoryRow'
 import { ProductRow } from './ProductRow'
 
-export function ProductTable({ filteredProducts, onEditProduct }) {
+export function ProductTable({ filteredProducts, onEditProduct, onDeleteProduct }) {
 
   return (
     <table className='product-table'>
@@ -18,7 +18,7 @@ export function ProductTable({ filteredProducts, onEditProduct }) {
             <Fragment key={category}>
               <ProductCategoryRow category={category} />
               {items.map(
-                (item) => <ProductRow key={item.id} product={item} onEditProduct={onEditProduct} />
+                (item) => <ProductRow key={item.id} product={item} onEditProduct={onEditProduct} onDeleteProduct={onDeleteProduct} />
               )}
             </Fragment>
           )
