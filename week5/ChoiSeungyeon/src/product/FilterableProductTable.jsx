@@ -1,0 +1,63 @@
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import ProductTable from "./ProductTable";
+
+const INITIAL_PRODUCT_LIST = [
+  { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+  { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+  { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+  { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+  { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+  { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
+];
+
+export function FilterableProductTable() {
+  const [filterText, setFilterText] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
+
+  const [editedProducts, setEditedProducts] = useState([]);
+  const [deletedNames, setDeletedNames] = useState([]);
+
+  const handleEditProduct = (targetName, updatedData) => {
+    setEditedProducts((prev) => {
+      const withoutOld = prev.filter((p) => p.name !== targetName);
+      return [...withoutOld, { originalName: targetName, ...updatedData }];
+    });
+  };
+
+  const handleDeleteProduct = (targetName) => {
+    setDeletedNames((prev) => [...prev, targetName]);
+  };
+
+  const filteredProducts = INITIAL_PRODUCT_LIST.filter((product) => {
+    const lowerCaseProductName = product.name.toLowerCase();
+    const lowerCaseFilterText = filterText.toLowerCase();
+    const hasPassedTextFilter =
+      filterText === "" || lowerCaseProductName.includes(lowerCaseFilterText);
+
+    const hasPassedStockFilter = !inStockOnly || product.stocked === true;
+    return hasPassedTextFilter && hasPassedStockFilter;
+  });
+
+  const displayedProducts = filteredProducts
+    .map((p) => {
+      const edited = editedProducts.find((e) => e.originalName === p.name);
+       return edited ? { ...p, ...edited, name: edited.name } : p;
+    })
+    .filter((p) => !deletedNames.includes(p.name));
+
+  return (
+    <>
+      <SearchBar
+        filterText={filterText}
+        onFilterTextChange={setFilterText}
+        inStockOnly={inStockOnly}
+        onInStockOnlyChange={setInStockOnly}
+      />
+      <ProductTable 
+      products={displayedProducts} 
+      onEditProduct={handleEditProduct}
+      onDeleteProduct={handleDeleteProduct}/>
+    </>
+  );
+}
