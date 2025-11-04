@@ -32,14 +32,11 @@ export default function ProductTable({
         {productsByCategory.map(([category, products]) => (
           <React.Fragment key={category}>
             <ProductCategoryRow category={category} />
-            {products.map((product) => (
-              <ProductRow
-                key={product.name}
-                {...product}
-                onEdit={onProductEdit}
-                onDelete={onProductDelete}
-              />
-            ))}
+            <ProductRowList
+              {...products}
+              onEdit={onProductEdit}
+              onDelete={onProductDelete}
+            />
           </React.Fragment>
         ))}
       </tbody>

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+export function ProductRowList(products, ...props) {
+  return products.map((product) => (
+    <ProductRow key={product.name} {...product} {...props} />
+  ));
+}
+
 export default function ProductRow({ name, price, onEdit, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [product, setProduct] = useState({ name, price });
