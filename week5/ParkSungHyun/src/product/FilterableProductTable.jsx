@@ -14,8 +14,9 @@ const INITIAL_PRODUCT_LIST = [
 export function FilterableProductTable() {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [products, setProducts] = useState(INITIAL_PRODUCT_LIST);
 
-  const filteredProducts = INITIAL_PRODUCT_LIST.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     const lowerCaseProductName = product.name.toLowerCase();
     const lowerCaseFilterText = filterText.toLowerCase();
     const hasPassedTextFilter =
@@ -25,6 +26,16 @@ export function FilterableProductTable() {
     return hasPassedTextFilter && hasPassedStockFilter;
   });
 
+  const handleEditProduct = (updated) => {
+    setProducts((prev) =>
+      prev.map((p) => (p.name === updated.name ? updated : p))
+    );
+  };
+
+  const handleDeleteProduct = (target) => {
+    setProducts((prev) => prev.filter((p) => p.name !== target.name));
+  };
+
   return (
     <>
       <SearchBar
@@ -33,7 +44,11 @@ export function FilterableProductTable() {
         inStockOnly={inStockOnly}
         onInStockOnlyChange={setInStockOnly}
       />
-      <ProductTable products={filteredProducts} />
+      <ProductTable
+        products={filteredProducts}
+        onEditProduct={handleEditProduct}
+        onDeleteProduct={handleDeleteProduct}
+      />
     </>
   );
 }
