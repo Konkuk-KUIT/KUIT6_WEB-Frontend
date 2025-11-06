@@ -1,0 +1,46 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 250px;
+    gap: 10px;
+    padding: 20px;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.product-table {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    width: 100%;
+    gap: 4px;
+    table-layout: auto;
+    overflow: auto;
+}
+
+.edit-product {
+    width: 12px;
+    height: 12px;
+    padding: 0; /* 안 해주면 크기 반영이 이상함 */
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-product button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.edit-product img {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+}
