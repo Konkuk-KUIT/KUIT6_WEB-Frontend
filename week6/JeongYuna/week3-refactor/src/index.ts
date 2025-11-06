@@ -12,6 +12,8 @@ enum TodoElement {
 }
 
 interface ITodoManager {
+  todos: Todo[],
+
   loadTodos: () => void,
   saveTodos: () => void,
   deleteTodo: (id: number) => void,
