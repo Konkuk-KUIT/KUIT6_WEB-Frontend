@@ -39,7 +39,7 @@ class TodoManager implements ITodoManager {
     window.localStorage.setItem(TodoElement.LIST, JSON.stringify(this.todos));
   }
 
-  deleteTodo(id: number):void {
+  deleteTodo(id: number): void {
     const index = this.todos.findIndex((t) => t.id === id);
     if (index === -1) return; // 못 찾으면 그대로 둠
     let todo = this.todos[index];
@@ -48,7 +48,7 @@ class TodoManager implements ITodoManager {
     if (!todo.done) {
       this.decreaseIdx(1);  // 완료되지 않은 요소의 마지막 인덱스 감소
       this.printIdx();
-    }  
+    }
 
     this.todos = this.todos.filter((t) => t.id !== id);
 
@@ -56,7 +56,7 @@ class TodoManager implements ITodoManager {
     render();
   }
 
-  toggleDone(id: number):void {
+  toggleDone(id: number): void {
     const index = this.todos.findIndex((t) => t.id === id);
     if (index === -1) return; // 못 찾으면 그대로 둠
 
@@ -81,7 +81,7 @@ class TodoManager implements ITodoManager {
     render();
   }
 
-  updateTodo(id: number, li: HTMLElement):void {
+  updateTodo(id: number, li: HTMLElement): void {
     const todo = this.todos.find((t) => t.id === id);
     if (!todo) return;
 
@@ -128,40 +128,24 @@ class TodoManager implements ITodoManager {
     quitBtn.onclick = render;
   }
 
-  increaseIdx(i: number):void {
+  increaseIdx(i: number): void {
     this.idx += i;
   }
 
-  decreaseIdx(i: number):void {
+  decreaseIdx(i: number): void {
     this.idx -= i;
   }
 
-  printIdx():void {
+  printIdx(): void {
     console.log(this.idx);
   }
 }
 
-const form = document.getElementById(TodoElement.FORM) as HTMLFormElement;
-const input = document.getElementById(TodoElement.INPUT) as HTMLInputElement;
-const list = document.getElementById(TodoElement.LIST) as HTMLUListElement;
+const form = document.getElementById(TodoElement.FORM) as HTMLFormElement | null;
+const input = document.getElementById(TodoElement.INPUT) as HTMLInputElement | null;
+const list = document.getElementById(TodoElement.LIST) as HTMLUListElement | null;
 
-form?.addEventListener("submit", (e: Event) => {
-  e.preventDefault();
-  if (!input) return;
-  const text = input.value.trim();
-  if (text) {
-    const newTodo: Todo = {
-      id: Date.now(),
-      text,
-      done: false,
-    };
-    todoManager.todos.splice(todoManager.idx, 0, newTodo);
-    todoManager.increaseIdx(1);
-    todoManager.saveTodos();
-    render();
-    input.value = "";
-  }
-});
+const todoManager = new TodoManager();
 
 function render() {
   if (!list) return;
@@ -195,7 +179,28 @@ function render() {
     list.appendChild(li);
   });
 }
-const todoManager = new TodoManager();
 
-todoManager.loadTodos();
-render();
+if (!form || !input || !list) { console.error("html 요소 없음") }
+else
+{
+  form.addEventListener("submit", (e: Event) => {
+    e.preventDefault();
+    if (!input) return;
+    const text = input.value.trim();
+    if (text) {
+      const newTodo: Todo = {
+        id: Date.now(),
+        text,
+        done: false,
+      };
+      todoManager.todos.splice(todoManager.idx, 0, newTodo);
+      todoManager.increaseIdx(1);
+      todoManager.saveTodos();
+      render();
+      input.value = "";
+    }
+  });
+
+  todoManager.loadTodos();
+  render();
+}
