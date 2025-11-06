@@ -23,19 +23,19 @@ interface ITodoManager {
 
 class TodoManager implements ITodoManager {
   todos: Todo[] = [];
-  idx = 0;
+  finishedTodoIdx = 0;  // idx: 변수명이 의미를 잘 담지 못함
 
   loadTodos(): void {
     let lst = window.localStorage.getItem(TodoElement.LIST);
     let lastIdx = window.localStorage.getItem(TodoElement.INDEX);
 
     if (lst) this.todos = JSON.parse(lst);
-    this.idx = lastIdx ? parseInt(lastIdx) : 0;
+    this.finishedTodoIdx = lastIdx ? parseInt(lastIdx) : 0;
   }
 
   saveTodos(): void {
-    if (this.idx < 0) this.idx = 0;
-    window.localStorage.setItem(TodoElement.INDEX, this.idx.toString());
+    if (this.finishedTodoIdx < 0) this.finishedTodoIdx = 0;
+    window.localStorage.setItem(TodoElement.INDEX, this.finishedTodoIdx.toString());
     window.localStorage.setItem(TodoElement.LIST, JSON.stringify(this.todos));
   }
 
@@ -73,7 +73,7 @@ class TodoManager implements ITodoManager {
       this.printIdx();
     } else {
       this.todos.splice(index, 1);
-      this.todos.splice(this.idx, 0, todo);
+      this.todos.splice(this.finishedTodoIdx, 0, todo);
       this.increaseIdx(1);
       this.printIdx();
     }
@@ -129,15 +129,15 @@ class TodoManager implements ITodoManager {
   }
 
   increaseIdx(i: number): void {
-    this.idx += i;
+    this.finishedTodoIdx += i;
   }
 
   decreaseIdx(i: number): void {
-    this.idx -= i;
+    this.finishedTodoIdx -= i;
   }
 
   printIdx(): void {
-    console.log(this.idx);
+    console.log(this.finishedTodoIdx);
   }
 }
 
@@ -193,7 +193,7 @@ else
         text,
         done: false,
       };
-      todoManager.todos.splice(todoManager.idx, 0, newTodo);
+      todoManager.todos.splice(todoManager.finishedTodoIdx, 0, newTodo);
       todoManager.increaseIdx(1);
       todoManager.saveTodos();
       render();
