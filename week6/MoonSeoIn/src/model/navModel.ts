@@ -1,4 +1,6 @@
-export const navModel = [
+import type { NavItem } from "../types.ts";
+
+export const navModel: NavItem[] = [
   { name: "홈", img: "./home.svg" },
   { name: "동네생활", img: "./news.svg" },
   { name: "내 근처", img: "./map.svg" },

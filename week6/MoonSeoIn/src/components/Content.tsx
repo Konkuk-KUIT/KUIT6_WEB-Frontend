@@ -1,4 +1,10 @@
-const Content = ({ items }) => {
+import type { MarketItem } from "../types.ts";
+
+interface ContentProps {
+  items: MarketItem[];
+}
+
+const Content = ({ items }: ContentProps) => {
   return (
     <div className="container">
       {items.map((item, index) => {

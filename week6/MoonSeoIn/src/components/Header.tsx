@@ -1,4 +1,8 @@
-const Header = ({ location }) => {
+interface HeaderProps {
+  location: string;
+}
+
+const Header = ({ location }: HeaderProps) => {
   return (
     <div className="header">
       <div className="header-title">

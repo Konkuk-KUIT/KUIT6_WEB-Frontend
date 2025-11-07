@@ -1,4 +1,6 @@
-const marketModel = {
+import type { MarketModel } from "../types.ts";
+
+const marketModel: MarketModel = {
   location: "군자동",
   items: [
     {

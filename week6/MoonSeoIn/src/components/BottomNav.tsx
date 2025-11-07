@@ -1,4 +1,10 @@
-const BottomNav = ({ navItems }) => {
+import type { NavItem } from "../types.ts";
+
+interface BottomNavProps {
+  navItems: NavItem[];
+}
+
+const BottomNav = ({ navItems }: BottomNavProps) => {
   return (
     <nav>
       <ul className="bottom-nav">
