@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import SearchBar from './SearchBar';
 import ProductTable from './ProductTable';
+import type { Product } from '../types';
 
-const INITIAL_PRODUCT_LIST = [
+const INITIAL_PRODUCT_LIST: Product[] = [
     { category: 'Fruits', price: '$1', stocked: true, name: 'Apple' },
     { category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit' },
     { category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit' },
@@ -12,28 +13,34 @@ const INITIAL_PRODUCT_LIST = [
 ];
 
 export function FilterableProductTable() {
-    const [products, setProducts] = useState(INITIAL_PRODUCT_LIST);
-    const [filterText, setFilterText] = useState('');
-    const [inStockOnly, setInStockOnly] = useState(false);
+    const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCT_LIST);
+    const [filterText, setFilterText] = useState<string>('');
+    const [inStockOnly, setInStockOnly] = useState<boolean>(false);
 
-    const filteredProducts = products.filter((product) => {
-        const lowerCaseProductName = product.name.toLowerCase();
-        const lowerCaseFilterText = filterText.toLowerCase();
-        const hasPassedTextFilter = filterText === '' || lowerCaseProductName.includes(lowerCaseFilterText);
+    const filteredProducts = useMemo<Product[]>(() => {
+        return products.filter((product) => {
+            const lowerCaseProductName = product.name.toLowerCase();
+            const lowerCaseFilterText = filterText.toLowerCase();
+            const hasPassedTextFilter = filterText === '' || lowerCaseProductName.includes(lowerCaseFilterText);
 
-        const hasPassedStockFilter = !inStockOnly || product.stocked === true;
-        return hasPassedTextFilter && hasPassedStockFilter;
-    });
+            const hasPassedStockFilter = !inStockOnly || product.stocked === true;
+            return hasPassedTextFilter && hasPassedStockFilter;
+        });
+    }, [products, filterText, inStockOnly]);
 
-    const handleEditProduct = (productName, updatedProduct) => {
-        setProducts(products.map((product) =>
-            product.name === productName ? { ...product, ...updatedProduct } : product
-        ));
-    };
+    const handleEditProduct = useCallback((originalProduct: Product, updatedProduct: Partial<Product>): void => {
+        setProducts((prevProducts) =>
+            prevProducts.map((product) =>
+                product.name === originalProduct.name ? { ...product, ...updatedProduct } : product
+            )
+        );
+    }, []);
 
-    const handleDeleteProduct = (productName) => {
-        setProducts(products.filter((product) => product.name !== productName));
-    };
+    const handleDeleteProduct = useCallback((productToDelete: Product): void => {
+        setProducts((prevProducts) =>
+            prevProducts.filter((product) => product.name !== productToDelete.name)
+        );
+    }, []);
 
     return (
         <>

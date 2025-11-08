@@ -1,8 +1,9 @@
 import React from "react";
 import ProductCategoryRow from "./ProductCategoryRow";
 import ProductRow from "./ProductRow";
+import ProductTableProps from "./ProductTable.props";
 
-export default function ProductTable({ products, onEditProduct, onDeleteProduct }) {
+export default function ProductTable({ products, onEditProduct, onDeleteProduct }: ProductTableProps) {
   const productTableByCategory = Object.groupBy(
     products,
     ({ category }) => category

@@ -1,23 +1,39 @@
-import React, { useId } from 'react';
+import { useId, useCallback, type ChangeEvent } from 'react';
+import type { SearchBarProps } from '../types';
 
-export default function SearchBar({ onFilterTextChange, onInStockOnlyChange }) {
+export default function SearchBar({
+    filterText,
+    onFilterTextChange,
+    inStockOnly,
+    onInStockOnlyChange
+}: SearchBarProps) {
     const stockCheckboxId = useId();
 
-    const handleFilterTextChange = (event) => {
+    const handleFilterTextChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         onFilterTextChange(event.target.value);
-    };
+    }, [onFilterTextChange]);
 
-    const handleInStockOnlyChange = (event) => {
+    const handleInStockOnlyChange = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         onInStockOnlyChange(event.target.checked);
-    };
+    }, [onInStockOnlyChange]);
 
     return (
         <form>
-            <input type="text" placeholder="Search..." onChange={handleFilterTextChange} />
+            <input
+                type="text"
+                placeholder="Search..."
+                value={filterText}
+                onChange={handleFilterTextChange}
+            />
             <br />
-            <label for={stockCheckboxId}>
-                <input type="checkbox" id={stockCheckboxId} onChange={handleInStockOnlyChange} /> Only show products in
-                stock
+            <label htmlFor={stockCheckboxId}>
+                <input
+                    type="checkbox"
+                    id={stockCheckboxId}
+                    checked={inStockOnly}
+                    onChange={handleInStockOnlyChange}
+                />{' '}
+                Only show products in stock
             </label>
         </form>
     );

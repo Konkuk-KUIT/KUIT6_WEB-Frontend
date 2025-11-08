@@ -1,13 +1,17 @@
-import React from 'react';
+import { Fragment, useMemo } from 'react';
 import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
+import type { ProductTableProps, Product } from '../types';
 
-export default function ProductTable({ products, onEditProduct, onDeleteProduct }) {
-    const productTableByCategory = Object.groupBy(products, ({ category }) => category);
-    // 콜백 함수의 반환 값을 키로 하고, value는 product가 담긴 배열
-    // category를 기준으로 분류
-    const productsByCategory = Object.entries(productTableByCategory);
-    // 카테고리 - 프로덕트 배열로 매핑된 오브젝트를 [ 카테고리, 프로덕트 배열 ]로 변환
+export default function ProductTable({
+    products,
+    onEditProduct,
+    onDeleteProduct
+}: ProductTableProps) {
+    const productsByCategory = useMemo<[string, Product[]][]>(() => {
+        const grouped = Object.groupBy(products, ({ category }) => category);
+        return Object.entries(grouped) as [string, Product[]][];
+    }, [products]);
 
     return (
         <table>
@@ -19,8 +23,8 @@ export default function ProductTable({ products, onEditProduct, onDeleteProduct 
                 </tr>
             </thead>
             <tbody>
-                {productsByCategory.map(([category, products]) => (
-                    <React.Fragment key={category}>
+                {productsByCategory.map(([category]) => (
+                    <Fragment key={category}>
                         <ProductCategoryRow category={category} />
                         {products.map((product) => (
                             <ProductRow
@@ -30,7 +34,7 @@ export default function ProductTable({ products, onEditProduct, onDeleteProduct 
                                 onDeleteProduct={onDeleteProduct}
                             />
                         ))}
-                    </React.Fragment>
+                    </Fragment>
                 ))}
             </tbody>
         </table>

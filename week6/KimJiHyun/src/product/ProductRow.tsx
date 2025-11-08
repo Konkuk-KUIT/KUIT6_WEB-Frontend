@@ -1,23 +1,42 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import type { ProductRowProps, Product } from '../types';
 
-export default function ProductRow({ name, price, onEditProduct, onDeleteProduct }) {
-    const [isEditing, setIsEditing] = useState(false);
-    const [editName, setEditName] = useState(name);
-    const [editPrice, setEditPrice] = useState(price);
+export default function ProductRow({
+    category,
+    price,
+    stocked,
+    name,
+    onEditProduct,
+    onDeleteProduct,
+}: ProductRowProps) {
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [editName, setEditName] = useState<string>(name);
+    const [editPrice, setEditPrice] = useState<string>(price);
 
-    const handleSave = () => {
-        onEditProduct(name, {
+    const currentProduct: Product = {
+        category,
+        price,
+        stocked,
+        name,
+    };
+
+    const handleSave = useCallback((): void => {
+        onEditProduct(currentProduct, {
             name: editName,
             price: editPrice,
         });
         setIsEditing(false);
-    };
+    }, [currentProduct, editName, editPrice, onEditProduct]);
 
-    const handleCancel = () => {
+    const handleCancel = useCallback((): void => {
         setEditName(name);
         setEditPrice(price);
         setIsEditing(false);
-    };
+    }, [name, price]);
+
+    const handleDeleteClick = useCallback((): void => {
+        onDeleteProduct(currentProduct);
+    }, [currentProduct, onDeleteProduct]);
 
     if (isEditing) {
         return (
@@ -42,7 +61,7 @@ export default function ProductRow({ name, price, onEditProduct, onDeleteProduct
             <td>{price}</td>
             <td>
                 <button onClick={() => setIsEditing(true)}>✏️</button>
-                <button onClick={() => onDeleteProduct(name)}>🗑️</button>
+                <button onClick={handleDeleteClick}>🗑️</button>
             </td>
         </tr>
     );
