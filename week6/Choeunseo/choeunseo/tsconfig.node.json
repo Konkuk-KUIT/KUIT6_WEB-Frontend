@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    // 빌드/타입 체크 공통
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],          // ← DOM 타입 추가 (document 등)
+    "jsx": "react-jsx",                                 // ← React TSX 인식
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+
+    // JS 모듈 import 허용 + ESM/CJS 섞임 완화
+    "allowJs": true,                                    // ← JS 파일 import 허용
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Vite/환경 타입
+    "types": ["node", "vite/client"],                   // ← Vite 클라이언트 타입
+
+    // 기타(원래 있던 옵션과 양립)
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+
+    // 선택(프로젝트 취향)
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src",                 // ← 실제 앱 소스 포함
+    "vite.config.ts",
+    "env.d.ts"             // 있을 경우
+  ]
+}
