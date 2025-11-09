@@ -1,4 +1,7 @@
-export function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) {
+import type { SearchBarProps } from "./types";
+
+export function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange } : SearchBarProps)
+{
     return (
         <form className="search-bar">
             <input

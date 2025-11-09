@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { SearchBar } from './SearchBar'
 import { ProductTable } from './ProductTable'
+import type { Price, Product } from './types';
 
-const ORIGINAL_PRODUCTS = [
+const ORIGINAL_PRODUCTS: Product[] = [
     { id: 1, category: "Fruits", price: "$1", stocked: true, name: "Apple" },
     { id: 2, category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
     { id: 3, category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
@@ -24,7 +25,7 @@ export function FilterableProductTable() {
 
     const lowerFilterText = filterText.toLowerCase()
     const result = productsByCategory.map(
-        ([category, items]) => [category, items.filter((item) => {
+        ([category, items]) : [string, Product[]] => [category, items.filter((item) => {
             const lowerProductText = item.name.toLowerCase()
             const matchesName = lowerProductText.includes(lowerFilterText)
             const matchesStock = item.stocked || !inStockOnly
@@ -32,7 +33,7 @@ export function FilterableProductTable() {
         })]
     )
 
-    function onEditProduct(id, fields) {
+    function onEditProduct(id: number, fields: { name: string, price: Price }) {
         setProducts((prevProducts) =>
             prevProducts.map((item) =>
                 item.id === id ? { ...item, name: fields.name, price: fields.price } : item
@@ -40,7 +41,7 @@ export function FilterableProductTable() {
         )
     }
 
-    function onDeleteProduct(id) {
+    function onDeleteProduct(id: number) {
         setProducts((prevProducts) =>
             prevProducts.filter((item) =>
                 item.id != id
