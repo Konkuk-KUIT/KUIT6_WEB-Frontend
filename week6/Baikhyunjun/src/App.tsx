@@ -1,11 +1,8 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
-
-type Todo = {
-  id: number
-  text: string
-  done: boolean
-}
+import { TodoForm } from './components/TodoForm'
+import { TodoList } from './components/TodoList'
+import { type Todo } from './types/todo'
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -105,49 +102,23 @@ function App() {
   return (
     <div className="container">
       <h1>Todo List</h1>
-      <form id="todo-form" onSubmit={handleSubmit}>
-        <input
-          id="todo-input"
-          type="text"
-          placeholder="할 일을 입력하세요"
-          required
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
-        />
-        <button type="submit">추가</button>
-      </form>
-      <ul id="todo-list">
-        {todos.map((todo) => {
-          const isEditing = editingId === todo.id
-          return (
-            <li key={todo.id} className={todo.done ? 'done' : undefined}>
-              {isEditing ? (
-                <input
-                  ref={editInputRef}
-                  type="text"
-                  value={editingValue}
-                  onChange={(event) => setEditingValue(event.target.value)}
-                  onKeyDown={handleEditingKeyDown}
-                  onBlur={commitEditing}
-                />
-              ) : (
-                <span onClick={() => handleToggle(todo.id)}>{todo.text}</span>
-              )}
-              <div className="button-container">
-                <button type="button" onClick={() => handleDelete(todo.id)}>
-                  삭제
-                </button>
-                <button
-                  type="button"
-                  onClick={() => (isEditing ? commitEditing() : startEditing(todo))}
-                >
-                  {isEditing ? '저장' : '수정'}
-                </button>
-              </div>
-            </li>
-          )
-        })}
-      </ul>
+      <TodoForm
+        inputValue={inputValue}
+        onInputChange={(value) => setInputValue(value)}
+        onSubmit={handleSubmit}
+      />
+      <TodoList
+        todos={todos}
+        editingId={editingId}
+        editingValue={editingValue}
+        editInputRef={editInputRef}
+        onToggle={handleToggle}
+        onDelete={handleDelete}
+        onStartEditing={startEditing}
+        onEditingValueChange={(value) => setEditingValue(value)}
+        onCommitEditing={commitEditing}
+        onEditingKeyDown={handleEditingKeyDown}
+      />
     </div>
   )
 }
