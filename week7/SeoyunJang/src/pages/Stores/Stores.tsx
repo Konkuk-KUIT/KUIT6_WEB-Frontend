@@ -1,8 +1,8 @@
-import Header from "../../components/Header/Header";
-import FoodItem from "../../components/Items/FoodItem";
+import Header from "../../shared/Header";
+import FoodItem from "../Store/components/FoodItem";
 import { FOOD_ITEMS } from "../../modules/stores";
-import OrderBar from "../../components/OrderBar/OrderBar";
-import Description from "../../components/Items/StoresDescription";
+import OrderBar from "../../shared/OrderBar";
+import Description from "./components/StoresDescription";
 
 const Stores = () => {
   return (

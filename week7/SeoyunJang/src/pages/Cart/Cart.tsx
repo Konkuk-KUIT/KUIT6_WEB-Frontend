@@ -1,8 +1,8 @@
-import CartHeader from "../../components/Header/CartHeader";
-import CartItem from "../../components/Items/CartItem";
-import CartDescription from "../../components/Items/CartDescription";
+import CartHeader from "./components/CartHeader";
+import CartItem from "./components/CartItem";
+import CartDescription from "./components/CartDescription";
 import { CART_TAG } from "../../modules/stores";
-import Button from "../../components/Button";
+import Button from "../../shared/Button";
 
 
 const Cart = () => {

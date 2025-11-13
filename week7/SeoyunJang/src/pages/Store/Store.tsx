@@ -1,7 +1,7 @@
-import Header from "../../components/Header/Header";
-import StoreItem from "../../components/Items/StoreItem";
+import Header from "../../shared/Header";
+import StoreItem from "./components/StoreItem";
 import { STORE_ITEMS } from "../../modules/stores";
-import OrderBar from "../../components/OrderBar/OrderBar";
+import OrderBar from "../../shared/OrderBar";
 
 const Store = () => {
   return (

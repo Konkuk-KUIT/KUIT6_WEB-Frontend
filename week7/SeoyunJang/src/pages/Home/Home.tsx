@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import FoodCard from "../../components/Items/FoodCard";
+import FoodCard from "./components/FoodCard";
 import { HOME_MENUS } from "../../modules/stores";
-import OrderBar from "../../components/OrderBar/OrderBar";
-import Header from "../../components/Header/Header";
+import OrderBar from "../../shared/OrderBar";
+import Header from "../../shared/Header";
 
 const Home = () => {
   return (

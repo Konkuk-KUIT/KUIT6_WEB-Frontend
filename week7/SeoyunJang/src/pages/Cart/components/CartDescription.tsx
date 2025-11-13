@@ -1,5 +1,5 @@
 import React from "react";
-import type { CartTag } from "../../modules/stores"; // 타입만 import
+import type { CartTag } from "../../../modules/stores"; // 타입만 import
 
 interface CartTagProps {
   items: CartTag[];
