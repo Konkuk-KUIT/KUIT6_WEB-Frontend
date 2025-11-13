@@ -6,14 +6,14 @@ export function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInSto
                 placeholder='Search...'
                 value={filterText}
                 onChange={(e) => onFilterTextChange(e.target.value)}
-            ></input>
+            />
             <div>
                 <input
                     type="checkbox"
                     id="checkbox"
-                    value={inStockOnly}
+                    checked={inStockOnly}
                     onChange={(e) => onInStockOnlyChange(e.target.checked)}
-                ></input>
+                />
                 <label htmlFor='checkbox'> Only show products in stock</label>
             </div>
         </form>

@@ -32,10 +32,10 @@ export function FilterableProductTable() {
         })]
     )
 
-    function onEditProduct(id, name, price) {
+    function onEditProduct(id, fields) {
         setProducts((prevProducts) =>
             prevProducts.map((item) =>
-                item.id === id ? { ...item, name: name, price: price } : item
+                item.id === id ? { ...item, name: fields.name, price: fields.price } : item
             )
         )
     }
@@ -57,10 +57,10 @@ export function FilterableProductTable() {
                 onInStockOnlyChange={setInStockOnly}
             />
             <ProductTable
-                filteredProducts={result}
+                products={result}
                 onEditProduct={onEditProduct}
                 onDeleteProduct={onDeleteProduct}
             />
-        </ div>
+        </div>
     )
 }

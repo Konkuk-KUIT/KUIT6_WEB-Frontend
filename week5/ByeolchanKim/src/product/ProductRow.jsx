@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function ProductRowList(products, ...props) {
+export function ProductRowList({ products, ...props }) {
   return products.map((product) => (
     <ProductRow key={product.name} {...product} {...props} />
   ));

@@ -1,14 +1,12 @@
 import React from "react";
 import ProductCategoryRow from "./ProductCategoryRow";
-import ProductRow from "./ProductRow";
+import { ProductRowList } from "./ProductRow";
 
 function getProductsByCategory(products) {
-  const productTableByCategory = Object.groupBy(
+  const productsByCategory = Object.groupBy(
     products,
     ({ category }) => category
   );
-
-  const productsByCategory = Object.entries(productTableByCategory);
 
   return productsByCategory;
 }
@@ -29,11 +27,11 @@ export default function ProductTable({
         </tr>
       </thead>
       <tbody>
-        {productsByCategory.map(([category, products]) => (
+        {Object.entries(productsByCategory).map(([category, products]) => (
           <React.Fragment key={category}>
             <ProductCategoryRow category={category} />
             <ProductRowList
-              {...products}
+              products={products}
               onEdit={onProductEdit}
               onDelete={onProductDelete}
             />
