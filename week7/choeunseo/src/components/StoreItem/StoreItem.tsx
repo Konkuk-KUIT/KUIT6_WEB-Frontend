@@ -28,7 +28,7 @@ const StoreItem = ({
           {name}
         </div>
         <div className="font-['Pretendard'] text-[#6B7684] font-medium text-[13px]">
-          {rate} {reviewCnt}
+          {rate} {"("}{reviewCnt}{")"}
         </div>
         <div className="font-['Pretendard'] text-[#6B7684] font-medium text-[13px]">
           {minDeliveryTime}분~{maxDeliveryTime}분, 배달비 {deliveryFee}원
