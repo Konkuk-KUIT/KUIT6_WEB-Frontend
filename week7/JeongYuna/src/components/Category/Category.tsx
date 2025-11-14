@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const CategoryButton = styled.button`
     width: 108px;
@@ -33,12 +34,15 @@ const CategoryArea = styled.div`
 
 interface CategoryProp {
     name: string,
-    imgPath: string
+    imgPath: string,
+    path: string
 }
 
 const Category = ({ category }: {category: CategoryProp} ) => {
+    const navigate = useNavigate();
+    
     return (
-        <CategoryButton>
+        <CategoryButton onClick={() => navigate("/" + category.path)}>
             <CategoryImg src={category.imgPath}></CategoryImg>
             <CategoryName>{category.name}</CategoryName>
         </CategoryButton>
