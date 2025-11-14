@@ -25,7 +25,8 @@ const Stores = () => {
               </div>
 
               <div className="flex items-center gap-1 mt-1 text-[#6B7684] text-[14px]">
-                <span><img src = "star.svg"></img> {store.rate}</span>
+                <img src="star.svg"></img>
+                {store.rate}
                 <span>
                   ({store.reviewCnt.toLocaleString()})
                 </span>
