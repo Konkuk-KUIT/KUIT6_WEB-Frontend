@@ -1,15 +1,5 @@
 import styled from "styled-components";
-
-const CategoryTitle = styled.h1`
-    margin: 10px 0px;
-    font: Pretendard;
-    font-size: 26px;
-    font-style: bold;
-    font-weight: 700;
-    color: #191F28;
-    overflow: hidden;
-
-`
+import HeadTitle from "../HeadTitle/HeadTitle";
 
 const AddressText = styled.button`
     border: none;
@@ -35,7 +25,7 @@ const DeliveryTextBox = styled.div`
 const DeliveryTitle = ({address}: {address: string}) => {
     return (
         <DeliveryTextBox>
-            <CategoryTitle>오늘은 무엇을 먹을까요?</CategoryTitle>
+            <HeadTitle>오늘은 무엇을 먹을까요?</HeadTitle>
             <AddressText>{address}(으)로 배달 &gt;</AddressText>
         </DeliveryTextBox>
     )
