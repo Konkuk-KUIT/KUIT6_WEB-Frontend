@@ -1,5 +1,13 @@
+import FoodSection from "../../components/FoodSection/FoodSection";
+import OrderBar from "../../components/OrderBar/OrderBar";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <FoodSection />
+      <OrderBar />
+    </>
+  );
 };
 
 export default Home;
