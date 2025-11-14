@@ -1,6 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home/Home";
-import Stores from "./Stores/Stores";
+import Stores, { type Store } from "./Stores/Stores";
+import stores from "../models/stores"
+
+const typedStores = stores.map( (store) =>
+  store as Store
+)
+
+const saladStores = {category: "샐러드", stores: typedStores}
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -10,7 +17,7 @@ const Router = () => {
     },
     {
       path: "/salad",
-      element: <Stores />
+      element: <Stores stores={saladStores}/>
     }
   ]);
 
