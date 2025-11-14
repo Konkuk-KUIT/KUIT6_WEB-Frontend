@@ -6,7 +6,7 @@ interface BarSize {
 }
 
 const Bar = styled.div<BarSize>`
-    height: ${(props) => props.barH}px
+    height: ${(props) => props.barH}px;
     display: flex;
     justify-content: space-between;
     align-items: start;
