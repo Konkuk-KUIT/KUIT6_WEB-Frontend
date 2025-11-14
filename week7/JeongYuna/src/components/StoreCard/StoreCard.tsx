@@ -1,8 +1,11 @@
 import type { IStore } from "../../pages/Stores/Stores"
+import { useNavigate } from "react-router-dom";
 
 const StoreCard = ({store}: {store: IStore}) => {
+    const navigate = useNavigate();
+
     return (
-        <div className="w-full h-[116px] bg-white flex flex-row items-start px-[8px] py-[24px] box-border">
+        <div onClick={() => navigate("/salad/"+store.id)} className="w-full h-[116px] bg-white flex flex-row items-start px-[8px] py-[24px] box-border">
             <img className="mx-[15px] rounded-[8px]" src="https://placehold.co/54x54?text=\n"></img>
             <div className="flex flex-col items-start">
                 <p className="inline-block text-[17px] font-[600] p-[0px] m-[0px] font-pretendard">{store.id <= 3 ? store.id + "위" : ""}</p>
