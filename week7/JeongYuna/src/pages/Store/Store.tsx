@@ -5,7 +5,7 @@ import TopSpace from "../../components/Space/TopSpace";
 import type { StoresProps } from "../Stores/Stores";
 import type { ReactElement } from "react";
 import MenuItem from "../../components/MenuItem/MenuItem";
-import BottomBar from "../../components/BottomBar/BottomBar";
+import OrderBar from "../../components/OrderBar/OrderBar";
 import { Page } from "../Home/Home";
 
 interface Menu {
@@ -41,7 +41,7 @@ const Store = ({stores}: {stores:StoresProps}) => {
   const storeId = Number(id);
   const store = stores.stores.find(s => s.id === storeId);
   return (
-    <Page>
+    <Page bottomH={111}>
       <TopSpace child={<Before />}></TopSpace>
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
@@ -63,7 +63,7 @@ const Store = ({stores}: {stores:StoresProps}) => {
         </ul>
       </div>
 
-      <BottomBar />
+      <OrderBar />
     </Page>
   )
 };

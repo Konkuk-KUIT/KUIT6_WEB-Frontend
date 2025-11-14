@@ -11,7 +11,7 @@ const sizeStyles = {
     fontSize: "15px",
   },
   xl: {
-    padding: "18px 112px 19px 113px",
+    padding: "18px 108px",
     fontSize: "16px",
   },
 } as const;

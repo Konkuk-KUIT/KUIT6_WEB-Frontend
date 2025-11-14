@@ -1,7 +1,7 @@
 import { Categories } from "../../components/Category/Category";
 import DeliveryTitle from "../../components/DeliveryTitle/DeliveryTitle";
 import TopSpace from "../../components/Space/TopSpace";
-import BottomBar from "../../components/BottomBar/BottomBar";
+import OrderBar from "../../components/OrderBar/OrderBar";
 import styled from "styled-components";
 
 const categories = [
@@ -16,20 +16,23 @@ const categories = [
   {name: '파스타', imgPath: '/src/assets/pasta.svg', path: "pasta"},
   {name: '디저트', imgPath: '/src/assets/dessert.svg', path: "dessert"},
   {name: '커피', imgPath: '/src/assets/coffee.svg', path: "coffee"},
-  {name: '더보기', imgPath: '/src/assets/more.svg', path: "more"},
+  {name: '더보기', imgPath: '/src/assets/etc.svg', path: "etc"},
 ];
 
-const Page = styled.div`
-  padding-bottom: 111px;
+interface PageBottom {
+  bottomH: number;
+}
+const Page = styled.div<PageBottom>`
+  padding-bottom: ${(props) => props.bottomH}px;
 `
 
 const Home = () => {
   return (
-    <Page>
+    <Page bottomH={111}>
       <TopSpace child={""}></TopSpace>
       <DeliveryTitle address="한남중앙로 40길 (한남 빌리지)"></DeliveryTitle>
       <Categories categories={categories}></Categories>
-      <BottomBar></BottomBar>
+      <OrderBar></OrderBar>
     </Page>
   );
 };

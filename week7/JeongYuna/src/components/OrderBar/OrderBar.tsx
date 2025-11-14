@@ -1,25 +1,37 @@
+import styled from "styled-components"
 import Button from "../Button";
 
-interface Menu {
-  price: number;
+interface BarSize {
+    barH: number;
 }
 
+const Bar = styled.div<BarSize>`
+    height: ${(props) => props.barH}px
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    border-radius: 16px 16px 0px 0px;
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 0px;
+    box-shadow: 0px -8px 16px rgba(0, 0, 0, 0.15);
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+`
+
 const OrderBar = () => {
-  const menus: Menu[] = [];
-
-  const handleOrder = () => {};
-
-  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
-
-  return (
-    <div>
-      <div>총 주문금액</div>
-      <div>{totalPrice}원</div>
-      <Button onClick={handleOrder} type="button" size="lg">
-        주문하기
-      </Button>
-    </div>
-  );
-};
+    return (
+        <Bar barH={111}>
+            <div>
+                <span style={{color:"#6B7684"}}>총 주문금액</span>
+                <br/>
+                <span style={{color:"#4E5968"}}>12,100원</span>
+            </div>
+            <Button children="주문하기" size="lg" disabled={false}></Button>
+        </Bar>
+    )
+}
 
 export default OrderBar;
+export { Bar }
