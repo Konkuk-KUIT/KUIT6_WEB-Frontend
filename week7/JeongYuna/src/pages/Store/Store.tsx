@@ -40,6 +40,7 @@ const Store = ({stores}: {stores:StoresProps}) => {
   const { id } = useParams();
   const storeId = Number(id);
   const store = stores.stores.find(s => s.id === storeId);
+
   return (
     <Page bottomH={111}>
       <TopSpace child={<Before />}></TopSpace>

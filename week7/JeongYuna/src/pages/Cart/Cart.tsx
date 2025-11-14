@@ -3,6 +3,7 @@ import PayBar from "../../components/PayBar/PayBar";
 import BorderSpace from "../../components/Space/BorderSpace";
 import TopSpace from "../../components/Space/TopSpace";
 import { Page } from "../Home/Home";
+import type { Menu } from "../Store/Store";
 
 const QuitOrderButton = () => {
   return (
@@ -35,14 +36,20 @@ const OrderInfo = ({k, kStyle, value, vStyle}: OrderInfoProps) => {
   )
 }// {store}:{store:IStore}
 
-const OrderItem = () => {
+interface OrderMenu {
+  menu: Menu;
+  options: String;
+  additionalFee: number;
+}
+
+const OrderItem = ({menu, options, additionalFee}:OrderMenu) => {
   return (
     <div className="flex flex-row items-center gap-[1rem] p-[1rem]">
       <img src="https://placehold.co/54x54?text=\n" className="rounded-[8px] m-[0.2rem]"/>
       <div className="flex flex-row justify-start items-start m-[0px] flex-1 text-left">
-        <div className="flex flex-col gap-[0.5rem]"><h3 className="text-[17px] text-[#333D48] font-[600] font-pretendard p-[0px] m-[0px]">토마토 샐러드</h3>
-          <p className="text-[13px] text-[#6B7684] font-[500] font-pretendard p-[0px] m-[0px]">추천소스, 채소볼, 베이컨추가, 시저드레싱 추가</p>
-          <span className="text-[13px] text-[#6B7684] font-[500] font-pretendard p-[0px] m-[0px]">10,600원</span>
+        <div className="flex flex-col gap-[0.5rem]"><h3 className="text-[17px] text-[#333D48] font-[600] font-pretendard p-[0px] m-[0px]">{menu.name}</h3>
+          <p className="text-[13px] text-[#6B7684] font-[500] font-pretendard p-[0px] m-[0px]">{options}</p>
+          <span className="text-[13px] text-[#6B7684] font-[500] font-pretendard p-[0px] m-[0px]">{menu.price + additionalFee}원</span>
         </div>
       </div>
       <button className="appearance-none bg-transparent border-none p-0 m-0 outline-none focus:outline-none active:outline-none cursor-pointer flex items-center gap-1">
@@ -54,6 +61,14 @@ const OrderItem = () => {
 }
 
 const Cart = () => {
+  const menu = {
+    id: 1,
+    name: "토마토 샐러드",
+    isBest: true,
+    price: 7600,
+    ingredients: "계란, 옥수수, 양파, 올리브, 베이컨, 시저드레싱",
+  }
+
   return (
     <Page bottomH={129}>
       <TopSpace child={<QuitOrderButton />} />
@@ -63,7 +78,7 @@ const Cart = () => {
           <h3 className="text-[17px] text-[#6B7684] font-[700] font-pretendard">샐로리 한남점</h3>
           <span className="text-[15px] text-[#F04452] font-[500] font-pretendard flex flex-row items-center gap-[0.3rem]">최소금액 미달<img src="/src/assets/warning.svg" /></span>
         </div>
-        <OrderItem />
+        <OrderItem menu={menu} options={"추천소스, 채소볼, 베이컨추가, 시저드드레싱 추가"} additionalFee={3000}/>
         <div className="border-b-1 border-b-[#E5E8EB]"></div>
         <button className="bg-transparent border-none p-0 m-0
                 focus:outline-none active:outline-none 
