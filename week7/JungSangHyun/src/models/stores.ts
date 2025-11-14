@@ -1,3 +1,4 @@
+// /store 리스트
 const stores = [
   {
     id: 1,

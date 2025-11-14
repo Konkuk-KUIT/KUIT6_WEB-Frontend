@@ -1,5 +1,6 @@
 import Button from "../Button";
 
+// /store/:storeId 페이지의 컴포넌트
 interface Menu {
   name: string;
   price: number | string;
