@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Before from "../../components/Before/Before";
+import Previous from "../../components/Previous/Previous";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
 import TopSpace from "../../components/Space/TopSpace";
 import type { StoresProps } from "../Stores/Stores";
@@ -43,7 +43,7 @@ const Store = ({stores}: {stores:StoresProps}) => {
 
   return (
     <Page bottomH={111}>
-      <TopSpace child={<Before />}></TopSpace>
+      <TopSpace child={<Previous prevPage="/" />}></TopSpace>
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
         <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">{store?.name}</HeadTitle>

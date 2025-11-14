@@ -3,7 +3,7 @@ import TopSpace from "../../components/Space/TopSpace";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import type { Menu } from "../Store/Store";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
-import Before from "../../components/Before/Before";
+import Previous from "../../components/Previous/Previous";
 import { Page } from "../Home/Home";
 
 interface IStore {
@@ -26,7 +26,7 @@ interface StoresProps {
 const Stores = ( {stores}: {stores: StoresProps} ) => {
   return (
     <Page bottomH={111}>
-      <TopSpace child={<Before />}></TopSpace>
+      <TopSpace child={<Previous prevPage="/"/>}></TopSpace>
       <HeadTitle className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{stores.category}</HeadTitle>
         {stores.stores.map( (store) =>
           <StoreCard store={store}></StoreCard>
