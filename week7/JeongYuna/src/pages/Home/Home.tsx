@@ -1,8 +1,8 @@
-import Category, { Categories } from "../../components/Category/Category";
+import { Categories } from "../../components/Category/Category";
 import DeliveryTitle from "../../components/DeliveryTitle/DeliveryTitle";
 import TopSpace from "../../components/Space/TopSpace";
 import BottomBar from "../../components/BottomBar/BottomBar";
-import path from "path";
+import styled from "styled-components";
 
 const categories = [
   {name: '피자', imgPath: '/src/assets/pizza.svg', path: "pizza"},
@@ -19,15 +19,20 @@ const categories = [
   {name: '더보기', imgPath: '/src/assets/more.svg', path: "more"},
 ];
 
+const Page = styled.div`
+  padding-bottom: 111px;
+`
+
 const Home = () => {
   return (
-    <>
+    <Page>
       <TopSpace child={""}></TopSpace>
       <DeliveryTitle address="한남중앙로 40길 (한남 빌리지)"></DeliveryTitle>
       <Categories categories={categories}></Categories>
       <BottomBar></BottomBar>
-    </>
+    </Page>
   );
 };
 
 export default Home;
+export {Page};

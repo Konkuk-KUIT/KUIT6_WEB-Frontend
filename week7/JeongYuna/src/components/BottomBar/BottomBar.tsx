@@ -18,6 +18,7 @@ const Bar = styled.div`
 
 const BottomBar = () => {
     return (
+        <>
         <Bar>
             <div>
                 <span style={{color:"#6B7684"}}>총 주문금액</span>
@@ -26,6 +27,7 @@ const BottomBar = () => {
             </div>
             <Button children="주문하기" size="lg" disabled={false}></Button>
         </Bar>
+        </>
     )
 }
 

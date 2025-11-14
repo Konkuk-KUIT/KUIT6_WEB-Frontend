@@ -1,6 +1,6 @@
-import type { Store } from "../../pages/Stores/Stores"
+import type { IStore } from "../../pages/Stores/Stores"
 
-const StoreCard = ({store}: {store: Store}) => {
+const StoreCard = ({store}: {store: IStore}) => {
     return (
         <div className="w-full h-[116px] bg-white flex flex-row items-start px-[8px] py-[24px] box-border">
             <img className="mx-[15px] rounded-[8px]" src="https://placehold.co/54x54?text=\n"></img>

@@ -3,8 +3,10 @@ import TopSpace from "../../components/Space/TopSpace";
 import BottomBar from "../../components/BottomBar/BottomBar";
 import type { Menu } from "../Store/Store";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
+import Before from "../../components/Before/Before";
+import { Page } from "../Home/Home";
 
-interface Store {
+interface IStore {
   id: number,
   name: String,
   rate: number,
@@ -18,22 +20,24 @@ interface Store {
 
 interface StoresProps {
   category: string,
-  stores: Store[],
+  stores: IStore[],
 }
 
 const Stores = ( {stores}: {stores: StoresProps} ) => {
   return (
-    <>
-      <TopSpace child={<img src="/src/assets/before.svg" style={{margin: " 0 0 0 10px"}}/>}></TopSpace>
-      <HeadTitle  className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{stores.category}</HeadTitle>
+    <Page>
+      <TopSpace child={<Before />}></TopSpace>
+      <HeadTitle className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{stores.category}</HeadTitle>
         {stores.stores.map( (store) =>
           <StoreCard store={store}></StoreCard>
         )}
       <BottomBar />
-    </>
+    </Page>
   )
 };
 
 export default Stores;
 
-export type {Store};
+export type {IStore};
+
+export type {StoresProps}
