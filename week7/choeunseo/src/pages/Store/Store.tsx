@@ -1,6 +1,6 @@
 import OrderBar from "../../components/OrderBar/OrderBar";
 import StoreItem from "../../components/StoreItem/StoreItem";
-import { stores } from "../../models/stores";
+import { stores } from "../../models/stores.ts";
 import left_chevron from "../../assets/left_chevron.svg";
 import { useNavigate } from "react-router-dom";
 

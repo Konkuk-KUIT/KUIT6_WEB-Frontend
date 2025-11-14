@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import left_chevron from "../../assets/left_chevron.svg";
-import { stores } from "../../models/stores";
+import { stores } from "../../models/stores.ts";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import MenuItem from "../../components/MenuItem/MenuItem";
+
 
 const Stores = () => {
   const params = useParams();
@@ -26,7 +27,10 @@ const Stores = () => {
                 <div className="font-['Pretendard'] mt-[26px] ml-[24px] color-[#191F28] text-[26px] font-bold">
                   {item.name}
                 </div>
-                <div className="flex gap-[9px] pt-[6px] pb-3 pl-[46px]">
+                <div className="flex gap-[9px] pt-[6px] pb-3 pl-[46px] flex items-center">
+                  <div className="font-['Pretendard']">
+                    <img src="../star.svg" alt="별점" />
+                  </div>
                   <div className="font-['Pretendard'] text-[17px] font-semibold">
                     {item.rate}
                   </div>
@@ -34,7 +38,7 @@ const Stores = () => {
                     리뷰{item.reviewCnt}
                   </div>
                 </div>
-                <div className="border-b-1 border-[#E5E8EB]">
+                <div className="border-b-1 border-[#E5E8EB] ">
                   <div className="font-['Pretendard'] pt-[10px] pl-6 text-[15px] font-medium">
                     결제방법 토스결제만 현장결제 안됨
                   </div>

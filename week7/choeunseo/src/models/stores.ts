@@ -1,15 +1,29 @@
-import pizza from "../assets/pizza.svg";
+import pizza from "../assets/foods/pizza.svg";
+import salad from "../assets/foods/salad.svg";
+import hamburger from "../assets/foods/burger.svg";
+import koreanFood from "../assets/foods/koreanFood.svg";
+import ramen from "../assets/foods/ramen.svg";
+import chicken from "../assets/foods/chicken.svg";
+import sushi from "../assets/foods/sushi.svg";
+import sandwich from "../assets/foods/sandwich.svg";
+import pasta from "../assets/foods/pasta.svg";
+import desert from "../assets/foods/desert.svg";
+import coffee from "../assets/foods/coffee.svg";
+import others from "../assets/foods/other.svg";
 
 export const foodCategories = [
-  { name: "피자1", image: pizza },
-  { name: "피자2", image: pizza },
-  { name: "피자3", image: pizza },
-  { name: "피자4", image: pizza },
-  { name: "피자5", image: pizza },
-  { name: "피자6", image: pizza },
-  { name: "피자7", image: pizza },
-  { name: "피자8", image: pizza },
-  { name: "피자9", image: pizza },
+  { name: "피자", image: pizza },
+  { name: "샐러드", image: salad },
+  { name: "햄버거", image: hamburger },
+  { name: "한식", image: koreanFood },
+  { name: "분식", image: ramen },
+  { name: "치킨", image: chicken },
+  { name: "초밥", image: sushi },
+  { name: "샌드위치", image: sandwich },
+  { name: "파스타", image: pasta },
+  { name: "디저트", image: desert },
+  { name: "커피", image: coffee },
+  { name: "더보기", image: others },
 ];
 
 export const stores = [
@@ -50,6 +64,20 @@ export const stores = [
         isBest: false,
         price: 7600,
         ingredients: "치킨, 고구마, 견과류, 크래배리, 오리엔탈",
+      },
+      {
+        id: 5,
+        name: "연어 샐러드",
+        isBest: false,
+        price: 9800,
+        ingredients: "훈제연어 슬라이스, 양상추, 베이비채소, 양파, 케이퍼",
+      },
+      {
+        id: 6,
+        name: "우삼겹 메밀면 샐러드",
+        isBest: false,
+        price: 8900,
+        ingredients: "우삼겹, 메밀면, 오이, 양상추, 호두, 옥수수, 참깨 드레싱",
       },
     ],
   },
