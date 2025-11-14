@@ -5,13 +5,11 @@ const Stores = () => {
   return (
     <div className="w-[390px] h-[844px] mx-auto flex flex-col bg-white">
       
-      {/* 상단 헤더 */}
       <div className="px-5 pt-10 pb-4">
         <button className="text-[24px] cursor-pointer hover:bg-gray-100">‹</button>
         <h2 className="text-[32px] font-bold mt-4">샐러드</h2>
       </div>
 
-      {/* 스크롤 리스트 */}
       <section className="flex-1 overflow-y-auto px-5 pb-5">
         {stores.map((store, index) => (
           <div key={store.id} className="flex gap-4 py-4 border-b border-gray-100 hover:bg-gray-100 cursor-pointer">
@@ -27,7 +25,7 @@ const Stores = () => {
               </div>
 
               <div className="flex items-center gap-1 mt-1 text-[#6B7684] text-[14px]">
-                <span>★ {store.rate}</span>
+                <span><img src = "star.svg"></img> {store.rate}</span>
                 <span>
                   ({store.reviewCnt.toLocaleString()})
                 </span>
