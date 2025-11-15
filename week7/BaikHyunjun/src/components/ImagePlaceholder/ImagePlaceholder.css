@@ -1,0 +1,13 @@
+.image-placeholder {
+  background: #e0e0e0;
+  flex-shrink: 0;
+}
+
+.image-placeholder.square {
+  border-radius: 8px;
+}
+
+.image-placeholder.circle {
+  border-radius: 50%;
+}
+

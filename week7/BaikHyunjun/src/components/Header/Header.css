@@ -1,0 +1,23 @@
+.header-container {
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+

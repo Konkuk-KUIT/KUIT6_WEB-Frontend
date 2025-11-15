@@ -1,0 +1,92 @@
+.stores-container {
+  max-width: 428px;
+  margin: 0 auto;
+  background: white;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.stores-title-section {
+  padding: 16px 20px;
+}
+
+.stores-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+}
+
+.stores-list {
+  padding: 0;
+}
+
+.store-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 16px;
+}
+
+.store-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.store-rank {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.store-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+  text-align: left;
+}
+
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.star {
+  color: #ffc107;
+  font-size: 14px;
+}
+
+.rate {
+  font-weight: 600;
+  color: #000;
+}
+
+.review-count {
+  color: #666;
+}
+
+.store-delivery {
+  font-size: 13px;
+  color: #666;
+}
+
+.order-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 428px;
+  z-index: 100;
+}
+
