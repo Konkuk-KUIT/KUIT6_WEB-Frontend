@@ -1,65 +1,116 @@
 import styled from "styled-components";
 import HeaderBar from "../../components/HeaderBar";
-import warningIcon from "../../assets/warning.svg"; 
+import warningIcon from "../../assets/warning.svg";
 import arrowIcon from "../../assets/rightarrow.svg";
+import { useNavigate } from "react-router-dom";
+import useCartStore from "../../Pages/Store/useCartStore";
 
 const Cart = () => {
-  const orderAmount = 10600;
+  const navigate = useNavigate();
+
+  const menus = useCartStore((state) => state.menus);
+  const store = useCartStore((state) => state.store);
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  // 장바구니 비었을 때
+  if (!store || menus.length === 0) {
+    return (
+      <EmptyContainer>
+        <HeaderBar onBack={() => navigate("/store")} />
+        <EmptyText>장바구니가 비어있습니다.</EmptyText>
+      </EmptyContainer>
+    );
+  }
+
+  const groupedMenus = menus.reduce((acc: any[], cur) => {
+    const existing = acc.find((item) => item.id === cur.id);
+    if (existing) {
+      existing.count++;
+    } else {
+      acc.push({ ...cur, count: 1 });
+    }
+    return acc;
+  }, []);
+
+  const orderAmount = groupedMenus.reduce(
+    (acc, cur) => acc + cur.price * cur.count,
+    0
+  );
+
   const deliveryFee = 2000;
   const totalPrice = orderAmount + deliveryFee;
-  const minOrderPrice = 13000;
+  const minOrderPrice = store.minDeliveryPrice;
 
   return (
     <Container>
-      {/* 상단 헤더 */}
-      <HeaderBar />
+      <HeaderWrapper>
+        <HeaderBar onBack={() => navigate("/store")} />
 
-      {/* 주문 요약 */}
+        <CancelText
+          onClick={() => {
+            clearCart();
+            navigate("/store");
+          }}
+        >
+          주문 취소
+        </CancelText>
+      </HeaderWrapper>
+
       <HeaderSection>
-        <StoreTitle>샐로리 한남점</StoreTitle>
-        <WarningBox>
-          <span>최소금액 미달</span>
-          <img src={warningIcon} alt="경고" />
-        </WarningBox>
+        <StoreTitle>{store.name}</StoreTitle>
+
+        {totalPrice < minOrderPrice && (
+          <WarningBox>
+            <span>최소금액 미달</span>
+            <img src={warningIcon} alt="경고" />
+          </WarningBox>
+        )}
       </HeaderSection>
 
-      {/* 주문 항목 */}
-      <OrderItem>
-        <ImagePlaceholder />
-        <OrderInfo>
-          <ItemName>토마토 샐러드</ItemName>
-          <ItemDesc>추천소스, 채소볼, 베이컨추가, 시저드레싱 추가</ItemDesc>
-          <Price>10,600원</Price>
-        </OrderInfo>
-         <RightSection>
-          <Quantity>1개</Quantity>
-          <ArrowIcon src={arrowIcon} alt="" />
-        </RightSection>
-      </OrderItem>
+      {groupedMenus.map((menu) => (
+        <OrderItem key={menu.id}>
+          <ImagePlaceholder />
+          <OrderInfo>
+            <ItemName>{menu.name}</ItemName>
+            <ItemDesc>{menu.ingredients}</ItemDesc>
+            <Price>
+              {(menu.price * menu.count).toLocaleString()}원
+            </Price>
+          </OrderInfo>
 
-      {/* 추가 담기 버튼 */}
-      <AddMore>더 담기 +</AddMore>
+          <RightSection>
+            <Quantity>{menu.count}개</Quantity>
+            <ArrowIcon src={arrowIcon} alt="" />
+          </RightSection>
+        </OrderItem>
+      ))}
 
-      {/* 결제 요약 */}
+
+      <AddMore onClick={() => navigate(`/store/${store.id}`)}>
+        더 담기 +
+      </AddMore>
+
       <SummarySection>
         <SummaryRow>
           <span>주문금액</span>
           <span>{orderAmount.toLocaleString()}원</span>
         </SummaryRow>
+
         <SummaryRow>
           <span>배달요금</span>
           <span>{deliveryFee.toLocaleString()}원</span>
         </SummaryRow>
+
         <SummaryRow bold>
           <span>총 결제금액</span>
           <span>{totalPrice.toLocaleString()}원</span>
         </SummaryRow>
       </SummarySection>
 
-      {/* 최소 주문금액 안내 */}
-      <MinNotice>최소 주문금액 {minOrderPrice.toLocaleString()}원</MinNotice>
+      <MinNotice>
+        최소 주문금액 {minOrderPrice.toLocaleString()}원
+      </MinNotice>
 
-      {/* 결제 버튼 */}
       <PayButton disabled={totalPrice < minOrderPrice}>
         {totalPrice.toLocaleString()}원 결제하기
       </PayButton>
@@ -75,6 +126,20 @@ const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+`;
+
+const HeaderWrapper = styled.div`
+  position: relative;
+`;
+
+const CancelText = styled.div`
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  font-size: 15px;
+  color: #ff4d4f;
+  font-weight: 600;
+  cursor: pointer;
 `;
 
 const HeaderSection = styled.div`
@@ -103,7 +168,6 @@ const WarningBox = styled.div`
   img {
     width: 16px;
     height: 16px;
-    object-fit: contain;
   }
 `;
 
@@ -137,7 +201,6 @@ const ItemDesc = styled.div`
   font-size: 13px;
   color: #6b7684;
   margin-top: 2px;
-  line-height: 1.3;
 `;
 
 const Price = styled.div`
@@ -195,14 +258,25 @@ const MinNotice = styled.div`
 const PayButton = styled.button<{ disabled?: boolean }>`
   width: 90%;
   align-self: center;
-  margin: 16px 0 40px;
+  margin: 10px 0 40px;
   padding: 14px 0;
   font-size: 16px;
   font-weight: 600;
   border: none;
   border-radius: 10px;
-  color: ${(props) => (props.disabled ? "#fff" : "#fff")};
-  background-color: ${(props) => (props.disabled ? "#e5edff" : "#d0dffb")};
+  color: #fff;
+  background-color: ${(props) => (props.disabled ? "#e5edff" : "#2673f0")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  transition: background-color 0.2s;
+`;
+
+const EmptyContainer = styled.div`
+  text-align: center;
+  padding-top: 80px;
+  height: 100vh;
+`;
+
+const EmptyText = styled.div`
+  margin-top: 20px;
+  color: #666;
+  font-size: 16px;
 `;

@@ -1,26 +1,35 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
-
-interface Menu {
-  price: number;
-}
+import useCartStore from "../../Pages/Store/useCartStore";
 
 const OrderBar = () => {
-  const menus: Menu[] = [{ price: 12100 }]; 
+  const navigate = useNavigate();
+  const menus = useCartStore((state) => state.menus);
+
+  const orderAmount = menus.reduce((acc, cur) => acc + cur.price, 0);
 
   const handleOrder = () => {
-    alert("주문하기 클릭!");
+    if (menus.length === 0 || orderAmount < 12000) {
+      alert("최소 주문금액 12,000원 이상이어야 합니다.");
+      return;
+    }
+    navigate("/cart");
   };
-
-  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
 
   return (
     <BarWrapper>
       <PriceBox>
         <PriceLabel>총 주문금액</PriceLabel>
-        <PriceValue>{totalPrice.toLocaleString()}원</PriceValue>
+        <PriceValue>{orderAmount.toLocaleString()}원</PriceValue>
       </PriceBox>
-      <StyledButton onClick={handleOrder} type="button" size="lg">
+
+      <StyledButton
+        onClick={handleOrder}
+        type="button"
+        size="lg"
+        disabled={menus.length === 0 || orderAmount < 12000}
+      >
         주문하기
       </StyledButton>
     </BarWrapper>
