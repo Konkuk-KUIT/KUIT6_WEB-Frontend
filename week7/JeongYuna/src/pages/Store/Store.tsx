@@ -43,7 +43,7 @@ const Store = ({stores, category}: {stores: IStore[], category: string}) => {
 
   return (
     <Page paddingbottomheight={111}>
-      <TopSpace child={<Previous prevPage="/" />}></TopSpace>
+      <TopSpace child={<Previous />} />
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
         <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">{store?.name}</HeadTitle>
@@ -56,10 +56,10 @@ const Store = ({stores, category}: {stores: IStore[], category: string}) => {
       </div>
       
       <div>
-        <MenuCategory category={category}></MenuCategory>
+        <MenuCategory category={category} />
         <ul className="px-[0.3rem]">
           {store?.menu.map( (menu) =>
-            <MenuItem key={menu.id} menu={menu}></MenuItem>
+            <MenuItem key={menu.id} menu={menu} />
           )}
         </ul>
       </div>

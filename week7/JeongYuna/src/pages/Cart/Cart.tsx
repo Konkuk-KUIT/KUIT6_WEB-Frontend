@@ -8,7 +8,7 @@ import type { Menu } from "../Store/Store";
 const QuitOrderButton = () => {
   return (
     <div className="w-[100%] flex flex-row justify-between">
-      <Previous prevPage="/"/>
+      <Previous />
       <button
       className="bg-transparent border-none p-0 m-0
                 focus:outline-none active:outline-none 

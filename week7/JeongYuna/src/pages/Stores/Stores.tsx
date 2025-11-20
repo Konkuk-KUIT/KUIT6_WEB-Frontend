@@ -21,7 +21,7 @@ interface IStore {
 const Stores = ( {stores, category}: {stores: IStore[], category: string} ) => {
   return (
     <Page paddingbottomheight={111}>
-      <TopSpace child={<Previous prevPage="/"/>} />
+      <TopSpace child={<Previous />} />
       <HeadTitle className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{category}</HeadTitle>
         {stores.map( (store) =>
           <StoreCard key={store.id} store={store} />

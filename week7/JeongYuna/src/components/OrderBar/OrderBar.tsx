@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
 interface BarSize {
     barheight: number;
 }
 
 const OrderBar = () => {
+    const navigate = useNavigate();
     return (
         <Bar barheight={111}>
             <div>
@@ -13,7 +15,7 @@ const OrderBar = () => {
                 <br/>
                 <span style={{color:"#4E5968"}}>12,100원</span>
             </div>
-            <Button children="주문하기" size="lg" disabled={false}></Button>
+            <Button onClick={() => navigate("/cart")} children="주문하기" size="lg" disabled={false}></Button>
         </Bar>
     )
 }

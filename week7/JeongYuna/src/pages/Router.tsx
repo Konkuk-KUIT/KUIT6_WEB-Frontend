@@ -20,7 +20,7 @@ const Router = () => {
         path: `/${category.path}`,
         element: <Stores stores={typedStores} category={category.name} />
       })),
-      ...CATEGORIES.map((category) => ({  // ... 없으면 이중 배열이 됨
+      ...CATEGORIES.map((category) => ({
         path: `/${category.path}/:id`,
         element: <Store stores={typedStores} category={category.name} />
       })),

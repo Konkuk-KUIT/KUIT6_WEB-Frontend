@@ -3,7 +3,7 @@ import Button from "../Button";
 
 const PayBar = () => {
     return (
-        <Bar barHeight={129}>
+        <Bar barheight={129}>
             <div className="flex flex-col justify-center items-center w-full">
                 <span className="flex flex-row text-[17px] text-[#6B7684] font-[500] font-pretendard mb-[1rem]">최소 주문금액 13,000원</span>
                 <Button children="12,600원 결제하기" size="xl" disabled={true}></Button>
