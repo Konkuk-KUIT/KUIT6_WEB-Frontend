@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import Previous from "../../components/Previous/Previous";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
 import TopSpace from "../../components/Space/TopSpace";
-import type { StoresProps } from "../Stores/Stores";
 import type { ReactElement } from "react";
 import MenuItem from "../../components/MenuItem/MenuItem";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import { Page } from "../Home/Home";
+import type { IStore } from "../Stores/Stores";
 
 interface Menu {
   id: number,
@@ -17,14 +17,14 @@ interface Menu {
 }
 
 interface DeliveryInfoProps {
-  k: string;
+  label: string;
   value: string | number | ReactElement;
 }
 
-const DeliveryInfo = ({k, value}: DeliveryInfoProps) => {
+const DeliveryInfo = ({label, value}: DeliveryInfoProps) => {
   return (
     <div className="flex flex-row gap-[0.7rem] text-[15px] text-[#4E5968] font-[500] font-pretendard">
-    <span>{k}</span>
+    <span>{label}</span>
     <span>{value}</span>
     </div>
   )
@@ -36,30 +36,30 @@ const MenuCategory = ({category}:{category:string}) => {
   )
 }
 
-const Store = ({stores}: {stores:StoresProps}) => {
+const Store = ({stores, category}: {stores: IStore[], category: string}) => {
   const { id } = useParams();
   const storeId = Number(id);
-  const store = stores.stores.find(s => s.id === storeId);
+  const store = stores.find(s => s.id === storeId);
 
   return (
-    <Page bottomH={111}>
+    <Page paddingbottomheight={111}>
       <TopSpace child={<Previous prevPage="/" />}></TopSpace>
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
         <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">{store?.name}</HeadTitle>
         <div className="flex flex-row gap-[0.5rem] mb-[1rem]"><span className="flex flex-row gap-[3px]"><img src="/src/assets/yellowStar.svg"/>{store?.rate}</span><span>리뷰 {store?.reviewCnt}</span></div>
         <div className="flex flex-col gap-[0.3rem]">
-          <DeliveryInfo k="결제방법" value="토스결제만 현장결제 안됨" />
-          <DeliveryInfo k="최소주문" value={<>{store?.minDeliveryPrice}원</>} />
-          <DeliveryInfo k="배달시간" value={<>약 {store?.minDeliveryTime}-{store?.maxDeliveryTime}분</>} />
+          <DeliveryInfo label="결제방법" value="토스결제만 현장결제 안됨" />
+          <DeliveryInfo label="최소주문" value={<>{store?.minDeliveryPrice}원</>} />
+          <DeliveryInfo label="배달시간" value={<>약 {store?.minDeliveryTime}-{store?.maxDeliveryTime}분</>} />
         </div>
       </div>
       
       <div>
-        <MenuCategory category={stores.category}></MenuCategory>
+        <MenuCategory category={category}></MenuCategory>
         <ul className="px-[0.3rem]">
-          {store?.menus.map( (menu) =>
-            <MenuItem menu={menu}></MenuItem>
+          {store?.menu.map( (menu) =>
+            <MenuItem key={menu.id} menu={menu}></MenuItem>
           )}
         </ul>
       </div>

@@ -21,16 +21,16 @@ const QuitOrderButton = () => {
 }
 
 interface OrderInfoProps {
-  k: String;
-  kStyle: string;
+  label: string;
+  labelStyle: string;
   value: number | String;
   vStyle: string;
 }
 
-const OrderInfo = ({k, kStyle, value, vStyle}: OrderInfoProps) => {
+const OrderInfo = ({label, labelStyle, value, vStyle}: OrderInfoProps) => {
   return (
     <div className="flex flex-row justify-between">
-      <span className={kStyle}>{k}</span>
+      <span className={labelStyle}>{label}</span>
       <span className={vStyle}>{value}원</span>
     </div>
   )
@@ -70,7 +70,7 @@ const Cart = () => {
   }
 
   return (
-    <Page bottomH={129}>
+    <Page paddingbottomheight={129}>
       <TopSpace child={<QuitOrderButton />} />
       <BorderSpace />
       <div>
@@ -89,9 +89,9 @@ const Cart = () => {
       </div>
       <BorderSpace />
       <div className="flex flex-col p-[1.5rem] gap-[0.5rem]">
-        <OrderInfo k="주문금액" kStyle="text-17px text-[#8B95A1] font-[500] font-pretendard" value="10600" vStyle="text-17px text-[#505967] font-[500] font-pretendard"></OrderInfo>
-        <OrderInfo k="배달요금" kStyle="text-17px text-[#8B95A1] font-[500] font-pretendard" value="2000" vStyle="text-17px text-[#505967] font-[500] font-pretendard"></OrderInfo>
-        <OrderInfo k="총 결제금액" kStyle="text-17px text-[#4E5968] font-[500] font-pretendard pt-[0.5rem]" value="12600" vStyle="text-17px text-[#4E5968] font-[600] font-pretendard pt-[0.5rem]"></OrderInfo>
+        <OrderInfo label="주문금액" labelStyle="text-17px text-[#8B95A1] font-[500] font-pretendard" value="10600" vStyle="text-17px text-[#505967] font-[500] font-pretendard"></OrderInfo>
+        <OrderInfo label="배달요금" labelStyle="text-17px text-[#8B95A1] font-[500] font-pretendard" value="2000" vStyle="text-17px text-[#505967] font-[500] font-pretendard"></OrderInfo>
+        <OrderInfo label="총 결제금액" labelStyle="text-17px text-[#4E5968] font-[500] font-pretendard pt-[0.5rem]" value="12600" vStyle="text-17px text-[#4E5968] font-[600] font-pretendard pt-[0.5rem]"></OrderInfo>
       </div>
       <PayBar />
     </Page>

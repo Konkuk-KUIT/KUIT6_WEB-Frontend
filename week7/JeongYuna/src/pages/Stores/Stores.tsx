@@ -15,21 +15,16 @@ interface IStore {
   maxDeliveryTime: number,
   minDeliveryPrice: number,
   deliveryFee: number,
-  menus: Menu[]
+  menu: Menu[]
 }
 
-interface StoresProps {
-  category: string,
-  stores: IStore[],
-}
-
-const Stores = ( {stores}: {stores: StoresProps} ) => {
+const Stores = ( {stores, category}: {stores: IStore[], category: string} ) => {
   return (
-    <Page bottomH={111}>
-      <TopSpace child={<Previous prevPage="/"/>}></TopSpace>
-      <HeadTitle className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{stores.category}</HeadTitle>
-        {stores.stores.map( (store) =>
-          <StoreCard store={store}></StoreCard>
+    <Page paddingbottomheight={111}>
+      <TopSpace child={<Previous prevPage="/"/>} />
+      <HeadTitle className="flex justify-start items-end mb-[0px] mt-[26px] mx-[20px]">{category}</HeadTitle>
+        {stores.map( (store) =>
+          <StoreCard key={store.id} store={store} />
         )}
       <OrderBar />
     </Page>
@@ -37,7 +32,4 @@ const Stores = ( {stores}: {stores: StoresProps} ) => {
 };
 
 export default Stores;
-
 export type {IStore};
-
-export type {StoresProps}

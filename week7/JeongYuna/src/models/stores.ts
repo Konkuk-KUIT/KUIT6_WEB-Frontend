@@ -8,7 +8,7 @@ const stores = [
     maxDeliveryTime: 30,
     minDeliveryPrice: 13000,
     deliveryFee: 2000,
-    menus: [
+    menu: [
       {
         id: 1,
         name: "토마토 샐러드",
@@ -48,7 +48,7 @@ const stores = [
     maxDeliveryTime: 25,
     minDeliveryPrice: 12000,
     deliveryFee: 2500,
-    menus: [
+    menu: [
       {
         id: 1,
         name: "아보카도 그린 샐러드",
@@ -74,7 +74,7 @@ const stores = [
     maxDeliveryTime: 35,
     minDeliveryPrice: 10000,
     deliveryFee: 1500,
-    menus: [
+    menu: [
       {
         id: 1,
         name: "쿼리노아 비트 샐러드",

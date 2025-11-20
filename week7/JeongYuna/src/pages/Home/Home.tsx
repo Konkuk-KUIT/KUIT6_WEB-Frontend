@@ -1,10 +1,10 @@
-import { Categories } from "../../components/Category/Category";
+import Categories from "../../components/Categories/Categories";
 import DeliveryTitle from "../../components/DeliveryTitle/DeliveryTitle";
 import TopSpace from "../../components/Space/TopSpace";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import styled from "styled-components";
 
-const categories = [
+export const CATEGORIES = [
   {name: '피자', imgPath: '/src/assets/pizza.svg', path: "pizza"},
   {name: '샐러드', imgPath: '/src/assets/salad.svg', path: "salad"},
   {name: '햄버거', imgPath: '/src/assets/hamburger.svg', path: "hamburger"},
@@ -20,22 +20,23 @@ const categories = [
 ];
 
 interface PageBottom {
-  bottomH: number;
+  paddingbottomheight: number;
 }
-const Page = styled.div<PageBottom>`
-  padding-bottom: ${(props) => props.bottomH}px;
-`
 
 const Home = () => {
   return (
-    <Page bottomH={111}>
-      <TopSpace child={""}></TopSpace>
-      <DeliveryTitle address="한남중앙로 40길 (한남 빌리지)"></DeliveryTitle>
-      <Categories categories={categories}></Categories>
-      <OrderBar></OrderBar>
+    <Page paddingbottomheight={111}>
+      <TopSpace child={""} />
+      <DeliveryTitle address="한남중앙로 40길 (한남 빌리지)" />
+      <Categories categories={CATEGORIES} />
+      <OrderBar />
     </Page>
   );
 };
+
+const Page = styled.div<PageBottom>`
+  padding-bottom: ${(props) => props.paddingbottomheight}px;
+`
 
 export default Home;
 export {Page};
