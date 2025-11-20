@@ -17,12 +17,12 @@ interface OrderInfoProps {
   vStyle: string;
 }
 
-const QuitOrderButton = () => {
+const QuitOrderButton = ({store}:{store:IStore}) => {
   const emptyMenu = useCartStore((state) => state.emptyMenu);
   const navigator = useNavigate();
   const handleQuitOrder = () => {
     emptyMenu();
-    navigator(-1);
+    navigator(`/${store.category}`);
   }
   return (
     <div className="w-[100%] flex flex-row justify-between">
@@ -55,7 +55,7 @@ const OrderInfo = ({label, labelStyle, value, vStyle}: OrderInfoProps) => {
       <span className={vStyle}>{value}원</span>
     </div>
   )
-}// {store}:{store:IStore}
+} // {store}:{store:IStore}
 
 const AddMoreButton = ({store}:{store: IStore}) => {
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ const Cart = () => {
 
   return (
     <Page paddingbottomheight={129}>
-      <TopSpace child={<QuitOrderButton />} />
+      <TopSpace child={<QuitOrderButton store={store}/>} />
       <BorderSpace />
       <div>
         <CartHeader storename={store.name} minDeliveryPriceOvered={store.minDeliveryPrice <= menus.reduce((accumulator, currentValue)=> accumulator+currentValue.price, 0)}/>

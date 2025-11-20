@@ -13,6 +13,7 @@ interface Menu {
 }
 
 const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
+  const menus = useCartStore((state) => state.menus);
   const addMenu = useCartStore((state) => state.addMenu);
   const emptyMenu = useCartStore((state) => state.emptyMenu);
 
@@ -34,6 +35,7 @@ const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
         return;
       }
     }
+
     chooseStore(store);
     addMenu({...menu});
   };
