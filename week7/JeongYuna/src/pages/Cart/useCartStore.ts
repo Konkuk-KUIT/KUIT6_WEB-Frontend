@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Menu } from "../Store/Store";
+import type { Menu } from "../../components/MenuItem/MenuItem";
 
 interface CartState {
     menus: Menu[];

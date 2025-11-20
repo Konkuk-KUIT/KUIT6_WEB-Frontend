@@ -3,7 +3,8 @@ import PayBar from "../../components/PayBar/PayBar";
 import BorderSpace from "../../components/Space/BorderSpace";
 import TopSpace from "../../components/Space/TopSpace";
 import { Page } from "../Home/Home";
-import type { Menu } from "../Store/Store";
+import type { Menu } from "../../components/MenuItem/MenuItem";
+import useStoreStore from "../Store/useStoreStore";
 
 const QuitOrderButton = () => {
   return (
@@ -28,6 +29,7 @@ interface OrderInfoProps {
 }
 
 const OrderInfo = ({label, labelStyle, value, vStyle}: OrderInfoProps) => {
+  const store = useStoreStore((state)=>state.store);
   return (
     <div className="flex flex-row justify-between">
       <span className={labelStyle}>{label}</span>

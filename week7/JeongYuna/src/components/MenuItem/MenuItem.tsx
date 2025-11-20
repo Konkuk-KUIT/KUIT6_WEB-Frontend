@@ -2,16 +2,20 @@ import Button from "../Button";
 import useCartStore from "../../pages/Cart/useCartStore";
 
 interface Menu {
-  id: number;
-  name: String;
-  isBest: boolean;
-  price: number;
-  ingredients: String;
+  id: number,
+  name: String,
+  isBest: boolean,
+  price: number,
+  ingredients: String,
 }
 
-const MenuItem = ({ menu }: {menu: Menu}) => {
+const MenuItem = ({ menu, handleChooseStore }: {menu: Menu, handleChooseStore:()=>void}) => {
   const addMenu = useCartStore((state) => state.addMenu);
-  const handleAddMenu = () => { addMenu({...menu}); };
+
+  const handleAddMenu = () => { 
+    handleChooseStore();
+    addMenu({...menu});
+  };
 
   return (
     <div className="flex flex-row items-center gap-[1rem] p-[0.5rem]">
@@ -29,3 +33,4 @@ const MenuItem = ({ menu }: {menu: Menu}) => {
 };
 
 export default MenuItem;
+export type { Menu };

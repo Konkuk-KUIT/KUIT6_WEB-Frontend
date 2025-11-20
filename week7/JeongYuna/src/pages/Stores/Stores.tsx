@@ -1,7 +1,7 @@
 import StoreCard from "../../components/StoreCard/StoreCard"
 import TopSpace from "../../components/Space/TopSpace";
 import OrderBar from "../../components/OrderBar/OrderBar";
-import type { Menu } from "../Store/Store";
+import type { Menu } from "../../components/MenuItem/MenuItem";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
 import Previous from "../../components/Previous/Previous";
 import { Page } from "../Home/Home";
