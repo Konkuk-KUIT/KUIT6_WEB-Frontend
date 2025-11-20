@@ -39,11 +39,11 @@ const QuitOrderButton = () => {
   )
 }
 
-const CartHeader = ({storename}: {storename:string}) => {
+const CartHeader = ({storename, minDeliveryPriceOvered}: {storename:string, minDeliveryPriceOvered: boolean}) => {
     return (
         <div className="flex flex-row justify-between items-center px-[24px]">
           <h3 className="text-[17px] text-[#6B7684] font-[700] font-pretendard">{storename}</h3>
-          <span className="text-[15px] text-[#F04452] font-[500] font-pretendard flex flex-row items-center gap-[0.3rem]">최소금액 미달<img src="/src/assets/warning.svg" /></span>
+          {minDeliveryPriceOvered? <></> : <span className="text-[15px] text-[#F04452] font-[500] font-pretendard flex flex-row items-center gap-[0.3rem]">최소금액 미달<img src="/src/assets/warning.svg" /></span>}
         </div>
     )
 }
@@ -83,7 +83,7 @@ const Cart = () => {
       <TopSpace child={<QuitOrderButton />} />
       <BorderSpace />
       <div>
-        <CartHeader storename={store.name}/>
+        <CartHeader storename={store.name} minDeliveryPriceOvered={store.minDeliveryPrice <= menus.reduce((accumulator, currentValue)=> accumulator+currentValue.price, 0)}/>
         {
           menus.map( (menu) => 
             <OrderItem key={menu.id} menu={menu} options={"추천소스, 채소볼, 베이컨추가, 시저드드레싱 추가"} additionalFee={3000}/>
