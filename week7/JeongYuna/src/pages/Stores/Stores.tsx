@@ -15,7 +15,8 @@ interface IStore {
   maxDeliveryTime: number,
   minDeliveryPrice: number,
   deliveryFee: number,
-  menus: Menu[]
+  menus: Menu[],
+  category?: string,
 }
 
 const Stores = ( {stores, category}: {stores: IStore[], category: string} ) => {

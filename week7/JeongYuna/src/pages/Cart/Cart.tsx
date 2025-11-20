@@ -7,6 +7,8 @@ import OrderItem from "../../components/OrderItem/OrderItem";
 import Border from "../../components/Space/Border";
 import useCartStore from "../../pages/Cart/useCartStore";
 import useStoreStore from "../../pages/Store/useStoreStore";
+import { useNavigate } from "react-router-dom";
+import type { IStore } from "../Stores/Stores";
 
 interface OrderInfoProps {
   label: string;
@@ -48,12 +50,18 @@ const OrderInfo = ({label, labelStyle, value, vStyle}: OrderInfoProps) => {
   )
 }// {store}:{store:IStore}
 
-const AddMoreButton = () => {
+const AddMoreButton = ({store}:{store: IStore}) => {
+  const navigate = useNavigate();
+  const handleAddMore = () => {
+    navigate(`/${store.category}/${store.id}`)
+  }
   return (
     <button className="bg-transparent border-none p-0 m-0
                 focus:outline-none active:outline-none 
                 focus:ring-0 active:ring-0 cursor-pointer
-                border-b-1 boreder-b-[#E5E8EB] text-[17px] text-[#3182F6] font-[600] font-pretendard">
+                border-b-1 boreder-b-[#E5E8EB] text-[17px] text-[#3182F6] font-[600] font-pretendard"
+            onClick={handleAddMore}
+                >
         더 담기 +
     </button>
   )
@@ -75,7 +83,7 @@ const Cart = () => {
           )
         }
         <Border />
-        <AddMoreButton />
+        <AddMoreButton store={store}/>
       </div>
       <BorderSpace />
       <div className="flex flex-col p-[1.5rem] gap-[0.5rem]">

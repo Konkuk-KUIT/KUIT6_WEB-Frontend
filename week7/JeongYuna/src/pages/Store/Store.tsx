@@ -7,7 +7,6 @@ import MenuItem from "../../components/MenuItem/MenuItem";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import { Page } from "../Home/Home";
 import type { IStore } from "../Stores/Stores";
-import useStoreStore from "./useStoreStore";
 
 interface DeliveryInfoProps {
   label: string;
