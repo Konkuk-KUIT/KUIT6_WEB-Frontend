@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
+import useCartStore from "../../pages/Cart/useCartStore";
 
 interface BarSize {
     barheight: number;
@@ -8,14 +9,19 @@ interface BarSize {
 
 const OrderBar = () => {
     const navigate = useNavigate();
+    const handleOrder = () => {
+        navigate("/cart")
+    }
+    const menus = useCartStore((state) => state.menus);
+
     return (
         <Bar barheight={111}>
             <div>
                 <span style={{color:"#6B7684"}}>총 주문금액</span>
                 <br/>
-                <span style={{color:"#4E5968"}}>12,100원</span>
+                <span style={{color:"#4E5968"}}>{menus.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)}</span>
             </div>
-            <Button onClick={() => navigate("/cart")} children="주문하기" size="lg" disabled={false}></Button>
+            <Button onClick={handleOrder} children="주문하기" size="lg" disabled={false}></Button>
         </Bar>
     )
 }

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Previous from "../../components/Previous/Previous";
 import HeadTitle from "../../components/HeadTitle/HeadTitle";
 import TopSpace from "../../components/Space/TopSpace";
@@ -39,26 +39,27 @@ const MenuCategory = ({category}:{category:string}) => {
 const Store = ({stores, category}: {stores: IStore[], category: string}) => {
   const { id } = useParams();
   const storeId = Number(id);
-  const store = stores.find(s => s.id === storeId);
+  const store = stores.find(s => s.id == storeId);
+  if (store === undefined) return <Navigate to="/" replace />
 
   return (
     <Page paddingbottomheight={111}>
       <TopSpace child={<Previous />} />
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
-        <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">{store?.name}</HeadTitle>
+        <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">{store.name}</HeadTitle>
         <div className="flex flex-row gap-[0.5rem] mb-[1rem]"><span className="flex flex-row gap-[3px]"><img src="/src/assets/yellowStar.svg"/>{store?.rate}</span><span>리뷰 {store?.reviewCnt}</span></div>
         <div className="flex flex-col gap-[0.3rem]">
           <DeliveryInfo label="결제방법" value="토스결제만 현장결제 안됨" />
-          <DeliveryInfo label="최소주문" value={<>{store?.minDeliveryPrice}원</>} />
-          <DeliveryInfo label="배달시간" value={<>약 {store?.minDeliveryTime}-{store?.maxDeliveryTime}분</>} />
+          <DeliveryInfo label="최소주문" value={<>{store.minDeliveryPrice}원</>} />
+          <DeliveryInfo label="배달시간" value={<>약 {store.minDeliveryTime}-{store?.maxDeliveryTime}분</>} />
         </div>
       </div>
       
       <div>
         <MenuCategory category={category} />
         <ul className="px-[0.3rem]">
-          {store?.menu.map( (menu) =>
+          {store.menus.map( (menu) =>
             <MenuItem key={menu.id} menu={menu} />
           )}
         </ul>
