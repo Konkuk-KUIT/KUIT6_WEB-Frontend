@@ -13,13 +13,14 @@ const OrderBar = () => {
         navigate("/cart")
     }
     const menus = useCartStore((state) => state.menus);
+    const count = useCartStore((state) => state.count);
 
     return (
         <Bar barheight={111}>
             <div>
                 <span style={{color:"#6B7684"}}>총 주문금액</span>
                 <br/>
-                <span style={{color:"#4E5968"}}>{menus.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)}</span>
+                <span style={{color:"#4E5968"}}>{menus.reduce((accumulator, currentValue) => accumulator + currentValue.price * (count[currentValue.id] ?? 1), 0)}원</span>
             </div>
             <Button onClick={handleOrder} children="주문하기" size="lg" disabled={false}></Button>
         </Bar>

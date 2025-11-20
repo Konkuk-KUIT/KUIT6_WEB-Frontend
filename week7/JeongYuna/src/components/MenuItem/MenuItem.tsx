@@ -16,6 +16,7 @@ const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
   const menus = useCartStore((state) => state.menus);
   const addMenu = useCartStore((state) => state.addMenu);
   const emptyMenu = useCartStore((state) => state.emptyMenu);
+  const addCount = useCartStore((state) => state.addCount);
 
   const { id } = useParams();
   const storeId = Number(id);
@@ -36,8 +37,11 @@ const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
       }
     }
 
+    const m = menus.find((m) => m.id == menu.id);
+    if (m == undefined) addMenu({...menu});
+    else addCount(menu.id);
+
     chooseStore(store);
-    addMenu({...menu});
   };
 
   return (
