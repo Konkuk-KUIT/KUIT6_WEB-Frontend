@@ -1,4 +1,18 @@
-const stores = [
+import pizza from "../assets/pizza.svg";
+
+export const foodCategories = [
+  { name: "피자1", image: pizza },
+  { name: "피자2", image: pizza },
+  { name: "피자3", image: pizza },
+  { name: "피자4", image: pizza },
+  { name: "피자5", image: pizza },
+  { name: "피자6", image: pizza },
+  { name: "피자7", image: pizza },
+  { name: "피자8", image: pizza },
+  { name: "피자9", image: pizza },
+];
+
+export const stores = [
   {
     id: 1,
     name: "샐로리 한남점",
@@ -41,13 +55,13 @@ const stores = [
   },
   {
     id: 2,
-    name: "그린가든 강남점",
-    rate: 4.7,
-    reviewCnt: 2451,
-    minDeliveryTime: 15,
-    maxDeliveryTime: 25,
+    name: "옐로우푸드 샐러드",
+    rate: 4.8,
+    reviewCnt: 1129,
+    minDeliveryTime: 13,
+    maxDeliveryTime: 30,
     minDeliveryPrice: 12000,
-    deliveryFee: 2500,
+    deliveryFee: 2000,
     menus: [
       {
         id: 1,
@@ -67,9 +81,9 @@ const stores = [
   },
   {
     id: 3,
-    name: "헬시키친 홍대입구",
+    name: "씬더볼드 한남점",
     rate: 4.8,
-    reviewCnt: 1784,
+    reviewCnt: 919,
     minDeliveryTime: 20,
     maxDeliveryTime: 35,
     minDeliveryPrice: 10000,
@@ -92,5 +106,3 @@ const stores = [
     ],
   },
 ];
-
-export default stores;
