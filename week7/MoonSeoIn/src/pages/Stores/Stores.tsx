@@ -6,7 +6,7 @@ export default function Stores() {
   return (
     <>
       <div className="px-6 pt-6">
-        <button onClick={() => window.history.back()}>
+        <button onClick={() => window.history.back()} className="cursor-pointer">
           <img src="/src/assets/chevron-left.svg" className="w-6 h-6 mb-4" />
         </button>
         <h2 className="text-[26px] font-bold mb-3">샐러드</h2>

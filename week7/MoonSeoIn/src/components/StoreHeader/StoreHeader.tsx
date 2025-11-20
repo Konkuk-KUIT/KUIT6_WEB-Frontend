@@ -1,11 +1,22 @@
-export default function StoreHeader() {
+interface StoreHeaderProps {
+  store: {
+    name: string;
+    rate: number;
+    reviewCnt: number;
+    minDeliveryTime: number;
+    maxDeliveryTime: number;
+    minDeliveryPrice: number;
+  };
+}
+
+export default function StoreHeader({ store }: StoreHeaderProps) {
   return (
     <div className="px-6 py-4 border-b border-gray-100">
-      <h2 className="text-[26px] font-bold">샐로리 한남점</h2>
+      <h2 className="text-[26px] font-bold">{store.name}</h2>
       <div className="flex items-center text-sm mt-1 mb-4 text-[#4E5968]">
         <img src="/src/assets/star.svg" alt="star" className="w-4 h-4 mr-1" />
-        <span className="font-medium">4.9</span>
-        <span className="ml-1">리뷰 3,919</span>
+        <span className="font-medium">{store.rate}</span>
+        <span className="ml-1">리뷰 {store.reviewCnt.toLocaleString()}</span>
       </div>
 
       <div className="text-sm text-[#4E5968] space-y-1">
@@ -16,11 +27,11 @@ export default function StoreHeader() {
 
         <p>
           <span className="mr-3 font-medium">최소주문</span>
-          13,000원
+          {store.minDeliveryPrice.toLocaleString()}원
         </p>
 
         <p>
-          <span className="mr-3 font-medium">배달시간</span>약 15-25분
+          <span className="mr-3 font-medium">배달시간</span>약 {store.minDeliveryTime}-{store.maxDeliveryTime}분
         </p>
       </div>
     </div>

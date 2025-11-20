@@ -41,14 +41,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  type = "button",
-  size = "sm",
-  disabled,
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, type = "button", size = "sm", disabled, onClick, ...rest }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled}>
+    <StyledButton type={type} size={size} disabled={disabled} onClick={onClick} {...rest}>
       {children}
     </StyledButton>
   );
