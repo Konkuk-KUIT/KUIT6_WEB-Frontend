@@ -18,14 +18,21 @@ interface OrderInfoProps {
 }
 
 const QuitOrderButton = () => {
+  const emptyMenu = useCartStore((state) => state.emptyMenu);
+  const navigator = useNavigate();
+  const handleQuitOrder = () => {
+    emptyMenu();
+    navigator(-1);
+  }
   return (
     <div className="w-[100%] flex flex-row justify-between">
       <Previous />
       <button
-      className="bg-transparent border-none p-0 m-0
+          className="bg-transparent border-none p-0 m-0
                 focus:outline-none active:outline-none 
                 focus:ring-0 active:ring-0 cursor-pointer
-                text-[16px] text-[#333D4B] font-[600] font-pretendard ">
+                text-[16px] text-[#333D4B] font-[600] font-pretendard "
+          onClick={handleQuitOrder}>
         주문취소
       </button>
     </div>
