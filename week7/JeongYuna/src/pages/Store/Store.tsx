@@ -35,17 +35,6 @@ const Store = ({stores, category}: {stores: IStore[], category: string}) => {
   const store = stores.find(s => s.id == storeId);
   if (store === undefined) return <Navigate to="/" replace />
 
-  const storedstore = useStoreStore((state) => state.store);
-  const chooseStore = useStoreStore((state) => state.chooseStore);
-
-  const handleChooseStore = () => {
-    if (storeId != storedstore.id) {
-      // 담으실거에요?
-      return;
-    }
-    chooseStore(store as IStore);
-  }
-
   return (
     <Page paddingbottomheight={111}>
       <TopSpace child={<Previous />} />
@@ -64,7 +53,7 @@ const Store = ({stores, category}: {stores: IStore[], category: string}) => {
         <MenuCategory category={category} />
         <ul className="px-[0.3rem]">
           {store.menus.map( (menu) =>
-            <MenuItem key={menu.id} menu={menu} handleChooseStore={handleChooseStore}/>
+            <MenuItem key={menu.id} menu={menu} store={store}/>
           )}
         </ul>
       </div>

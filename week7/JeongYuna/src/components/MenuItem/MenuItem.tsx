@@ -1,5 +1,8 @@
 import Button from "../Button";
 import useCartStore from "../../pages/Cart/useCartStore";
+import type { IStore } from "../../pages/Stores/Stores";
+import useStoreStore from "../../pages/Store/useStoreStore";
+import { useParams } from "react-router-dom";
 
 interface Menu {
   id: number,
@@ -9,11 +12,21 @@ interface Menu {
   ingredients: String,
 }
 
-const MenuItem = ({ menu, handleChooseStore }: {menu: Menu, handleChooseStore:()=>void}) => {
+const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
   const addMenu = useCartStore((state) => state.addMenu);
 
+  const { id } = useParams();
+  const storeId = Number(id);
+
+  const storedstore = useStoreStore((state) => state.store);
+  const chooseStore = useStoreStore((state) => state.chooseStore);
+
   const handleAddMenu = () => { 
-    handleChooseStore();
+    if (storedstore.id != 0 && storeId != storedstore.id) {
+      // 담으실거에요?
+      return;
+    }
+    chooseStore(store);
     addMenu({...menu});
   };
 

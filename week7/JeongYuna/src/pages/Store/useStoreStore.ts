@@ -21,9 +21,7 @@ const initialState: Pick<StoreState, "store"> = {
 }
 const useStoreStore = create<StoreState>((set) => ({
     store: initialState.store,
-    chooseStore: (id) => { 
-        set( (state) => ( { ...state, storeId: id } )) 
-    }
+    chooseStore: (store) => { set({store}) }
 }))
 
 export default useStoreStore;

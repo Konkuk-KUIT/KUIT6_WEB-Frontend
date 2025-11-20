@@ -8,7 +8,7 @@ import { Page } from "../Home/Home";
 
 interface IStore {
   id: number,
-  name: String,
+  name: string,
   rate: number,
   reviewCnt: number,
   minDeliveryTime: number,
