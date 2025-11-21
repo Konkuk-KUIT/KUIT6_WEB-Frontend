@@ -1,13 +1,7 @@
 import Button from "../Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
-
-interface Menu {
-  price: number;
-}
-
-
+import useCartStore, { type CartItem } from "../../pages/Store/useCartStore";
 
 const StyledOrderBar = styled.div`
   display: flex;
@@ -40,15 +34,18 @@ const PriceText = styled.div`
   color: #191F28;
 `;
 
+interface OrderBarProps {
+    storeId: number; 
+}
 
-const OrderBar = () => {
+const OrderBar: React.FC<OrderBarProps> = ({ storeId }) => {
   const navigate = useNavigate();
 
-  const menus: Menu[] = [];
-  const totalPrice = 12100; 
+  const menus = useCartStore((state) => state.menus) as CartItem[];
+  const totalPrice = menus.reduce((acc, cur) => acc + (cur.price * cur.quantity), 0);
 
   const handleOrder = () => {
-    navigate(`/cart`); 
+    navigate(`/cart/${storeId}`);
   };
 
   return (

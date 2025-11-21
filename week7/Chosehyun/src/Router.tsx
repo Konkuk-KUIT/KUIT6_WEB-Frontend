@@ -26,7 +26,7 @@ const Router = () => {
       element: <Store />,     
     },
     {
-    path: "/cart",
+    path: "/cart/:storeId",
     element: <Cart />,
     },
     {

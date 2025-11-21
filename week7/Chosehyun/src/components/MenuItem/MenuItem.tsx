@@ -1,8 +1,9 @@
 import Button from "../Button";
+import useCartStore from "../../pages/Store/useCartStore";
 
 interface Menu {
   name: string;
-  price: number | string;
+  price: number;
   ingredients: string;
 }
 
@@ -10,8 +11,11 @@ interface MenuItemProps {
   menu: Menu;
 }
 
-const MenuItem = ({ menu }: MenuItemProps) => {
-  const handleAddMenu = () => {};
+const MenuItem: React.FC<MenuItemProps> = ({ menu }) => {
+  const addMenu = useCartStore((state) => state.addMenu);
+  const handleAddMenu = () => {
+  addMenu(menu);
+  };
 
   return (
     <div>

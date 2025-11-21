@@ -4,6 +4,7 @@ import starIcon from "../../assets/star.svg";
 import arrowIcon from "../../assets/arrow.svg"; 
 import OrderBar from "../../components/OrderBar/OrderBar";
 import { useNavigate, useParams } from "react-router-dom";
+import useCartStore from "../../pages/Store/useCartStore";
 
 interface Menu {
   id: number;
@@ -175,13 +176,19 @@ const AddButton = styled.button`
 const Store = () => {
   const navigate = useNavigate();
   const { storeId } = useParams<{ storeId: string }>();
+  const storeIdAsNumber = Number(storeId);
 
   const store = stores.find(s => s.id === Number(storeId)) as StoreData | undefined;
+
+const addMenu = useCartStore((state) => state.addMenu);
 
   const handleBack = () => {
     navigate(-1);
   };
 
+const handleAddMenu = (menu: Menu) => {
+        addMenu(menu); 
+    };
   if (!store) {
     return <div>매장 정보를 찾을 수 없습니다. (ID: {storeId})</div>;
   }
@@ -234,11 +241,11 @@ const Store = () => {
               </MenuText>
             </MenuLeft>
             
-            <AddButton>담기</AddButton>
+            <AddButton onClick={() => handleAddMenu(menu)}>담기</AddButton>
           </MenuItem>
         ))}
       </MenuSection>
-      <OrderBar />
+      <OrderBar storeId={storeIdAsNumber} />
     </StoreContainer>
   );
 };
