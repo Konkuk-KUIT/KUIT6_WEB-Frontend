@@ -3,6 +3,7 @@ import Button from "../Button";
 
 // /store/:storeId 페이지의 컴포넌트
 interface Menu {
+  id: number;
   name: string;
   price: number;
   ingredients: string;

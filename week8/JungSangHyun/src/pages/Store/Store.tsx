@@ -16,7 +16,7 @@ const Store = () => {
     <div className="w-[390px] h-[844px] mx-auto flex flex-col bg-white">
 
       <div className="px-5 pt-10 pb-4">
-        <button className="text-[24px] cursor-pointer hover:bg-gray-100" onClick={() => navigate(-1)}>‹</button>
+        <button className="text-[24px] cursor-pointer hover:bg-gray-100" onClick={() => navigate('/store')}>‹</button>
         <h2 className="text-[28px] font-bold mt-3">{store.name}</h2>
 
         <div className="flex items-center gap-2 mt-2 text-[#6B7684]">

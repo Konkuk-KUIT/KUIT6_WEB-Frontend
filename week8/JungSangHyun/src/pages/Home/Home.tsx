@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import OrderBar from "../../components/OrderBar/OrderBar";
 
 const Home = () => {
+  const navigate = useNavigate();
 
   interface Food{
     name: string;
@@ -46,6 +48,11 @@ const Home = () => {
               key={food.name}
               className="flex w-[108px] pt-[12px] pb-[13px] flex-col  justify-center
                         items-center gap-[4px] rounded-[8px] bg-[#FAFAFB] cursor-pointer hover:bg-gray-200"
+              onClick={() => {
+                if (food.name === "샐러드") {
+                  navigate("/store");
+                }
+              }}
             >
               <img src={food.img} alt={`${food.name} 이미지`} className="w-7 h-7" />
               <span className="mt-2 text-[14px] font-semibold text-[#333D4B]">{food.name}</span>

@@ -7,7 +7,7 @@ const OrderBar = () => {
   const navigate = useNavigate();
 
   const menus = useCartStore((state) => state.menus);
-  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
+  const totalPrice = menus.reduce((acc, cur) => acc + (cur.price * cur.quantity), 0);
 
   const handleOrder = () => {
     navigate("/cart");
