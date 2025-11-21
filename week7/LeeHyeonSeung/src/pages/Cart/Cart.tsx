@@ -1,19 +1,59 @@
 import styled from "styled-components";
-import stores from "../../models/stores";
+import { useNavigate } from "react-router-dom";
+import { useCartStore } from "../../pages/Store/useCartStore";
 import Header from "../../components/Store/Header";
 import nextIcon from "../../assets/cart/next.svg";
 import plusIcon from "../../assets/cart/plus.svg";
 import warningIcon from "../../assets/cart/warning.svg";
 
 const Cart = () => {
-  const store = stores[0];
-  const menu = store.menus[0];
+  const navigate = useNavigate();
+  const { store, items, clearCart, getTotalPrice, isMinimumMet } = useCartStore();
+  
+  const totalPrice = getTotalPrice();
+  const minimumMet = isMinimumMet();
+  const finalPrice = store ? totalPrice + store.deliveryFee : totalPrice;
+
+  // 장바구니가 비어있으면
+  if (!store || items.length === 0) {
+    return (
+      <Wrapper>
+        <HeaderWrapper>
+          <Header />
+          <CancelText onClick={() => navigate("/store")}>주문취소</CancelText>
+        </HeaderWrapper>
+        <EmptyCart>
+          <EmptyText>장바구니가 비어있습니다</EmptyText>
+          <MoreButton onClick={() => navigate("/store")}>
+            메뉴 담으러 가기 <PlusImg src={plusIcon} alt="plus" />
+          </MoreButton>
+        </EmptyCart>
+      </Wrapper>
+    );
+  }
+
+  const handleCancel = () => {
+    clearCart();
+    navigate("/store");
+  };
+
+  const handleMoreOrder = () => {
+    navigate(`/store/${store.id}`);
+  };
+
+  const handlePayment = () => {
+    if (minimumMet) {
+      alert("주문이 완료되었습니다!");
+      clearCart();
+      navigate("/store");
+    }
+  };
 
   return (
     <Wrapper>
       <HeaderWrapper>
         <Header />
-        <CancelText>주문취소</CancelText>
+        <CancelText onClick={handleCancel}>주문취소</CancelText>
       </HeaderWrapper>
 
       <Divider2 />
@@ -21,28 +61,32 @@ const Cart = () => {
       <Section>
         <StoreHeader>
           <StoreName>{store.name}</StoreName>
-          <MinPrice>
-            최소금액 미달 <WarningImg src={warningIcon} alt="warning" />
-          </MinPrice>
+          {!minimumMet && (
+            <MinPrice>
+              최소금액 미달 <WarningImg src={warningIcon} alt="warning" />
+            </MinPrice>
+          )}
         </StoreHeader>
 
-        <MenuCard>
-          <Thumbnail />
-          <MenuContent>
-            <MenuTitle>{menu.name}</MenuTitle>
-            <MenuIngredients>추천소스, 채소볼, 베이컨추가, 시저드레싱 추가</MenuIngredients>
-            <MenuPrice>{(menu.price+3000).toLocaleString()}원</MenuPrice>
-          </MenuContent>
-          <MenuRight>
-            <MenuCount>1개</MenuCount>
-            <NextArrow src={nextIcon} alt="next" />
-          </MenuRight>
-        </MenuCard>
+        {items.map((item) => (
+          <MenuCard key={item.menu.id}>
+            <Thumbnail />
+            <MenuContent>
+              <MenuTitle>{item.menu.name}</MenuTitle>
+              <MenuIngredients>{item.menu.ingredients}</MenuIngredients>
+              <MenuPrice>{item.menu.price.toLocaleString()}원</MenuPrice>
+            </MenuContent>
+            <MenuRight>
+              <MenuCount>{item.quantity}개</MenuCount>
+              <NextArrow src={nextIcon} alt="next" />
+            </MenuRight>
+          </MenuCard>
+        ))}
       </Section>
 
       <Divider1 />
 
-      <MoreButton>
+      <MoreButton onClick={handleMoreOrder}>
         더 담기 <PlusImg src={plusIcon} alt="plus" />
       </MoreButton>
 
@@ -51,7 +95,7 @@ const Cart = () => {
       <PriceBox>
         <PriceRow>
           <Label>주문금액</Label>
-          <Value>{(menu.price+3000).toLocaleString()}원</Value>
+          <Value>{totalPrice.toLocaleString()}원</Value>
         </PriceRow>
         <PriceRow>
           <Label>배달요금</Label>
@@ -59,7 +103,7 @@ const Cart = () => {
         </PriceRow>
         <TotalRow>
           <Label>총 결제금액</Label>
-          <TotalValue>{(menu.price + 3000 + store.deliveryFee).toLocaleString()}원</TotalValue>
+          <TotalValue>{finalPrice.toLocaleString()}원</TotalValue>
         </TotalRow>
       </PriceBox>
 
@@ -68,8 +112,8 @@ const Cart = () => {
           최소 주문금액 {store.minDeliveryPrice.toLocaleString()}원
         </MinOrderText>
 
-        <PayButton>
-          {(menu.price + 3000 + store.deliveryFee).toLocaleString()}원 결제하기
+        <PayButton disabled={!minimumMet} onClick={handlePayment}>
+          {finalPrice.toLocaleString()}원 결제하기
         </PayButton>
       </BottomArea>
     </Wrapper>
@@ -99,6 +143,7 @@ const CancelText = styled.span`
   font-weight: 600;
   font-size: 16px;
   color: #333D4B;
+  cursor: pointer;
 `;
 
 const Section = styled.div`
@@ -120,7 +165,6 @@ const StoreName = styled.h2`
   line-height: 100%;
   letter-spacing: 0px;
   color: #6B7684;
-
 `;
 
 const MinPrice = styled.span`
@@ -161,7 +205,6 @@ const MenuTitle = styled.div`
   font-size: 17px;
   font-weight: 700;
   color: #333D4B;
-
 `;
 
 const MenuIngredients = styled.div`
@@ -221,6 +264,7 @@ const MoreButton = styled.div`
   font-size: 17px;
   color: #3182F6;
   padding: 16px 0;
+  cursor: pointer;
 `;
 
 const PriceBox = styled.div`
@@ -271,20 +315,37 @@ const MinOrderText = styled.div`
   margin-top: 20px;
 `;
 
-const PayButton = styled.button`
+const PayButton = styled.button<{ disabled?: boolean }>`
   width: 90%;
   height: 56px;
   margin: 12px auto 0;
   bottom: 16px;
   display: block;
   border-radius: 16px;
-  background: #D0DFFB;
+  background: ${props => props.disabled ? '#D0DFFB' : '#3182F6'};
   border: none;
-  
   color: #ffffff;
   font-family: Pretendard;
   font-weight: 600;
   font-size: 16px;
   leading-trim: NONE;
   line-height: 100%;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.disabled ? 0.5 : 1};
+`;
+
+const EmptyCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 20px;
+`;
+
+const EmptyText = styled.div`
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 18px;
+  color: #6B7684;
 `;

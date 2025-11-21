@@ -1,22 +1,49 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button";
-
-interface Menu {
-  price: number;
-}
+import { useCartStore } from "../../pages/Store/useCartStore";
 
 const OrderBar = () => {
-  const menus: Menu[] = []; // 실제 구현 시 state 넣으면 됨
+  const navigate = useNavigate();
+  
+  const items = useCartStore((state) => state.items);
+  const getFinalPrice = useCartStore((state) => state.getFinalPrice);
+  const getItemCount = useCartStore((state) => state.getItemCount);
+  
+  const totalPrice = getFinalPrice();
+  const itemCount = getItemCount();
+
+  const handleOrder = () => {
+    if (itemCount > 0) {
+      navigate("/cart");
+    }
+  };
+
+  // 장바구니가 비어있으면 기본 UI 표시
+  if (itemCount === 0) {
+    return (
+      <Wrapper>
+        <PriceBox>
+          <label>총 주문금액</label>
+          <Price>0원</Price>
+        </PriceBox>
+
+        <Button size="lg" type="button" onClick={handleOrder} disabled>
+          주문하기
+        </Button>
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>
       <PriceBox>
         <label>총 주문금액</label>
-        <Price>12,100원</Price>
+        <Price>{totalPrice.toLocaleString()}원</Price>
       </PriceBox>
 
-      <Button size="lg" type="button">
-        주문하기
+      <Button size="lg" type="button" onClick={handleOrder}>
+        주문하기 ({itemCount})
       </Button>
     </Wrapper>
   );
@@ -51,5 +78,4 @@ const Price = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #4E5968;
-
 `;

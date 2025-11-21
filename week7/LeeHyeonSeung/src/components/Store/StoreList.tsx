@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import star from "../../assets/store/star.svg";
 
 interface Store {
@@ -16,10 +17,16 @@ interface StoreListProps {
 }
 
 const StoreList = ({ stores }: StoreListProps) => {
+  const navigate = useNavigate();
+
+  const handleStoreClick = (storeId: number) => {
+    navigate(`/store/${storeId}`);
+  };
+
   return (
     <Container>
       {stores.map((store, index) => (
-        <StoreItem key={store.id}>
+        <StoreItem key={store.id} onClick={() => handleStoreClick(store.id)}>
           <StoreThumbnail />
           <StoreContent>
             <Rank>{index + 1}위</Rank>
@@ -48,6 +55,12 @@ const StoreItem = styled.div`
   display: flex;
   gap: 12px;
   padding: 16px 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #F8F9FA;
+  }
 `;
 
 const StoreThumbnail = styled.div`

@@ -38,7 +38,7 @@ const Stores = () => {
         <SectionTitle>샐러드</SectionTitle>
         <MenuList>
           {store.menus.map((menu) => (
-            <MenuItem key={menu.id} menu={menu} />
+            <MenuItem key={menu.id} menu={menu} store={store} /> /* store prop 추가 */
           ))}
         </MenuList>
       </MenuSection>
