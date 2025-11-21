@@ -1,23 +1,17 @@
-import Button from "../Button";
 import { useNavigate } from "react-router-dom";
+import useCartStore from "../../stores/useCartStore";
+import Button from "../Button";
 
-interface Menu {
-  price: number;
-}
 
 const OrderBar = () => {
   const navigate = useNavigate();
 
-  const menus: Menu[] = [];
+  const menus = useCartStore((state) => state.menus);
+  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
 
   const handleOrder = () => {
     navigate("/cart");
   };
-
-  // todo reduce 알아보기 
-  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
-
-  // todo /cart 경로로 menus.name, menus.price, 담은 갯수, 최소 금액 여부 넘겨줘야 함
 
   return (
     <div className="w-full h-[110px] px-5 py-4 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.08)] flex items-center justify-between rounded-t-[20px]">

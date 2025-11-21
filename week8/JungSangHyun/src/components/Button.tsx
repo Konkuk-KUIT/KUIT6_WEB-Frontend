@@ -1,4 +1,4 @@
-import type { ReactNode, ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import styled from "styled-components";
 
 const sizeStyles = {
@@ -41,14 +41,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
+// onCLick도 받기 위해 (...rest로 나머지 Button의 속성을 받는다)
 const Button: React.FC<ButtonProps> = ({
   children,
   type = "button",
   size = "sm",
   disabled,
+  ...rest
 }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled}>
+    <StyledButton type={type} size={size} disabled={disabled} {...rest}>
       {children}
     </StyledButton>
   );

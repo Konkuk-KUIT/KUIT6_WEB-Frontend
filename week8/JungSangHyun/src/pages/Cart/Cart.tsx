@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import useStoreStore from "../../stores/useStoreStore";
 
 const Cart = () => {
-  // todo 
+  // todo cartStore에 담긴 메뉴 표시
   const store = useStoreStore((state) => state.getStore(1));
 
+  const navigate = useNavigate();
+  
   // 토마토 샐러드 1개 담긴 상태
   const item = store?.menus[0]; // 첫 메뉴
   const quantity = 1;
@@ -21,7 +24,7 @@ const Cart = () => {
 
       <div className="px-5 pt-10 pb-4 border-b border-gray-200">
         <div className="flex justify-between">
-          <button className="text-[24px] cursor-pointer hover:bg-gray-100">‹</button>
+          <button className="text-[24px] cursor-pointer hover:bg-gray-100" onClick={() => navigate(-1)}>‹</button>
           <button className="text-[16px] text-[#333D4B] cursor-pointer">주문취소</button>
         </div>
       </div>
