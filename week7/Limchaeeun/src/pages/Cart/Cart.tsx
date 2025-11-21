@@ -1,76 +1,97 @@
 import styled from "styled-components";
 import CartItem from "../../components/Cart/CartItem";
 import backarrow from "../../assets/stores/backarrow.svg";
+import { useNavigate } from "react-router-dom";
+import useCartStore from "../Store/useCartStore";
 
 const Cart = () => {
-  // 더미 데이터 예시
-  const storeName = "샐로리 한남점";
+  const navigate = useNavigate();
+
+  // Zustand에서 데이터 가져오기
+  const menus = useCartStore((state) => state.menus);
+  const storeName = useCartStore((state) => state.storeName);
+  const resetStore = useCartStore((state) => state.resetStore);
+  // Store에서 설정한 기본값들
   const minOrderPrice = 13000;
   const deliveryFee = 2000;
-  const items = [
-    {
-      name: "토마토 샐러드",
-      ingredients: "채소믹스, 베이컨, 시저드레싱, 추가토핑",
-      price: 10600,
-      quantity: 1,
-    },
-  ];
 
-  const orderAmount = items.reduce(
+  const orderAmount = menus.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
   const total = orderAmount + deliveryFee;
 
+  const isDisabled = orderAmount < minOrderPrice;
+
   return (
-    <>
-      <Container>
-        <Header>
-          <BackButton>
-            <BackIcon src={backarrow} alt="뒤로가기" />
-          </BackButton>
-          <CancelText>주문취소</CancelText>
-        </Header>
+    <Container>
+      {/* ---------- HEADER ---------- */}
+      <Header>
+        <BackButton onClick={() => navigate(-1)}>
+          <BackIcon src={backarrow} alt="뒤로가기" />
+        </BackButton>
 
-        <StoreHeader>
-          <StoreName>{storeName}</StoreName>
-          <AlertText>최소금액 미달 ⓘ</AlertText>
-        </StoreHeader>
+        <CancelText
+          onClick={() => {
+            resetStore();
+            navigate("/store");
+          }}
+        >
+          주문취소
+        </CancelText>
+      </Header>
 
-        <ItemSection>
-          {items.map((item, idx) => (
-            <CartItem key={idx} {...item} />
-          ))}
-          <MoreButton>더 담기 +</MoreButton>
-        </ItemSection>
+      {/* ---------- STORE HEADER ---------- */}
+      <StoreHeader>
+        <StoreName>{storeName}</StoreName>
+        <AlertText>
+          {orderAmount < minOrderPrice ? "최소금액 미달 ⓘ" : ""}
+        </AlertText>
+      </StoreHeader>
 
-        <PriceSection>
-          <Row>
-            <Label>주문금액</Label>
-            <Value>{orderAmount.toLocaleString()}원</Value>
-          </Row>
-          <Row>
-            <Label>배달요금</Label>
-            <Value>{deliveryFee.toLocaleString()}원</Value>
-          </Row>
-          <TotalRow>
-            <Label>총 결제금액</Label>
-            <TotalValue>{total.toLocaleString()}원</TotalValue>
-          </TotalRow>
-          <MinOrderText>
-            최소 주문금액 {minOrderPrice.toLocaleString()}원
-          </MinOrderText>
-        </PriceSection>
+      {/* ---------- ITEM LIST ---------- */}
+      <ItemSection>
+        {menus.map((item, idx) => (
+          <CartItem key={idx} {...item} />
+        ))}
 
-        <PayButton>{total.toLocaleString()}원 결제하기</PayButton>
-      </Container>
-    </>
+        <MoreButton onClick={() => navigate(-1)}>더 담기 +</MoreButton>
+      </ItemSection>
+
+      {/* ---------- PRICE SECTION ---------- */}
+      <PriceSection>
+        <Row>
+          <Label>주문금액</Label>
+          <Value>{orderAmount.toLocaleString()}원</Value>
+        </Row>
+        <Row>
+          <Label>배달요금</Label>
+          <Value>{deliveryFee.toLocaleString()}원</Value>
+        </Row>
+
+        <TotalRow>
+          <Label>총 결제금액</Label>
+          <TotalValue>{total.toLocaleString()}원</TotalValue>
+        </TotalRow>
+
+        <MinOrderText>
+          최소 주문금액 {minOrderPrice.toLocaleString()}원
+        </MinOrderText>
+      </PriceSection>
+
+      {/* ---------- PAY BUTTON ---------- */}
+      <PayButton disabled={isDisabled}>
+        {total.toLocaleString()}원 결제하기
+      </PayButton>
+    </Container>
   );
 };
 
 export default Cart;
 
-// style
+/* ------------------------------ STYLE ------------------------------ */
+
 const Container = styled.div`
   width: 390px;
   height: 844px;
@@ -83,7 +104,6 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 48px 15px 0 10px;
 `;
 
@@ -100,39 +120,29 @@ const BackIcon = styled.img`
 
 const CancelText = styled.span`
   color: #333d4b;
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  cursor: pointer;
 `;
 
 const StoreHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 16px 24px;
   border-bottom: 1px solid #f2f3f6;
 `;
 
 const StoreName = styled.h2`
   color: #6b7684;
-  font-family: Pretendard;
   font-size: 17px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   margin: 0;
 `;
 
 const AlertText = styled.span`
   color: #f04452;
-  text-align: right;
-  font-family: Pretendard;
   font-size: 15px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
 `;
 
 const ItemSection = styled.div`
@@ -145,21 +155,18 @@ const MoreButton = styled.button`
   border: none;
   background: none;
   color: #3182f6;
-  font-family: Pretendard;
   font-size: 17px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   width: 390px;
   height: 59px;
-  padding: 19px 0 20px 0;
+  padding: 19px 0 20px;
   cursor: pointer;
 `;
 
 const PriceSection = styled.div`
+  padding: 16px 24px;
   display: flex;
   flex-direction: column;
-  padding: 16px 24px;
   gap: 8px;
 `;
 
@@ -179,19 +186,13 @@ const Label = styled.span`
   color: #8b95a1;
   font-family: Pretendard;
   font-size: 17px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
 `;
 
 const Value = styled.span`
   color: #505967;
-  text-align: right;
-  font-family: Pretendard;
   font-size: 17px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
 `;
 
 const TotalValue = styled.span`
@@ -202,35 +203,21 @@ const TotalValue = styled.span`
 const MinOrderText = styled.span`
   color: #6b7684;
   text-align: center;
-  font-family: Pretendard;
   font-size: 17px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
-
-  position: fixed;
-  bottom: 0;
-  margin: 0px 112px 109px 88px;
+  margin-top: 8px;
 `;
 
-const PayButton = styled.button`
-  display: inline-flex;
+const PayButton = styled.button<{ disabled: boolean }>`
   width: 350px;
   height: 56px;
-  padding: 18px 100px 19px 100px;
   border-radius: 16px;
-  background: #d0dffb;
-  align-items: center;
-  justify-content: center;
+  background: ${(props) => (props.disabled ? "#D0DFFB" : "#3182f6")};
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
   position: fixed;
   bottom: 0;
-  margin: 0px 20px 34px 20px;
-
-  color: #fff;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  margin: 0 20px 34px;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;

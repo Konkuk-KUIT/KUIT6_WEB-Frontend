@@ -2,8 +2,10 @@ import FoodCard from "../../components/Home/FoodCard";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import { categories } from "../../models/food";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const rows = [];
   for (let i = 0; i < categories.length; i += 3) {
     rows.push(categories.slice(i, i + 3));
@@ -24,7 +26,7 @@ const Home = () => {
                 key={food.id}
                 icon={food.icon}
                 name={food.name}
-                onClick={() => {}}
+                onClick={() => navigate("/store")}
               />
             ))}
           </FoodRow>

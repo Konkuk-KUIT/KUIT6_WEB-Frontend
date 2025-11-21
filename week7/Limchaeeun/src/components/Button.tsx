@@ -46,9 +46,10 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   size = "sm",
   disabled,
+  ...props
 }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled}>
+    <StyledButton type={type} size={size} disabled={disabled} {...props}>
       {children}
     </StyledButton>
   );

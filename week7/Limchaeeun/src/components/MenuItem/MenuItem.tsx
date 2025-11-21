@@ -1,20 +1,46 @@
 import styled from "styled-components";
 import Button from "../Button";
+import useCartStore from "../../pages/Store/useCartStore";
 
 interface Menu {
+  storeId: number;
   name: string;
-  price: number | string;
+  price: number;
   ingredients: string;
   isBest?: boolean;
 }
 
-interface MenuItemProps {
-  menu: Menu;
-}
+const MenuItem = ({ storeId, name, price, ingredients, isBest }: Menu) => {
+  const {
+    addMenu,
+    storeId: currentStoreId,
+    setStoreInfo,
+    clearCart,
+  } = useCartStore();
 
-const MenuItem = ({ menu }: MenuItemProps) => {
   const handleAddMenu = () => {
-    console.log(`${menu.name} 담기`);
+    // 1) 장바구니 비어있을 때
+    if (currentStoreId === null) {
+      setStoreInfo(storeId, "");
+      addMenu({ name, price, ingredients });
+      return;
+    }
+
+    // 2) 같은 가게 메뉴
+    if (currentStoreId === storeId) {
+      addMenu({ name, price, ingredients });
+      return;
+    }
+
+    // 3) 다른 가게 메뉴
+    const ok = window.confirm(
+      "다른 가게의 메뉴를 담으시겠습니까?\n기존 장바구니는 초기화됩니다."
+    );
+    if (!ok) return;
+
+    clearCart();
+    setStoreInfo(storeId, "");
+    addMenu({ name, price, ingredients });
   };
 
   return (
@@ -22,11 +48,11 @@ const MenuItem = ({ menu }: MenuItemProps) => {
       <Thumbnail />
       <InfoSection>
         <NameRow>
-          <MenuName>{menu.name}</MenuName>
-          {menu.isBest && <BestTag>BEST</BestTag>}
+          <MenuName>{name}</MenuName>
+          {isBest && <BestTag>BEST</BestTag>}
         </NameRow>
-        <Price>{menu.price.toLocaleString()}원</Price>
-        <Ingredients>{menu.ingredients}</Ingredients>
+        <Price>{price.toLocaleString()}원</Price>
+        <Ingredients>{ingredients}</Ingredients>
       </InfoSection>
 
       <AddButton onClick={handleAddMenu} type="button" size="sm">
