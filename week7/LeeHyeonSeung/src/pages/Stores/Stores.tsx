@@ -94,7 +94,6 @@ const RateText = styled.div`
   flex-direction: column;
   font-family: Pretendard;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 17px;
   leading-trim: NONE;
   line-height: 100%;

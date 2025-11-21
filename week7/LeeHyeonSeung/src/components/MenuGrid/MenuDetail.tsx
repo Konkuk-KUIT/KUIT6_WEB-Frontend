@@ -24,8 +24,6 @@ const MenuDetail = ({ icon, label }: MenuDetailProps) => {
 export default MenuDetail;
 
 const Wrapper = styled.div`
-  width: 108px;
-  height: 74px;
   background: #FAFAFB;
   border-radius: 8px;
   display: flex;
@@ -43,10 +41,8 @@ const Wrapper = styled.div`
 `;
 
 const Icon = styled.img`
-  width: 28;
-  height: 28;
-  top: 12px;
-  left: 40px;
+  width: 28px;
+  height: 28px;
   angle: 0 deg;
   opacity: 1;
 `;
