@@ -1,12 +1,12 @@
-interface CartSummaryProps {
+interface CartTotalProps {
   totalOrder: number;
   deliveryFee: number;
   finalPrice: number;
   minDeliveryPrice: number;
 }
 
-const CartSummary = ({ totalOrder, deliveryFee, finalPrice, minDeliveryPrice }: CartSummaryProps) => {
-  const isBelowMin = finalPrice < minDeliveryPrice;
+const CartTotal = ({ totalOrder, deliveryFee, finalPrice, minDeliveryPrice }: CartTotalProps) => {
+  const isBelowMin = totalOrder < minDeliveryPrice;
 
   return (
     <>
@@ -52,4 +52,4 @@ const CartSummary = ({ totalOrder, deliveryFee, finalPrice, minDeliveryPrice }: 
   );
 };
 
-export default CartSummary;
+export default CartTotal;
