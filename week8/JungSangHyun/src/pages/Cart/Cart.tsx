@@ -1,10 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import useCartStore from "../../stores/useCartStore";
 import useStoreStore from "../../stores/useStoreStore";
+import { useShallow } from "zustand/react/shallow";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { storeId, menus, removeMenu, clearCart } = useCartStore();
+
+  // useShallow : zustand 구독 상태 객체를 한번에 반환할때, 실제 value비교만 하여 리렌더링
+  const { storeId, menus, removeMenu, clearCart } = useCartStore(
+    useShallow((state) => ({
+      storeId: state.storeId,
+      menus: state.menus,
+      removeMenu: state.removeMenu,
+      clearCart: state.clearCart,
+    }))
+  );
+  
   const store = useStoreStore((state) => state.getStore(storeId ?? -1));
 
   if (!store || menus.length === 0) {
@@ -22,8 +33,8 @@ const Cart = () => {
   }
 
   const orderPrice = menus.reduce((acc, menu) => acc + menu.price * menu.quantity, 0);
-  const deliveryFee = 2000;
-  const totalPrice = orderPrice + deliveryFee;
+  const DELIVERY_FEE = 2000;
+  const totalPrice = orderPrice + DELIVERY_FEE;
   const isBelowMin = orderPrice < store.minDeliveryPrice;
 
   const handleClearCart = () => {
@@ -109,7 +120,7 @@ const Cart = () => {
 
         <div className="flex justify-between text-[#6B7684]">
           <span>배달요금</span>
-          <span className="text-[#333D4B]">{deliveryFee.toLocaleString()}원</span>
+          <span className="text-[#333D4B]">{DELIVERY_FEE.toLocaleString()}원</span>
         </div>
 
         <div className="flex justify-between font-semibold text-[18px] pt-4 border-t border-gray-200">
