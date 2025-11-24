@@ -9,10 +9,10 @@ const Store = () => {
 
   return (
     <div>
-      <div className="mt-[10px] ml-[17px]">
+      <div className="mt-2.5 ml-[17px]">
         <img onClick={() => navigate("/")} src={left_chevron} alt="뒤로가기" />
       </div>
-      <div className="mt-[26px] ml-[24px] color-[#191F28] text-[26px] font-bold">
+      <div className="mt-6.5 ml-6 color-[#191F28] text-[26px] font-bold">
         샐러드
       </div>
       {stores.map((item) => (

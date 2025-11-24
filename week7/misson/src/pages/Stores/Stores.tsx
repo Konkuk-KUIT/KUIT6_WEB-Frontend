@@ -10,7 +10,7 @@ const Stores = () => {
 
   return (
     <div>
-      <div className="mt-[10px] ml-[17px]">
+      <div className="mt-2.5 ml-[17px]">
         <img
           onClick={() => navigate("/store")}
           src={left_chevron}
@@ -23,10 +23,10 @@ const Stores = () => {
           .map((item) => (
             <div>
               <div>
-                <div className="font-['Pretendard'] mt-[26px] ml-[24px] color-[#191F28] text-[26px] font-bold">
+                <div className="font-['Pretendard'] mt-[26px] ml-6 color-[#191F28] text-[26px] font-bold">
                   {item.name}
                 </div>
-                <div className="flex gap-[9px] pt-[6px] pb-3 pl-[46px]">
+                <div className="flex gap-[9px] pt-1.5 pb-3 pl-[46px]">
                   <div className="font-['Pretendard'] text-[17px] font-semibold">
                     {item.rate}
                   </div>
@@ -34,14 +34,14 @@ const Stores = () => {
                     리뷰{item.reviewCnt}
                   </div>
                 </div>
-                <div className="border-b-1 border-[#E5E8EB]">
-                  <div className="font-['Pretendard'] pt-[10px] pl-6 text-[15px] font-medium">
+                <div className="border-b border-[#E5E8EB]">
+                  <div className="font-['Pretendard'] pt-2.5 pl-6 text-[15px] font-medium">
                     결제방법 토스결제만 현장결제 안됨
                   </div>
-                  <div className="font-['Pretendard'] pt-[10px] pl-6 text-[15px] font-medium">
+                  <div className="font-['Pretendard'] pt-2.5 pl-6 text-[15px] font-medium">
                     최소주문 {item.minDeliveryPrice}원
                   </div>
-                  <div className="font-['Pretendard'] pb-[14px] pt-[10px] pl-6 text-[15px] font-medium">
+                  <div className="font-['Pretendard'] pb-3.5 pt-2.5 pl-6 text-[15px] font-medium">
                     배달시간 약 {item.minDeliveryTime}-{item.maxDeliveryTime}분
                   </div>
                 </div>

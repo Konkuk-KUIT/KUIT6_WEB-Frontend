@@ -4,12 +4,15 @@ interface Menu {
     name: string;
     price: number;
     ingredients: string
+    count: number;
 }
 
 interface CartState{
     menus: Menu[];
 
     addMenu: (menu: Menu) => void;
+
+    reset: () => void;
 }
 
 const initialState: Pick<CartState, "menus"> = {
@@ -21,6 +24,12 @@ const useCartStore = create<CartState>((set) => ({
 
     addMenu: (menu) => {
         set((state) => ({ ...state, menus: [...state.menus, menu] }))
+    },
+
+    reset: () => {
+        set(() => ({
+            ...initialState,
+        }))
     }
 }));
   

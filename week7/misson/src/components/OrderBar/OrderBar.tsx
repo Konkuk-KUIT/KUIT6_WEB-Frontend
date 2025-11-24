@@ -12,7 +12,7 @@ const OrderBar = () => {
 
   return (
     <div className="w-full h-[77px] fixed bottom-0 bg-white rounded-tl-2xl rounded-tr-2xl shadow-[0px_-8px_16px_0px_rgba(0,0,0,0.10)] flex justify-between">
-      <div className="mt-[16px] ml-[24px]">
+      <div className="mt-4 ml-6">
         <div className="justify-start text-gray-500 text-base font-normal font-['Pretendard']">
           총 주문금액
         </div>

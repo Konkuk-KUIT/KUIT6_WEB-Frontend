@@ -7,8 +7,8 @@ type storeDataProp = {
 
 const SelectMenu = ({ name, price }: storeDataProp) => {
   return (
-    <div className="w-full h-[116px] flex justify-between pr-[20px]">
-      <div className="w-[54px] h-[54px] bg-[#ECECEC] rounded-[8px] mt-4 ml-6"></div>
+    <div className="w-full h-[116px] flex justify-between pr-5">
+      <div className="w-[54px] h-[54px] bg-[#ECECEC] rounded-lg mt-4 ml-6"></div>
       <div className="mt-4 ml-[17px]">
         <div className="font-['Pretendard'] text-[#333D4B] font-semiBold text-[17px]">
           {name}
@@ -20,7 +20,7 @@ const SelectMenu = ({ name, price }: storeDataProp) => {
           {price}원
         </div>
       </div>
-      <div className="flex items-center gap-[14px]">
+      <div className="flex items-center gap-3.5">
         <div className="text-[#6B7684] font-medium text-[15px] font-['Pretendard']">
           1개
         </div>
