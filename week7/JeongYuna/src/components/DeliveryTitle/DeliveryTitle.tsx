@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import HeadTitle from "../HeadTitle/HeadTitle";
 
+const DeliveryTitle = ({address}: {address: string}) => {
+    return (
+        <DeliveryTextBox>
+            <HeadTitle>오늘은 무엇을 먹을까요?</HeadTitle>
+            <AddressText>{address}(으)로 배달 {'>'}</AddressText>
+        </DeliveryTextBox>
+    )
+}
+
 const AddressText = styled.button`
     border: none;
     background: none;
@@ -21,14 +30,5 @@ const DeliveryTextBox = styled.div`
     align-items: flex-start;
     padding: 25px;
 `
-
-const DeliveryTitle = ({address}: {address: string}) => {
-    return (
-        <DeliveryTextBox>
-            <HeadTitle>오늘은 무엇을 먹을까요?</HeadTitle>
-            <AddressText>{address}(으)로 배달 &gt;</AddressText>
-        </DeliveryTextBox>
-    )
-}
 
 export default DeliveryTitle;

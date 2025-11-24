@@ -23,17 +23,6 @@ interface StyledButtonProps {
   disabled?: boolean;
 }
 
-const StyledButton = styled.button<StyledButtonProps>`
-  color: white;
-  background-color: ${(props) => (props.disabled ? "#D0DFFB" : "#3182f6")};
-  font-weight: 500;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  border-width: 0;
-  border-radius: 8px;
-  padding: ${(props) => sizeStyles[props.size].padding};
-  font-size: ${(props) => sizeStyles[props.size].fontSize};
-`;
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   type?: "button" | "submit" | "reset";
@@ -46,12 +35,24 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   size = "sm",
   disabled,
+  ...props
 }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled}>
+    <StyledButton type={type} size={size} disabled={disabled} {...props}>
       {children}
     </StyledButton>
   );
 };
+
+const StyledButton = styled.button<StyledButtonProps>`
+  color: white;
+  background-color: ${(props) => (props.disabled ? "#D0DFFB" : "#3182f6")};
+  font-weight: 500;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  border-width: 0;
+  border-radius: 8px;
+  padding: ${(props) => sizeStyles[props.size].padding};
+  font-size: ${(props) => sizeStyles[props.size].fontSize};
+`;
 
 export default Button;
