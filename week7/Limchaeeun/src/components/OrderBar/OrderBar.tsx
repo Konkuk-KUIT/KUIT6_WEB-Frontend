@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import Button from "../Button";
-
-interface Menu {
-  price: number;
-}
+import useCartStore from "../../pages/Store/useCartStore";
+import { useNavigate } from "react-router-dom";
 
 const OrderBar = () => {
-  // 임시예시값 추가
-  const menus: Menu[] = [{ price: 12100 }];
-
-  const handleOrder = () => {};
-
-  const totalPrice = menus.reduce((acc, cur) => acc + cur.price, 0);
+  const menus = useCartStore((state) => state.menus);
+  const navigate = useNavigate();
+  const totalPrice = menus.reduce(
+    (acc, cur) => acc + cur.price * cur.quantity,
+    0
+  );
 
   return (
     <BarWrapper>
@@ -21,7 +19,7 @@ const OrderBar = () => {
           <PriceValue>{totalPrice.toLocaleString()}원</PriceValue>
         </PriceSection>
 
-        <OrderButton onClick={handleOrder}>주문하기</OrderButton>
+        <OrderButton onClick={() => navigate("/cart")}>주문하기</OrderButton>
       </BarContainer>
     </BarWrapper>
   );

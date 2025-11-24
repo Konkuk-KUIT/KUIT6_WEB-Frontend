@@ -4,14 +4,15 @@ import StoreItem from "../../components/Stores/StoreItem";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import stores from "../../models/stores";
 import backarrow from "../../assets/stores/backarrow.svg";
+import { useNavigate } from "react-router-dom";
 
 const Stores = () => {
+  const navigate = useNavigate();
   return (
     <>
-      {/* <Link to="/">Home으로 이동하기</Link> */}
       <Container>
         <Header>
-          <BackButton onClick={() => {}}>
+          <BackButton onClick={() => navigate("/")}>
             <BackIcon src={backarrow} alt="뒤로가기" />
           </BackButton>
           <Title>샐러드</Title>
@@ -19,17 +20,18 @@ const Stores = () => {
 
         <StoreList>
           {stores.map((store, index) => (
-            <StoreItem
-              key={store.id}
-              rank={index + 1}
-              name={store.name}
-              rate={store.rate}
-              reviewCnt={store.reviewCnt}
-              minDeliveryTime={store.minDeliveryTime}
-              maxDeliveryTime={store.maxDeliveryTime}
-              deliveryFee={store.deliveryFee}
-              onClick={() => {}}
-            />
+            <div key={store.id} onClick={() => navigate(`/store/${store.id}`)}>
+              <StoreItem
+                rank={index + 1}
+                name={store.name}
+                rate={store.rate}
+                reviewCnt={store.reviewCnt}
+                minDeliveryTime={store.minDeliveryTime}
+                maxDeliveryTime={store.maxDeliveryTime}
+                deliveryFee={store.deliveryFee}
+                onClick={() => {}}
+              />
+            </div>
           ))}
         </StoreList>
       </Container>
