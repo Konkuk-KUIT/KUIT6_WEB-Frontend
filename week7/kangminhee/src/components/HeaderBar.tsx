@@ -2,13 +2,20 @@ import styled from "styled-components";
 import arrow from "../assets/arrow.svg";
 import { useNavigate } from "react-router-dom";
 
-const HeaderBar = () => {
+interface HeaderBarProps {
+  onBack?: () => void;
+}
+
+const HeaderBar = ({ onBack }: HeaderBarProps) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1);
+    if (onBack) {
+      onBack();    
+    } else {
+      navigate(-1); // 뒤로가기
+    }
   };
-
   return (
     <HeaderContainer>
       <ArrowButton onClick={handleBack}>

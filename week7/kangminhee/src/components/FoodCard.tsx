@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 interface FoodCardProps {
   img: string;
@@ -6,8 +7,10 @@ interface FoodCardProps {
 }
 
 const FoodCard = ({ img, foodName }: FoodCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledFoodCard>
+    <StyledFoodCard onClick={() => navigate("/store")}>
       <img src={img} alt={foodName} width={30} height={30} />
       <FoodName>{foodName}</FoodName>
     </StyledFoodCard>

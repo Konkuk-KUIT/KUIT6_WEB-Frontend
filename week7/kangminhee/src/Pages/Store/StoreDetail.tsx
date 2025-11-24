@@ -1,15 +1,25 @@
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 import HeaderBar from "../../components/HeaderBar";
 import OrderBar from "../../components/OrderBar/OrderBar";
-import Button from "../../components/Button"; 
+import Button from "../../components/Button";
 import stores from "../../models/stores";
+import useCartStore from "../../Pages/Store/useCartStore";
 
 const StoreDetail = () => {
   const { storeId } = useParams<{ storeId: string }>();
+
   const store = stores.find((s) => s.id === Number(storeId));
+  const addMenu = useCartStore((state) => state.addMenu);
 
   if (!store) return <div>가게 정보를 찾을 수 없습니다.</div>;
+
+  const storeInfo = {
+    id: store.id,
+    name: store.name,
+    minDeliveryPrice: store.minDeliveryPrice,
+    deliveryFee: store.deliveryFee,
+  };
 
   return (
     <Container>
@@ -17,9 +27,11 @@ const StoreDetail = () => {
 
       <StoreInfo>
         <StoreName>{store.name}</StoreName>
+
         <Rating>
           ★ {store.rate} <span>리뷰 {store.reviewCnt.toLocaleString()}</span>
         </Rating>
+
         <InfoText>결제방법 토스결제만 현장결제 안됨</InfoText>
         <InfoText>최소주문 {store.minDeliveryPrice.toLocaleString()}원</InfoText>
         <InfoText>
@@ -33,15 +45,22 @@ const StoreDetail = () => {
         {store.menus.map((menu) => (
           <MenuCard key={menu.id}>
             <MenuImage />
+
             <MenuInfo>
               <MenuTitle>
                 {menu.name}
                 {menu.isBest && <BestTag>BEST</BestTag>}
               </MenuTitle>
+
               <MenuPrice>{menu.price.toLocaleString()}원</MenuPrice>
               <MenuDesc>{menu.ingredients}</MenuDesc>
             </MenuInfo>
-            <Button size="sm" type="button">
+
+            <Button
+              size="sm"
+              type="button"
+              onClick={() => addMenu(menu, storeInfo)}
+            >
               담기
             </Button>
           </MenuCard>
