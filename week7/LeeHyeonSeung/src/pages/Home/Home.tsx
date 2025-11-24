@@ -7,9 +7,7 @@ const Home = () => {
     <Wrapper>
       <Title>오늘은 무엇을 먹을까요?</Title>
       <Address>한남중앙로 40길 (한남 빌리지)으로 배달 &gt;</Address>
-
       <MenuGrid />
-      <Spacing />
       <OrderBar />
     </Wrapper>
   );
@@ -18,9 +16,7 @@ const Home = () => {
 export default Home;
 
 const Wrapper = styled.div`
-  padding-bottom: 120px;
   width: 100%;
-  min-height: 100vh;
 `;
 
 const Title = styled.h2`
@@ -31,7 +27,7 @@ const Title = styled.h2`
   letter-spacing: 0px;
   color: #191F28;
   margin: 0;
-  margin-top: 70px;
+  padding-top: 70px;
   margin-left: 24px;
 `;
 
@@ -42,11 +38,5 @@ const Address = styled.div`
   line-height: 100%;
   letter-spacing: 0px;
   color: #333D4B;
-  margin-top: 20px;
-  margin-left: 24px;
-  margin-bottom: 20px;
-`;
-
-const Spacing = styled.div`
-  height: 70px;
+  margin: 20px 0 0 24px;
 `;

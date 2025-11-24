@@ -46,10 +46,8 @@ const Grid = styled.div`
   height: 326px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 108px);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 74px);
   margin-top: 50px;
   gap: 10px;
-  angle: 0 deg;
-  opacity: 1;
 `;

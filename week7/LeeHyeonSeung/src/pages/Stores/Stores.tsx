@@ -38,7 +38,7 @@ const Stores = () => {
         <SectionTitle>샐러드</SectionTitle>
         <MenuList>
           {store.menus.map((menu) => (
-            <MenuItem key={menu.id} menu={menu} />
+            <MenuItem key={menu.id} menu={menu} store={store} /> /* store prop 추가 */
           ))}
         </MenuList>
       </MenuSection>
@@ -52,8 +52,6 @@ export default Stores;
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
-  padding-bottom: 100px;
 `;
 
 const StoreInfo = styled.div`
@@ -94,7 +92,6 @@ const RateText = styled.div`
   flex-direction: column;
   font-family: Pretendard;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 17px;
   leading-trim: NONE;
   line-height: 100%;

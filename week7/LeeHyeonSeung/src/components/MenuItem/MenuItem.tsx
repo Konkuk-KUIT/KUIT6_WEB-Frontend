@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
+import { useCartStore } from "../../pages/Store/useCartStore";
 
 interface Menu {
   id: number;
@@ -9,12 +10,29 @@ interface Menu {
   isBest: boolean;
 }
 
-interface MenuItemProps {
-  menu: Menu;
+interface Store {
+  id: number;
+  name: string;
+  rate: number;
+  reviewCnt: number;
+  minDeliveryTime: number;
+  maxDeliveryTime: number;
+  minDeliveryPrice: number;
+  deliveryFee: number;
+  menus: Menu[];
 }
 
-const MenuItem = ({ menu }: MenuItemProps) => {
-  const handleAddMenu = () => {};
+interface MenuItemProps {
+  menu: Menu;
+  store: Store;
+}
+
+const MenuItem = ({ menu, store }: MenuItemProps) => {
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddMenu = () => {
+    addItem(menu, store); // 순서 수정: menu가 먼저, store가 두 번째
+  };
 
   return (
     <Container>

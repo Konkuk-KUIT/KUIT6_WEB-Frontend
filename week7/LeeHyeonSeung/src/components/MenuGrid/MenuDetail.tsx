@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 interface MenuDetailProps {
   icon: string;
@@ -6,8 +7,14 @@ interface MenuDetailProps {
 }
 
 const MenuDetail = ({ icon, label }: MenuDetailProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/store");
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={handleClick}>
       <Icon src={icon} alt={label} />
       <Label>{label}</Label>
     </Wrapper>
@@ -17,8 +24,6 @@ const MenuDetail = ({ icon, label }: MenuDetailProps) => {
 export default MenuDetail;
 
 const Wrapper = styled.div`
-  width: 108px;
-  height: 74px;
   background: #FAFAFB;
   border-radius: 8px;
   display: flex;
@@ -26,13 +31,18 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #F2F4F6;
+    transform: translateY(-2px);
+  }
 `;
 
 const Icon = styled.img`
-  width: 28;
-  height: 28;
-  top: 12px;
-  left: 40px;
+  width: 28px;
+  height: 28px;
   angle: 0 deg;
   opacity: 1;
 `;

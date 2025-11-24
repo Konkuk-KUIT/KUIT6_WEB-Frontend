@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import backIcon from "../../assets/store/back.svg";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <Container>
-      <BackButton>
+      <BackButton onClick={handleBack}>
         <BackIcon src={backIcon} alt="back" />
       </BackButton>
     </Container>
