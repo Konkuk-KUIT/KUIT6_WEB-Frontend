@@ -1,19 +1,8 @@
 import stores from "../../models/stores";
 import styled from "styled-components";
 import arrowIcon from "../../assets/arrow.svg"; 
-import { useNavigate } from "react-router-dom"; 
-
-const DUMMY_ORDER = [
-  { 
-    name: "토마토 샐러드", 
-    price: 10600, 
-    quantity: 1, 
-    options: "추천소스, 채소볼, 베이컨추가, 시저드레싱 추가",
-  }
-];
-
-const DUMMY_STORE_ID = 1;
-
+import { useNavigate, useParams } from "react-router-dom";
+import useCartStore from "../../pages/Store/useCartStore";
 
 const CartContainer = styled.div`
   min-height: 100vh;
@@ -195,22 +184,26 @@ const PayButton = styled.button`
 
 const Cart = () => {
   const navigate = useNavigate();
-  
-  const store = stores.find(s => s.id === DUMMY_STORE_ID);
+  const { storeId } = useParams<{ storeId: string }>();
+  const { menus, clearCart } = useCartStore();
+  const currentStoreId = Number(storeId);
+  const store = stores.find(s => s.id === currentStoreId);
 
   if (!store) {
     return <div>장바구니 정보를 불러올 수 없습니다.</div>;
   }
   
-  const orderPrice = DUMMY_ORDER.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const orderPrice = menus.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const deliveryFee = store.deliveryFee;
   const totalPayment = orderPrice + deliveryFee;
   const minOrderPrice = store.minDeliveryPrice;
   const isMinOrderMet = orderPrice >= minOrderPrice;
   
+  
   const handleBack = () => navigate(-1);
   const handleCancel = () => {
     if (window.confirm("주문을 취소하시겠습니까?")) {
+      clearCart();
       navigate('/');
     }
   };
@@ -240,7 +233,7 @@ const Cart = () => {
           {!isMinOrderMet && <MinOrderWarning>최소금액 미달 ⓘ</MinOrderWarning>}
         </StoreNameHeader>
 
-        {DUMMY_ORDER.map((item, index) => (
+        {menus.map((item, index) => (
           <MenuCard key={index}>
             <MenuThumbnail />
             <MenuDetails>
