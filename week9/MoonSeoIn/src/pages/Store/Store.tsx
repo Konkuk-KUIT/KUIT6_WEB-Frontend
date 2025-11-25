@@ -1,17 +1,37 @@
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import StoreHeader from "../../components/StoreHeader/StoreHeader";
 import MenuItem from "../../components/MenuItem/MenuItem";
-import stores from "../../models/stores";
+import { getStoreById, type Store as StoreType } from "../../api/storeApi";
 
 const Store = () => {
   const { storeId } = useParams<{ storeId: string }>();
-  const store = stores.find((s) => s.id === Number(storeId));
+  const [store, setStore] = useState<StoreType | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  if (!store) {
+  useEffect(() => {
+    const fetchStore = async () => {
+      if (!storeId) {
+        setError("잘못된 접근입니다.");
+        return;
+      }
+
+      try {
+        const data = await getStoreById(Number(storeId));
+        setStore(data);
+      } catch {
+        setError("가게 정보를 불러올 수 없습니다.");
+      }
+    };
+
+    fetchStore();
+  }, [storeId]);
+
+  if (error || !store) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-lg text-gray-600">가게를 찾을 수 없습니다.</p>
+        <p className="text-lg text-gray-600">{error || "가게를 찾을 수 없습니다."}</p>
       </div>
     );
   }
@@ -25,7 +45,9 @@ const Store = () => {
       </div>
 
       <StoreHeader store={store} />
+
       <div className="px-6 mt-4 mb-2 text-[17px] text-[#6B7684] font-semibold">샐러드</div>
+
       <div className="mb-[120px]">
         {store.menus.map((menu) => (
           <MenuItem

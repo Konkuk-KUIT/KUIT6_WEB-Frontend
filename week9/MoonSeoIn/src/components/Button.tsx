@@ -17,21 +17,26 @@ const sizeStyles = {
 } as const;
 
 type ButtonSize = keyof typeof sizeStyles;
+type ButtonVariant = "edit" | "delete" | "cancel";
 
 interface StyledButtonProps {
   size: ButtonSize;
+  variant: ButtonVariant;
   disabled?: boolean;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
-  color: white;
-  background-color: ${(props) => (props.disabled ? "#D0DFFB" : "#3182f6")};
   font-weight: 500;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   border-width: 0;
   border-radius: 8px;
   padding: ${(props) => sizeStyles[props.size].padding};
   font-size: ${(props) => sizeStyles[props.size].fontSize};
+
+  background-color: ${(props) =>
+    props.disabled ? "#D0DFFB" : props.variant === "edit" ? "#E8F0FE" : props.variant === "delete" ? "#3182f6" : "#F3F4F6"};
+
+  color: ${(props) => (props.variant === "edit" ? "#3182f6" : props.variant === "delete" ? "white" : "#4B5563")};
 `;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -39,11 +44,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: "button" | "submit" | "reset";
   size?: ButtonSize;
   disabled?: boolean;
+  variant?: ButtonVariant;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, type = "button", size = "sm", disabled, onClick, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ children, type = "button", size = "sm", variant = "delete", disabled, onClick, ...rest }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled} onClick={onClick} {...rest}>
+    <StyledButton type={type} size={size} variant={variant} disabled={disabled} onClick={onClick} {...rest}>
       {children}
     </StyledButton>
   );
