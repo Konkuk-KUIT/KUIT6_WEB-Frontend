@@ -2,10 +2,18 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 import CartSummary from "../../components/CartSummary/CartSummary";
 import useCartStore from "../../pages/Store/useCartStore";
+import { useShallow } from "zustand/react/shallow";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { menus, store, clearCart, getTotalPrice } = useCartStore();
+  const { menus, store, clearCart, getTotalPrice } = useCartStore(
+    useShallow((state) => ({
+      menus: state.menus,
+      store: state.store,
+      clearCart: state.clearCart,
+      getTotalPrice: state.getTotalPrice,
+    }))
+  );
 
   const handleCancel = () => {
     clearCart();
@@ -19,8 +27,8 @@ const Cart = () => {
   if (!store || menus.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
-        <p className="text-lg text-gray-600 mb-4">장바구니가 비어있습니다.</p>
-        <button onClick={() => navigate("/")} className="px-4 py-2 bg-blue-500 text-white rounded-lg">
+        <p className="mb-4 text-lg text-gray-600">장바구니가 비어있습니다.</p>
+        <button onClick={() => navigate("/")} className="px-4 py-2 text-white bg-blue-500 rounded-lg">
           홈으로 가기
         </button>
       </div>
@@ -35,7 +43,7 @@ const Cart = () => {
     <div className="pb-32">
       {/* 헤더 */}
       <div className="flex items-center justify-between px-5 py-4 border-b-16 border-[#F2F4F6]">
-        <button onClick={() => window.history.back()} className="cursor-pointer">
+        <button onClick={() => navigate(`/store/${store.id}`)} className="cursor-pointer">
           <img src="/src/assets/chevron-left.svg" className="w-5 h-5" />
         </button>
         <button onClick={handleCancel}>
@@ -44,7 +52,7 @@ const Cart = () => {
       </div>
 
       {/* 매장 정보 */}
-      <div className="px-5 py-4 bg-white flex justify-between text-sm">
+      <div className="flex justify-between px-5 py-4 text-sm bg-white">
         <span className="font-semibold text-[17px] text-[#6B7684]">{store.name}</span>
         {isBelowMin && (
           <div className="flex items-center gap-1 text-[#F04452]">

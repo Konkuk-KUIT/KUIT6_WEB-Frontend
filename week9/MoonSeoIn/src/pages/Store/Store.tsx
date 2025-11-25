@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import OrderBar from "../../components/OrderBar/OrderBar";
@@ -9,6 +10,7 @@ const Store = () => {
   const { storeId } = useParams<{ storeId: string }>();
   const [store, setStore] = useState<StoreType | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStore = async () => {
@@ -32,6 +34,9 @@ const Store = () => {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-lg text-gray-600">{error || "가게를 찾을 수 없습니다."}</p>
+        <button onClick={() => navigate("/")} className="px-4 py-2 text-white bg-blue-500 rounded-lg">
+          홈으로 가기
+        </button>
       </div>
     );
   }
@@ -39,7 +44,7 @@ const Store = () => {
   return (
     <>
       <div className="px-6 pt-6">
-        <button onClick={() => window.history.back()} className="cursor-pointer">
+        <button onClick={() => navigate("/stores")} className="cursor-pointer">
           <img src="/src/assets/chevron-left.svg" className="w-6 h-6 mb-4" />
         </button>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StoreListItem from "../../components/StoreListItem/StoreListItem";
 import OrderBar from "../../components/OrderBar/OrderBar";
 import { useStores } from "../../hooks/useStores";
@@ -9,6 +10,7 @@ export default function Stores() {
   const [newStoreName, setNewStoreName] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
+  const navigate = useNavigate();
 
   // 공통 에러 처리
   const handleError = (message: string) => {
@@ -75,7 +77,7 @@ export default function Stores() {
   return (
     <>
       <div className="px-6 pt-6 pb-32">
-        <button onClick={() => window.history.back()}>
+        <button onClick={() => navigate("/")} className="cursor-pointer">
           <img src="/src/assets/chevron-left.svg" className="w-6 h-6 mb-4" />
         </button>
 
