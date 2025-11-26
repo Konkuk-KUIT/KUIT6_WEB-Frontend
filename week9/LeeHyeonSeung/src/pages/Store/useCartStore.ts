@@ -1,23 +1,5 @@
 import { create } from 'zustand';
-
-interface Menu {
-  id: number;
-  name: string;
-  isBest: boolean;
-  price: number;
-  ingredients: string;
-}
-
-interface Store {
-  id: number;
-  name: string;
-  rate: number;
-  reviewCnt: number;
-  minDeliveryTime: number;
-  maxDeliveryTime: number;
-  minDeliveryPrice: number;
-  deliveryFee: number;
-}
+import type { Menu, Store } from '../../models/stores';
 
 interface CartItem {
   menu: Menu;

@@ -1,7 +1,7 @@
 {
   "stores": [
     {
-      "id": 1,
+      "id": "1",
       "name": "샐로리 한남점",
       "rate": 4.9,
       "reviewCnt": 3919,
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "그린가든 강남점",
       "rate": 4.7,
       "reviewCnt": 2451,
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "헬시키친 홍대입구",
       "rate": 4.8,
       "reviewCnt": 1784,
@@ -91,6 +91,17 @@
           "ingredients": "호박, 피칸, 크랜베리, 아루굴라, 발사믹 드레싱"
         }
       ]
+    },
+    {
+      "id": "6215",
+      "name": "가게 2 추가",
+      "rate": 0,
+      "reviewCnt": 0,
+      "minDeliveryTime": 20,
+      "maxDeliveryTime": 30,
+      "minDeliveryPrice": 10000,
+      "deliveryFee": 2000,
+      "menus": []
     }
   ]
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import star from "../../assets/store/star.svg";
+import Button from "../Button"; // Button 컴포넌트 import
 
 interface Store {
   id: number;
@@ -14,13 +15,25 @@ interface Store {
 
 interface StoreListProps {
   stores: Store[];
+  onEdit?: (id: number, currentName: string) => void;
+  onDelete?: (id: number, name: string) => void;
 }
 
-const StoreList = ({ stores }: StoreListProps) => {
+const StoreList = ({ stores, onEdit, onDelete }: StoreListProps) => {
   const navigate = useNavigate();
 
   const handleStoreClick = (storeId: number) => {
     navigate(`/store/${storeId}`);
+  };
+
+  const handleEdit = (e: React.MouseEvent, id: number, name: string) => {
+    e.stopPropagation();
+    if (onEdit) onEdit(id, name);
+  };
+
+  const handleDelete = (e: React.MouseEvent, id: number, name: string) => {
+    e.stopPropagation();
+    if (onDelete) onDelete(id, name);
   };
 
   return (
@@ -39,6 +52,16 @@ const StoreList = ({ stores }: StoreListProps) => {
               {store.deliveryFee.toLocaleString()}원
             </DeliveryInfo>
           </StoreContent>
+          
+          {/* 수정/삭제 버튼 */}
+          <ButtonGroup>
+            <Button size="sm" onClick={(e) => handleEdit(e, store.id, store.name)}>
+              수정
+            </Button>
+            <Button size="sm" onClick={(e) => handleDelete(e, store.id, store.name)}>
+              삭제
+            </Button>
+          </ButtonGroup>
         </StoreItem>
       ))}
     </Container>
@@ -66,10 +89,6 @@ const StoreItem = styled.div`
 const StoreThumbnail = styled.div`
   width: 54px;
   height: 54px;
-  top: 16px;
-  left: 32px;
-  angle: 0 deg;
-  opacity: 1;
   border-radius: 8px;
   background: #ECECEC;
 `;
@@ -84,53 +103,46 @@ const StoreContent = styled.div`
 const Rank = styled.div`
   font-family: Pretendard;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 17px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0px;
   color: #333D4B;
 `;
 
 const StoreName = styled.div`
   font-family: Pretendard;
   font-weight: 600;
-  font-style: SemiBold;
   font-size: 17px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0px;
   color: #333D4B;
 `;
 
 const Rating = styled.div`
   font-family: Pretendard;
   font-weight: 500;
-  font-style: Medium;
   font-size: 13px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0px;
   color: #6B7684;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;
 
 const StarIcon = styled.img`
-  width: 13.160506248474121;
-  height: 13.160506248474121;
-  top: 64.41px;
-  left: 92.84px;
-  angle: 0 deg;
-  opacity: 1;
-  border-radius: 0.5px;
+  width: 13px;
+  height: 13px;
 `;
 
 const DeliveryInfo = styled.div`
   font-family: Pretendard;
   font-weight: 500;
-  font-style: Medium;
   font-size: 13px;
-  leading-trim: NONE;
   line-height: 100%;
-  letter-spacing: 0px;
   color: #6B7684;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
 `;
