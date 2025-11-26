@@ -19,22 +19,6 @@ const OrderBar = () => {
     }
   };
 
-  // 장바구니가 비어있으면 기본 UI 표시
-  if (itemCount === 0) {
-    return (
-      <Wrapper>
-        <PriceBox>
-          <label>총 주문금액</label>
-          <Price>0원</Price>
-        </PriceBox>
-
-        <Button size="lg" type="button" onClick={handleOrder} disabled>
-          주문하기
-        </Button>
-      </Wrapper>
-    );
-  }
-
   return (
     <Wrapper>
       <PriceBox>

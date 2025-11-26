@@ -43,8 +43,6 @@ const Wrapper = styled.div`
 const Icon = styled.img`
   width: 28px;
   height: 28px;
-  angle: 0 deg;
-  opacity: 1;
 `;
 
 const Label = styled.div`

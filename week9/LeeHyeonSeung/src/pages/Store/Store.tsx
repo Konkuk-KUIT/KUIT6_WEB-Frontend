@@ -12,8 +12,6 @@ const Store = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [newStoreName, setNewStoreName] = useState("");
-  const [deletedStore, setDeletedStore] = useState<StoreType | null>(null);
-  const [undoTimer, setUndoTimer] = useState<NodeJS.Timeout | null>(null);
 
   // 가게 목록 불러오기
   useEffect(() => {
