@@ -1,26 +1,37 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home, { CATEGORIES } from "./Home/Home";
+import Home from "./Home/Home";
 import Stores from "./Stores/Stores";
 import type { IStore } from "./Stores/Stores";
 import Store from "./Store/Store"
-import stores from "../models/stores"
 import Cart from "./Cart/Cart";
-
-const typedStores = stores.map( (store) =>
-  store as IStore
-)
+import { getStores } from "../api/api";
+import { useState, useEffect } from "react";
+import useCategoryStore from "./Home/useCategoryStore";
 
 const Router = () => {
+  const [stores, setStores] = useState([]);
+  const {categories, fetchCategories} = useCategoryStore();
+  
+  useEffect(() => {
+    getStores().then(setStores).catch(console.error);
+  }, [])
+
+  useEffect(() => { fetchCategories(); })
+  
+  const typedStores = stores?.map( (store) =>
+    store as IStore
+  )
+  
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />
     },
-      ...CATEGORIES.map((category) => ({  // ... 없으면 이중 배열이 됨
+      ...categories.map((category) => ({  // ... 없으면 이중 배열이 됨
         path: `/${category.path}`,
         element: <Stores stores={typedStores} category={category.name} />
       })),
-      ...CATEGORIES.map((category) => ({
+      ...categories.map((category) => ({
         path: `/${category.path}/:id`,
         element: <Store stores={typedStores} category={category.name} />
       })),
