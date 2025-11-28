@@ -24,7 +24,7 @@ export const addStore = async (storeName: string): Promise<Store> => {
   const maxId = Math.max(...existingStores.map(s => s.id), 3);
 
   const newStore = {
-    id: maxId + 1,
+    id: String(maxId + 1),
     name: storeName,
     rate: 4.2,
     reviewCnt: 0,              

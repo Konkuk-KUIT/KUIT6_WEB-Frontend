@@ -39,26 +39,6 @@
       "maxDeliveryTime": 30,
       "deliveryFee": 2000,
       "minDeliveryPrice": 15000
-    },
-    {
-      "id": 5,
-      "name": "오미자",
-      "rate": 4,
-      "reviewCnt": 0,
-      "minDeliveryTime": 20,
-      "maxDeliveryTime": 30,
-      "deliveryFee": 2000,
-      "minDeliveryPrice": 15000
-    },
-    {
-      "id": 6,
-      "name": "육개장",
-      "rate": 4,
-      "reviewCnt": 0,
-      "minDeliveryTime": 20,
-      "maxDeliveryTime": 30,
-      "deliveryFee": 2000,
-      "minDeliveryPrice": 15000
     }
   ]
 }
