@@ -8,7 +8,7 @@ import yellowStar from "../../assets/store/yellowstar.svg";
 
 const Stores = () => {
   const { storeId } = useParams();
-  const store = stores.find((s) => s.id === Number(storeId));
+  const store = stores.find((s) => String(s.id) === storeId);
 
   if (!store) {
     return <div>가게를 찾을 수 없습니다.</div>;
@@ -150,5 +150,6 @@ const SectionTitle = styled.h2`
 const MenuList = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 `;
 

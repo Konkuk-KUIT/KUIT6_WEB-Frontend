@@ -16,21 +16,18 @@ const Cart = () => {
 
   // 장바구니가 비어있으면
   if (!store || items.length === 0) {
-    return (
-      <Wrapper>
-        <HeaderWrapper>
-          <Header />
-          <CancelText onClick={() => navigate("/store")}>주문취소</CancelText>
-        </HeaderWrapper>
-        <EmptyCart>
-          <EmptyText>장바구니가 비어있습니다</EmptyText>
-          <MoreButton onClick={() => navigate("/store")}>
-            메뉴 담으러 가기 <PlusImg src={plusIcon} alt="plus" />
-          </MoreButton>
-        </EmptyCart>
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <Header />
+      <EmptyCart>
+        <EmptyText>장바구니가 비어있습니다</EmptyText>
+        <MoreButton onClick={() => navigate("/store")}>
+          메뉴 담으러 가기 <PlusImg src={plusIcon} alt="plus" />
+        </MoreButton>
+      </EmptyCart>
+    </Wrapper>
+  );
+}
 
   const handleCancel = () => {
     clearCart();
@@ -161,7 +158,6 @@ const StoreName = styled.h2`
   font-weight: 700;
   font-style: Bold;
   font-size: 17px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0px;
   color: #6B7684;
@@ -309,7 +305,6 @@ const MinOrderText = styled.div`
   text-align: center;
   font-family: Pretendard;
   font-weight: 500;
-  font-style: Medium;
   font-size: 17px;
   color: #6B7684;
   margin-top: 20px;
@@ -319,7 +314,6 @@ const PayButton = styled.button<{ disabled?: boolean }>`
   width: 90%;
   height: 56px;
   margin: 12px auto 0;
-  bottom: 16px;
   display: block;
   border-radius: 16px;
   background: ${props => props.disabled ? '#D0DFFB' : '#3182F6'};
@@ -328,7 +322,6 @@ const PayButton = styled.button<{ disabled?: boolean }>`
   font-family: Pretendard;
   font-weight: 600;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   opacity: ${props => props.disabled ? 0.5 : 1};
