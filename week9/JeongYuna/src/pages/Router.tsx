@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import useCategoryStore from "./Home/useCategoryStore";
 
 const Router = () => {
-  const { categories, fetchCategories } = useCategoryStore();
+  const { fetchCategories } = useCategoryStore();
   const [ ready, setReady ] = useState(false);
 
   useEffect(() => {

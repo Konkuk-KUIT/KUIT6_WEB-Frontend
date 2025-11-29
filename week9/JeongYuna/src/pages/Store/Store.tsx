@@ -36,7 +36,7 @@ const Store = () => {
   if (id == undefined || category == undefined) return <Navigate to="/" replace />;
 
   const initialStore: IStore = {
-    id: 0,
+    id: '0',
     name: "",
     rate: 0,
     reviewCnt: 0,
@@ -66,7 +66,7 @@ const Store = () => {
 
   return (
     <Page paddingbottomheight={111}>
-      <TopSpace child={<Previous />} />
+      <TopSpace child={<Previous prevPage={`/${category}`}/>} />
 
       <div className="flex flex-col items-start pl-[23px] pb-[1rem] border-b-[1px] border-[#E5E8EB]">
         <HeadTitle className="flex justify-start items-end mb-[5px] mt-[26px] ml-[1px]">

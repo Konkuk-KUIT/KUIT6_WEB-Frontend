@@ -8,9 +8,10 @@ import { Page } from "../Home/Home";
 import { useEffect, useState } from "react";
 import { postStores, getStores, patchStore, deleteStore } from "../../api/api";
 import { Navigate, useParams } from "react-router-dom";
+import Button from "../../components/Button";
 
 interface IStore {
-  id: number;
+  id: string;
   name: string;
   rate: number;
   reviewCnt: number;
@@ -28,13 +29,27 @@ const Stores = () => {
 
   const [stores, setStores] = useState<IStore[]>([]);
   const typedStores = stores?.map((store) => store as IStore);
-  const rankedStores = [...typedStores].sort((a,b) => (b.rate - a.rate < 0)? -1 : (b.reviewCnt - a.reviewCnt));
+  const rankedStores = [...typedStores].sort((a,b) => (b.rate - a.rate == 0)? (b.reviewCnt - a.reviewCnt) : (b.rate - a.rate));
+
+  const [newStore, setNewStore] = useState("");
 
   useEffect(() => {
     getStores().then(setStores).catch(console.error);
   }, []);
 
-  const onAddStore = (store: IStore) => {
+  const onAddStore = (storeName: string) => {
+    const store : IStore = {
+      id: (Number(stores[stores.length - 1].id) + 1).toString(),
+      name: storeName,
+      rate: Number((Math.random() * 3.0 + 2.0).toFixed(1)),
+      reviewCnt: Math.floor(Math.random() * 5000),
+      minDeliveryTime: 20,
+      maxDeliveryTime: 50,
+      minDeliveryPrice: Math.floor(Math.random() * 9000 + 6000),
+      deliveryFee: Math.floor(Math.random() * 3000 + 1500),
+      menus: [],
+      category: "salad",
+    }
     postStores(store)
       .then((data) => {
         setStores((prevStores) => [...prevStores, data]);
@@ -58,7 +73,7 @@ const Stores = () => {
   const onDeleteStore = (id: number | string) => {
     deleteStore(id)
       .then(() => {
-        setStores((prev) => prev.filter((s)=>s.id != id))
+        setStores((prev) => prev.filter((s)=> s.id != id))
       })
       .catch(console.error);
   };
@@ -78,6 +93,15 @@ const Stores = () => {
           onDeleteStore={onDeleteStore}
         />
       ))}
+
+      <div className="w-full flex flex-row justify-center items-center gap-[8px] p-[12px]">
+        <input type="text" value={newStore} onChange={(e) => setNewStore(e.target.value)}/>
+        <Button onClick={() => {
+          onAddStore(newStore);
+          setNewStore("");
+        }}>추가</Button>
+      </div>
+
       <OrderBar />
     </Page>
   );

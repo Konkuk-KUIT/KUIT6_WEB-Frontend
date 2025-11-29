@@ -7,7 +7,7 @@ const StoreCard = ({ store, rank, onChangeStore, onDeleteStore,}: {
   store: IStore;
   rank: number;
   onChangeStore: ({ store, newName, }: { store: IStore; newName: string; }) => void;
-  onDeleteStore: (id: number) => void;
+  onDeleteStore: (id: string) => void;
 }) => {
   const navigate = useNavigate();
   const { category } = useParams<{ category: string }>();
@@ -23,7 +23,13 @@ const StoreCard = ({ store, rank, onChangeStore, onDeleteStore,}: {
   }) => {
     onChangeStore({ store: store, newName: newName });
     setIsModifying(false);
+    setNewName("");
   };
+  
+  const handleCancel = () => {
+    setIsModifying(false);
+    setNewName("");
+  }
 
   return (
     <div className="w-full flex flex-row justify-between">
@@ -39,7 +45,7 @@ const StoreCard = ({ store, rank, onChangeStore, onDeleteStore,}: {
           ></img>
           <div className="flex flex-col items-start">
             <p className="inline-block text-[17px] font-[600] p-[0px] m-[0px] font-pretendard">
-              {rank <= 3 ? store.id + "위" : ""}
+              {rank <= 3 ? rank + "위" : ""}
             </p>
             <p className="inline-block text-[17px] font-[600] p-[0px] m-[0px]">
               {store.name}
@@ -62,7 +68,7 @@ const StoreCard = ({ store, rank, onChangeStore, onDeleteStore,}: {
             onClick={() => handleChangeStore({ store: store, newName: newName })}>
             저장
           </Button>
-          <Button size="sm" className="h-[30px]" onClick={() => setIsModifying(false)}>
+          <Button size="sm" className="h-[30px]" onClick={() => handleCancel()}>
             취소
           </Button>
         </div>

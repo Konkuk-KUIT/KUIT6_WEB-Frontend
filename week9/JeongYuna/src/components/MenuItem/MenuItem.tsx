@@ -19,13 +19,12 @@ const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
   const addCount = useCartStore((state) => state.addCount);
 
   const { id } = useParams();
-  const storeId = Number(id);
 
   const storedstore = useStoreStore((state) => state.store);
   const chooseStore = useStoreStore((state) => state.chooseStore);
 
   const handleAddMenu = () => { 
-    if (storedstore.id != 0 && storeId != storedstore.id) {
+    if (storedstore.id != '0' && id != storedstore.id) {
       const result = confirm("같은 가게의 메뉴만 담을 수 있어요. 메뉴를 담으시겠습니까?");
 
       if (result) {

@@ -14,7 +14,7 @@ export const postStores = async (store: IStore) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ store }),
+        body: JSON.stringify(store),
     });
     if (!res.ok) throw new Error("가게 생성하기 실패");
     return await res.json();
@@ -51,15 +51,11 @@ export const patchStore = async (store: IStore) => {
 export const deleteStore = async (id: number | string) => {
     console.log('요청 본문:', id);
     const res = await fetch(API_URL + `/stores/${id}`, {
-        method: "DELETE",
-        headers: {"Content-Type": "application/json"}
+        method: "DELETE"
     });
     if (!res.ok) throw new Error("가게 삭제하기 실패");
 
-    const data = await res.json();
-    console.log('✅ 응답 데이터:', data);
-
-    return data;
+    return await res.json();;
 }
 
 export const getCategories = async () => {
