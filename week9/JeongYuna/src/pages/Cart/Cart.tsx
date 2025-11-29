@@ -93,8 +93,16 @@ const QuitOrderButton = ({ store }: { store: IStore }) => {
   const emptyMenu = useCartStore((state) => state.emptyMenu);
   const navigator = useNavigate();
   const handleQuitOrder = () => {
-    emptyMenu();
-    navigator(`/${store.category}`);
+    const result = confirm("장바구니가 초기화됩니다. 주문을 취소하시겠습니까?");
+
+      if (result) {
+        console.log("확인 선택");
+        emptyMenu();
+        navigator(`/${store.category}`);
+      } else {
+        console.log("취소 선택");
+        return;
+      }    
   };
   return (
     <div className="w-[100%] flex flex-row justify-between">

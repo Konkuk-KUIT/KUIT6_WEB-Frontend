@@ -6,10 +6,10 @@ import { useParams } from "react-router-dom";
 
 interface Menu {
   id: number,
-  name: String,
+  name: string,
   isBest: boolean,
   price: number,
-  ingredients: String,
+  ingredients: string,
 }
 
 const MenuItem = ({ menu, store }: {menu: Menu, store: IStore}) => {
